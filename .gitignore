@@ -17,7 +17,7 @@ story_orphanqueries_ignore.txt
 # Asset Folders      #
 ######################
 Public/$ModFolderName/Assets/*
-#Public/$ModFolderName/GUI/*
+Public/$ModFolderName/GUI/*
 
 # Editor files       #
 ######################
