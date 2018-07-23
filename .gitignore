@@ -4,9 +4,9 @@ SourceControlGenerator.json
 
 # Levels
 ######################
-Mods/$ModFolderName/Levels/*
-Mods/$ModFolderName/Globals/*
-Editor/Mods/$ModFolderName/Levels/*
+# Mods/$ModFolderName/Levels/*
+# Mods/$ModFolderName/Globals/*
+# Editor/Mods/$ModFolderName/Levels/*
 
 # Story files        #
 ######################
@@ -66,9 +66,9 @@ personallog.txt
 *.fnt
 *.iggy
 *.iggytex
-*.osi
-*.patch
-*.tmpl
+# *.osi
+# *.patch
+# *.tmpl
 
 # Dump files         #
 ######################
