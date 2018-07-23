@@ -6,7 +6,7 @@ SourceControlGenerator.json
 ######################
 Mods/$ModFolderName/Levels/*
 Mods/$ModFolderName/Globals/*
-# Editor/Mods/$ModFolderName/Levels/*
+Editor/Mods/$ModFolderName/Levels/*
 
 # Story files        #
 ######################
