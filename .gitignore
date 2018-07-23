@@ -67,7 +67,7 @@ personallog.txt
 *.iggy
 *.iggytex
 # *.osi
-# *.patch
+*.patch
 # *.tmpl
 
 # Dump files         #
