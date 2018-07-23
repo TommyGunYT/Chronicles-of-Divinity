@@ -1,0 +1,79 @@
+#INCLUDE State_Manager
+INIT
+	USING SHARED State_Manager
+	CHARACTER:__Me
+	CHARACTER:%Maya = S_DC_Maya_dcb9edbe-3470-428b-8684-785e5648a04d
+	EXTERN ITEM:%S1_BeachChair = S_DC_BrandonChair_da3fe3f1-1570-4fd9-b839-760a2ea8fc78
+	EXTERN ITEM:%S1_BeachBag = S_DC_BrandonBag_34491596-d80c-4820-95a7-749164d06ae2
+	EXTERN ITEM:%S1_BrokenBoat = S_DC_BrandonsBoat_Broken_21592f16-aa3c-4ce2-8973-01438d6840ec
+	EXTERN TRIGGER:%S1_CampBags = S_DC_Brandon_CampBags_bbbfc733-7160-45b2-bc18-0b566ea4cdf2
+	EXTERN TRIGGER:%S1_BoatBuild = S_DC_BrandonBoatBuildingPoint_cc57e152-780b-4984-b81f-2b12b3511bcd
+	INT: %resetTimeout = 0
+	FLOAT:%RandSleep = 1
+	FLOAT:%RandTimer = 1
+	
+	
+	
+BEHAVIOUR
+REACTION State_FTJ_Beach, 1
+USAGE PEACE
+ACTIONS
+	GetRandom(%currentAction,"S1_Bags","S1_Wander")
+	SetPriority(%currentAction, 1200)
+
+REACTION S1_Wander,0
+USAGE PEACE
+VARS
+	FIXEDSTRING:_animation
+ACTIONS
+	GetRandomBetween(%RandTimer,2,7)
+	CharacterWander(TRIGGER:S_DC_BrandonCampWander_72ab69fb-5982-48c3-a302-2d9a2293b4cb,%RandTimer)
+	GetRandomBetween(%RandSleep,3,9)
+	Sleep(%RandSleep)	
+	GetRandom(_animation,"Think_01","Think_02","use_craft")
+	CharacterPlayAnimation(_animation)
+	GetRandomBetween(%RandTimer,1,4)
+	CharacterWander(TRIGGER:S_DC_BrandonCampWander_72ab69fb-5982-48c3-a302-2d9a2293b4cb,%RandTimer)
+	GetRandomBetween(%RandSleep,5,11)
+	Sleep(%RandSleep)
+	GetRandom(_animation,"Write_01","Think_02","use_inspect")
+	CharacterPlayAnimation(_animation)
+	GetRandomBetween(%RandSleep,7,16)
+	Sleep(%RandSleep)
+	SetPriority(%currentAction, 0)
+INTERRUPT
+ACTIONS
+	SetPriority(%currentAction, 0)
+	
+	
+REACTION S1_Bags,0
+USAGE PEACE
+VARS
+	FIXEDSTRING:_animation
+ACTIONS
+	CharacterMoveTo(%S1_CampBags,0,0,0,1,2)
+	CharacterLookAt(%S1_BeachBag,0,0)
+	GetRandom(_animation,"Kneel_01","Kneel_02","use_loot")
+	CharacterPlayAnimation(_animation)
+	GetRandomBetween(%RandSleep,4,9)
+	Sleep(%RandSleep)
+	SetPriority(%currentAction, 0)
+INTERRUPT
+ACTIONS
+	SetPriority(%currentAction, 0)
+	
+REACTION State_FTJ_BuildBoat,0
+USAGE PEACE
+VARS
+	FIXEDSTRING:_animation
+ACTIONS
+	CharacterMoveTo(%S1_BoatBuild,0,0,0,1,2)
+	CharacterLookAt(%S1_BrokenBoat,0,0)
+	GetRandom(_animation,"Kneel_01","Kneel_02","use_loot","use_craft","Blacksmith_01")
+	CharacterPlayAnimation(_animation)
+	GetRandomBetween(%RandSleep,4,9)
+	Sleep(%RandSleep)
+	SetPriority(%currentAction, 0)
+INTERRUPT
+ACTIONS
+	SetPriority(%currentAction, 0)

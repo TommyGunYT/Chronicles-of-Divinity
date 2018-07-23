@@ -1,0 +1,21 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+IF
+CharacterCreationFinished((CHARACTERGUID)NULL_00000000-0000-0000-0000-000000000000)
+AND
+IsTagged(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd,"AVATAR",0)
+AND
+CharacterIsControlled(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, 0)
+THEN
+PROC_GLO_PartyMembers_Remove(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd,1);
+CharacterRemoveFromParty(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd);
+TeleportTo(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, TRIGGERGUID_S_TUT_Origin_Kara_Start_Point_d25d1528-6b89-47ee-9060-846d419c6288);
+SetVarFixedString(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, "currentState", "State_TUT_A");
+NOT DB_IsPlayer(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd);
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "Start"

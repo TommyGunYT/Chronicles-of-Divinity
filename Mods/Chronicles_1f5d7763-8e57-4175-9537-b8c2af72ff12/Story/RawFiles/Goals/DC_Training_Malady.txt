@@ -1,0 +1,56 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+SetOnStage(ITEMGUID_SKILLBOOK_DC_SourceInfusion_000_d7a85412-43f5-46a7-a940-d3df16b6d6c4, 0);
+KBSECTION
+IF
+DialogEnded("DC_CombatTraining_MaladyIntro", _ID)
+AND
+DB_IsPlayer(_Player)
+AND
+DialogGetInvolvedPlayer(_ID, 1, _Speaker)
+AND
+ObjectGetFlag(CHARACTERGUID_S_DC_Training_Malady_b10961db-76e6-4a4b-8e26-1f3d1eacfb66, "IsIntroduced", 1)
+AND
+ObjectGetFlag(CHARACTERGUID_S_DC_Training_Malady_b10961db-76e6-4a4b-8e26-1f3d1eacfb66, "DoneIntroducingForge", 0)
+THEN
+ProcCharacterMoveTo(CHARACTERGUID_S_DC_Training_Malady_b10961db-76e6-4a4b-8e26-1f3d1eacfb66, TRIGGERGUID_DC_Training_Malady_SourceForge_c92bae6d-0e37-4149-921d-c7311554bc2c, 0, "DC_Training_MaladyFaceMerch");
+ObjectSetFlag(CHARACTERGUID_S_DC_Training_Malady_b10961db-76e6-4a4b-8e26-1f3d1eacfb66, "DoneIntroducingForge");
+
+IF
+StoryEvent(_, "DC_Training_MaladyFaceMerch")
+THEN
+ProcFaceCharacter(CHARACTERGUID_S_DC_Training_Malady_b10961db-76e6-4a4b-8e26-1f3d1eacfb66, CHARACTERGUID_S_DC_Training_EquipTraider_d419a393-bebd-4dc2-a421-2d1cf1c7d9b0);
+
+IF
+DialogEnded("DC_CombatTraining_MaladyIntro", _ID)
+AND
+DB_IsPlayer(_Player)
+AND
+ObjectGetFlag(CHARACTERGUID_S_DC_Training_Malady_b10961db-76e6-4a4b-8e26-1f3d1eacfb66, "IntroducedSourceForge", 1)
+AND
+ObjectGetFlag(CHARACTERGUID_S_DC_Training_Malady_b10961db-76e6-4a4b-8e26-1f3d1eacfb66, "GoneToChair", 0)
+THEN
+ProcCharacterMoveTo(CHARACTERGUID_S_DC_Training_Malady_b10961db-76e6-4a4b-8e26-1f3d1eacfb66, TRIGGERGUID_DC_Training_MaladyToChair_1ae2c794-64ef-4da5-99a0-c4c4edeffae1, 0, "DC_Training_MaladyToChair");
+ObjectSetFlag(CHARACTERGUID_S_DC_Training_Malady_b10961db-76e6-4a4b-8e26-1f3d1eacfb66, "GoneToChair");
+SetOnStage(ITEMGUID_SKILLBOOK_DC_SourceInfusion_000_d7a85412-43f5-46a7-a940-d3df16b6d6c4, 1);
+PlayEffect(ITEMGUID_SKILLBOOK_DC_SourceInfusion_000_d7a85412-43f5-46a7-a940-d3df16b6d6c4, "RS3_FX_GP_ScriptedEvent_Unlock_SourcePoint_03");
+PlaySound(ITEMGUID_SKILLBOOK_DC_SourceInfusion_000_d7a85412-43f5-46a7-a940-d3df16b6d6c4, "GP_ScriptedEvent_Unlock_SourcePoint");
+CharacterOverrideMaxSourcePoints(_Player, 1);
+CharacterAddSourcePoints(_Player, 1);
+GlobalSetFlag("DC_Training_PlayersIntroducedToForge");
+
+IF
+StoryEvent(_, "DC_Training_MaladyToChair")
+THEN
+CharacterUseItem(CHARACTERGUID_S_DC_Training_Malady_b10961db-76e6-4a4b-8e26-1f3d1eacfb66, ITEMGUID_FUR_Humans_Rich_Sofa_A_101__000_DC_000__000_e4756747-2e1c-ca96-c20d-4e98ec1c1939, "");
+
+
+PROC
+ProcRegionEnded("DC_Snowfall")
+THEN
+GoalCompleted;
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "DC_Snowfall"

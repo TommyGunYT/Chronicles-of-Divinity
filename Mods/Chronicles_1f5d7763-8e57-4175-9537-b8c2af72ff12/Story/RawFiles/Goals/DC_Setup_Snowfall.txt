@@ -1,0 +1,13 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+DB_ScalingAreaTriggers(TRIGGERGUID_DC_ScalingRegion_TrainingArea_e48a2198-9662-436e-a491-84fada3be556);
+KBSECTION
+PROC
+ProcRegionEnded("DC_Snowfall")
+THEN
+GoalCompleted;
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "DC_Snowfall"

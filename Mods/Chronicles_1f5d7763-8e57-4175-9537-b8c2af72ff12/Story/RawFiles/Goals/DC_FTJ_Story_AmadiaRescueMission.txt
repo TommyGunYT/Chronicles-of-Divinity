@@ -1,0 +1,30 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+PROC
+Proc_DC_Story_FTJ_BoatBuilt()
+AND
+DB_DCPlayerBoat(_PlayerShip)
+THEN
+DB_DC_Story("FTJ_Boat_Finished");
+ItemSetCanInteract(ITEMGUID_S_DC_DockedBoat_FortJoyCamp_67a4fc55-fef1-4b57-97a5-60b58d1d1a55, 0);
+SetOnStage(ITEMGUID_S_DC_DockedBoat_FortJoyCamp_67a4fc55-fef1-4b57-97a5-60b58d1d1a55, 1);
+Proc_DC_Story_FTJ_SeekerRescueMission();
+
+PROC
+Proc_DC_Story_FTJ_SeekerRescueMission()
+AND
+DB_IsPlayer(_Player)
+THEN
+ProcCharacterMoveToAndTalk(CHARACTERGUID_S_GLO_Kerban_46a7c73f-c0f0-4f02-be00-edbb3cdfc425, _Player, "DC_FTJ_KerbanOwl", 0, "", 1, 35.0);
+
+IF
+DialogEnded("DC_FTJ_KerbanOwl", _ID)
+THEN
+ItemSetCanInteract(ITEMGUID_S_DC_DockedBoat_FortJoyCamp_67a4fc55-fef1-4b57-97a5-60b58d1d1a55, 1);
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "FortJoy"

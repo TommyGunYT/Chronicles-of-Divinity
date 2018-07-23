@@ -1,0 +1,22 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+DB_CheckLevelStart("DC_Snowfall");
+KBSECTION
+IF
+RegionStarted("DC_Snowfall")
+THEN
+GoalCompleted;
+
+IF
+DB_CheckLevelStart("DC_Snowfall")
+AND
+DB_CurrentLevel("DC_Snowfall")
+THEN
+GoalCompleted;
+
+
+EXITSECTION
+NOT DB_CheckLevelStart("DC_Snowfall");
+ENDEXITSECTION
+ParentTargetEdge "Start"

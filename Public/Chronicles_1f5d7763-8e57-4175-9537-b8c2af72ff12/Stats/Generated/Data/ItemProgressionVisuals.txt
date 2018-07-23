@@ -1,0 +1,234 @@
+new itemgroup "WPN_UNIQUE_PhysicalWand"
+
+add levelgroup 0,0,"All"
+add rootgroup "1df95360-c05b-416c-b116-88ca335aaca0","MagisterWhite"
+add namegroup "WPN_UNIQUE_PhysicalWand","",""
+
+new itemgroup "ARM_UNIQUE_CrownOfFireSlug"
+
+add levelgroup 0,0,"All"
+add rootgroup "54db9d87-b969-4680-8d19-3f8b46f004ba",""
+add namegroup "ARM_UNIQUE_CrownOfFireSlug","",""
+
+new itemgroup "ARM_UNIQUE_DefilerGloves"
+
+add levelgroup 0,0,"All"
+add rootgroup "83d8838e-5eda-4f46-bb03-3a8e23813c85",""
+add namegroup "ARM_UNIQUE_DefilerGloves","",""
+
+new itemgroup "ARM_UNIQUE_PackHelmet"
+
+add levelgroup 0,0,"All"
+add rootgroup "9704feba-f79e-4156-b9a4-e06174300c49",""
+add namegroup "ARM_UNIQUE_PackHelmet","",""
+
+new itemgroup "ARM_UNIQUE_BlessedBlindfolds"
+
+add levelgroup 0,0,"All"
+add rootgroup "40130ebf-f22e-4945-8e9a-e647c54a4d54",""
+add namegroup "ARM_UNIQUE_BlessedBlindfolds","",""
+
+new itemgroup "ARM_UNIQUE_AlexanderSourceCollar"
+
+add levelgroup 0,0,"All"
+add rootgroup "5d774193-a034-44f0-aa1e-fc6cc8c7139c",""
+add namegroup "ARM_UNIQUE_AlexanderSourceCollar","",""
+
+new itemgroup "WPN_UNIQUE_MagicStaff"
+
+add levelgroup 0,0,"All"
+add rootgroup "239a05d6-1957-406d-8a83-47debd49ce2d",""
+add namegroup "WPN_UNIQUE_MagicStaff","",""
+
+new itemgroup "WPN_UNIQUE_QuickBow"
+
+add levelgroup 0,0,"All"
+add rootgroup "f894659f-56f2-4eea-b58b-553299fe2d92",""
+add namegroup "WPN_UNIQUE_QuickBow","",""
+
+new itemgroup "WPN_UNIQUE_WandOfEnslavement"
+
+add levelgroup 0,0,"All"
+add rootgroup "79439704-561c-42f1-ab92-d980c18efab6",""
+add namegroup "WPN_UNIQUE_WandOfEnslavement","",""
+
+new itemgroup "WPN_UNIQUE_EpicWoodSword"
+
+add levelgroup 0,0,"All"
+add rootgroup "883203c9-75b2-4f9e-b04d-45d1a88cc721",""
+add namegroup "WPN_UNIQUE_EpicWoodSword","",""
+
+new itemgroup "WPN_UNIQUE_ForkTonguesFork"
+
+add levelgroup 0,0,"All"
+add rootgroup "1b6dbf0b-3b8c-440b-b159-e01861933a6e",""
+add namegroup "WPN_UNIQUE_ForkTonguesFork","",""
+
+new itemgroup "WPN_UNIQUE_AdvocateSword"
+
+add levelgroup 0,0,"All"
+add rootgroup "e7696f68-3d52-4abc-b161-c78129e3e7c8",""
+add namegroup "WPN_UNIQUE_AdvocateSword","",""
+
+new itemgroup "WPN_UNIQUE_DaggerSpear"
+
+add levelgroup 0,0,"All"
+add rootgroup "8730e233-3366-428b-8054-6a8293f40680",""
+add namegroup "WPN_UNIQUE_DaggerSpear","",""
+
+new itemgroup "SHLD_UNIQUE_DrillWormShield"
+
+add levelgroup 0,0,"All"
+add rootgroup "3dc7dfc3-bcd3-4b7e-9666-e6c5fbc9fcce",""
+add namegroup "SHLD_UNIQUE_DrillWormShield","",""
+
+new itemgroup "WPN_UNIQUE_PortalWand"
+
+add levelgroup 0,0,"All"
+add rootgroup "fe519869-6a0b-492a-9699-0b812b43eedd",""
+add namegroup "WPN_UNIQUE_PortalWand","",""
+
+new itemgroup "ARM_UNIQUE_PrimordialShard"
+
+add levelgroup 0,0,"All"
+add rootgroup "5b07b0db-05c4-41b1-a3f8-f85c90412618","RedOre"
+add namegroup "ARM_UNIQUE_PrimordialShard","",""
+
+new itemgroup "WPN_UNIQUE_QannaStaff"
+
+add levelgroup 0,0,"All"
+add rootgroup "18ac2295-c362-457f-880e-ec88e9f5a1a6",""
+add namegroup "WPN_UNIQUE_QannaStaff","",""
+
+new itemgroup "WPN_UNIQUE_ScytheOfStrife"
+
+add levelgroup 0,0,"All"
+add rootgroup "9fa07762-1ace-410e-a319-ad5cb1fe8648",""
+add namegroup "WPN_UNIQUE_ScytheOfStrife","",""
+
+new itemgroup "ARM_UNIQUE_AscendantPriestRobes"
+
+add levelgroup 0,0,"All"
+add rootgroup "c4ba3d09-e122-447e-8f39-ce0eab234067",""
+add namegroup "ARM_UNIQUE_AscendantPriestRobes","",""
+
+new itemgroup "ARM_UNIQUE_QuiverHands"
+
+add levelgroup 0,0,"All"
+add rootgroup "efe866fa-5aa0-4a3a-8ce3-33dc29939056",""
+add namegroup "ARM_UNIQUE_QuiverHands","",""
+
+new itemgroup "ARM_UNIQUE_HelmOfHorns"
+
+add levelgroup 0,0,"All"
+add rootgroup "21fa2bfb-2dd7-4f24-b12b-948c921dfdcc",""
+add namegroup "ARM_UNIQUE_HelmOfHorns","",""
+
+new itemgroup "WPN_UNIQUE_SmokeXbow"
+
+add levelgroup 0,0,"All"
+add rootgroup "4e229e8e-318d-4d95-bb72-cf4a1881c783",""
+add namegroup "WPN_UNIQUE_SmokeXbow","",""
+
+new itemgroup "ARM_UNIQUE_WeaponMasterGloves"
+
+add levelgroup 0,0,"All"
+add rootgroup "fa9c50a7-6fa1-45d4-aa8e-3b7304ab103e",""
+add namegroup "ARM_UNIQUE_WeaponMasterGloves","",""
+
+new itemgroup "ARM_UNIQUE_GreaterWeaponMasterGloves"
+
+add levelgroup 0,0,"All"
+add rootgroup "21192d41-68f0-4c77-8204-ce70488d28ea",""
+add namegroup "ARM_UNIQUE_GreaterWeaponMasterGloves","",""
+
+new itemgroup "ARM_UNIQUE_RingOfUndeath"
+
+add levelgroup 0,0,"All"
+add rootgroup "48afbcaa-d6ae-4699-bd73-0977e4ee32c9",""
+add namegroup "ARM_UNIQUE_RingOfUndeath","",""
+
+new itemgroup "SHIELD_UNIQUE_AirBuckler"
+
+add levelgroup 0,0,"All"
+add rootgroup "f0d6aa54-33de-47a6-9d27-1b750abd5974",""
+add namegroup "SHIELD_UNIQUE_AirBuckler","",""
+
+new itemgroup "ARM_UNIQUE_BeastMasterBoots"
+
+add levelgroup 0,0,"All"
+add rootgroup "e09cce45-d880-4fd1-b34e-127b19ed13dc",""
+add namegroup "ARM_UNIQUE_BeastMasterBoots","",""
+
+new itemgroup "ARM_UNIQUE_ColdChitin"
+
+add levelgroup 0,0,"All"
+add rootgroup "f5a2da99-e4b6-4aef-ad80-e84df120d1ab",""
+add namegroup "ARM_UNIQUE_ColdChitin","",""
+
+new itemgroup "ARM_UNIQUE_Conductors"
+
+add levelgroup 0,0,"All"
+add rootgroup "4259c762-d248-413c-9957-167088db6c09",""
+add namegroup "ARM_UNIQUE_Conductors","",""
+
+new itemgroup "ARM_UNIQUE_TacticianBoots"
+
+add levelgroup 0,0,"All"
+add rootgroup "8312ba98-4936-4c57-a6d7-3ff983962da8",""
+add namegroup "ARM_UNIQUE_TacticianBoots","",""
+
+new itemgroup "ARM_UNIQUE_AffinityGlove"
+
+add levelgroup 0,0,"All"
+add rootgroup "fc61eea0-f17a-4667-bff8-e6978dafb194",""
+add namegroup "ARM_UNIQUE_AffinityGlove","",""
+
+new itemgroup "ARM_UNIQUE_GearHandlers"
+
+add levelgroup 0,0,"All"
+add rootgroup "82b5dfb9-e314-44fb-a49e-5e9ebca119a4",""
+add namegroup "ARM_UNIQUE_GearHandlers","",""
+
+new itemgroup "ARM_UNIQUE_MuleBelt"
+
+add levelgroup 0,0,"All"
+add rootgroup "11d57e2a-d67e-4dff-8ce2-27c7ccf5b194",""
+add namegroup "ARM_UNIQUE_MuleBelt","",""
+
+new itemgroup "WPN_UNIQUE_RodOfCollection"
+
+add levelgroup 0,0,"All"
+add rootgroup "6bafb55a-7c81-4993-be93-fce351205123",""
+add namegroup "WPN_UNIQUE_RodOfCollection","",""
+
+new itemgroup "WPN_UNIQUE_GreaterRodOfCollection"
+
+add levelgroup 0,0,"All"
+add rootgroup "fde516df-9f71-4ebc-8e57-d09b9ea84745",""
+add namegroup "WPN_UNIQUE_GreaterRodOfCollection","",""
+
+new itemgroup "ARM_UNIQUE_TwoSummonGloves"
+
+add levelgroup 0,0,"All"
+add rootgroup "397050f5-f9b8-43a0-956d-9164fff127fc",""
+add namegroup "ARM_UNIQUE_TwoSummonGloves","",""
+
+new itemgroup "SHIELD_UNIQUE_PaladinShield"
+
+add levelgroup 0,0,"All"
+add rootgroup "f32a631a-d769-436f-abb5-3aff0048af6f",""
+add namegroup "SHIELD_UNIQUE_PaladinShield","",""
+
+new itemgroup "WPN_UNIQUE_BullyClub"
+
+add levelgroup 0,0,"All"
+add rootgroup "3c39d39d-9ce7-41a2-8762-5a17f917b5dc",""
+add namegroup "WPN_UNIQUE_BullyClub","",""
+
+new itemgroup "WPN_UNIQUE_PrayerSword"
+
+add levelgroup 0,0,"All"
+add rootgroup "3a290e34-29d9-412e-895c-f40ed46a2907",""
+add namegroup "WPN_UNIQUE_PrayerSword","",""
+

@@ -1,0 +1,52 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+SetCanFight(CHARACTERGUID_S_DC_NPC_Godwoken_Rekker_90bfbc12-24a8-4a4c-ab8b-ffdf2ecfd273, 0);
+SetCanFight(CHARACTERGUID_S_DC_NPC_Godwoken_Zakirah_3981d59a-4479-4f0b-b901-7bb59bbc5c71, 0);
+SetCanFight(CHARACTERGUID_S_DC_NPC_Godwoken_Markesh_606af11b-0d78-4f7a-bf66-bba9860bb9f3, 0);
+SetCanFight(CHARACTERGUID_S_DC_NPC_Godwoken_Greg_000768c0-84ba-4ed4-92ad-e438e9d152c5, 0);
+KBSECTION
+IF
+CombatStarted(_ID)
+AND
+CharacterIsInCombat(CHARACTERGUID_S_TUT_Humans_Female_Magister_Priest_000_9d17cf06-6fad-49a8-82de-54518a9bf5df, 1)
+AND
+ObjectIsInTrigger(CHARACTERGUID_S_TUT_Humans_Female_Magister_Priest_000_9d17cf06-6fad-49a8-82de-54518a9bf5df, TRIGGERGUID_S_TUT_Humans_Female_Magister_Priest_000_WanderBox_c0380139-fa16-4a17-8783-2598d0f3b357, 1)
+THEN
+LeaveCombat(CHARACTERGUID_S_TUT_Humans_Female_Magister_Priest_000_9d17cf06-6fad-49a8-82de-54518a9bf5df);
+KillCombatFor(CHARACTERGUID_S_TUT_Humans_Female_Magister_Priest_000_9d17cf06-6fad-49a8-82de-54518a9bf5df);
+SetCanFight(CHARACTERGUID_S_TUT_Humans_Female_Magister_Priest_000_9d17cf06-6fad-49a8-82de-54518a9bf5df, 0);
+DisplayText(CHARACTERGUID_S_TUT_Humans_Female_Magister_Priest_000_9d17cf06-6fad-49a8-82de-54518a9bf5df, "I... Can't fight. You will have to deal with this.");
+TimerLaunch("DC_TUT_SiwanBreakOff", 2000);
+GlobalSetFlag("DC_TUT_SiwanRanFromCombat");
+
+IF
+TimerFinished("DC_TUT_SiwanBreakOff")
+THEN
+ProcCharacterMoveTo(CHARACTERGUID_S_TUT_Humans_Female_Magister_Priest_000_9d17cf06-6fad-49a8-82de-54518a9bf5df, TRIGGERGUID_DC_StorageGuardDaniel_Siwan_Disappear_848b8e5c-39aa-465c-9863-08a1fd2ea4a7, 1, "DC_TUT_SiwanRunFromCombat");
+
+
+IF
+StoryEvent(_, "DC_TUT_SiwanRunFromCombat")
+THEN
+SetOnStage(CHARACTERGUID_S_TUT_Humans_Female_Magister_Priest_000_9d17cf06-6fad-49a8-82de-54518a9bf5df, 0);
+
+IF
+CombatEnded(_ID)
+AND
+GlobalGetFlag("DC_TUT_SiwanRanFromCombat", 1)
+THEN
+TimerLaunch("DC_TUT_SiwanReturnAfterCombat", 12000);
+
+IF
+TimerFinished("DC_TUT_SiwanReturnAfterCombat")
+AND
+GlobalGetFlag("DC_TUT_SiwanRanFromCombat", 1)
+THEN
+SetOnStage(CHARACTERGUID_S_TUT_Humans_Female_Magister_Priest_000_9d17cf06-6fad-49a8-82de-54518a9bf5df, 1);
+ProcCharacterMoveTo(CHARACTERGUID_S_TUT_Humans_Female_Magister_Priest_000_9d17cf06-6fad-49a8-82de-54518a9bf5df, TRIGGERGUID_S_TUT_LowerDeck_CollaringRoom_LecternPoint_6084c16e-c073-43c4-a748-3033f815c066, 0, "");
+
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "Tutorial_PrisonShip"

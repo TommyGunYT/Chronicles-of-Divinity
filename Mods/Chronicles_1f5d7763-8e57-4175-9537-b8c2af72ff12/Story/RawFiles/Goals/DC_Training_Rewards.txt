@@ -1,0 +1,592 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+//REGION EXP BONUS STAGES
+
+// STAGE ONE
+
+IF
+CharacterDying(_Enemy)
+AND
+DB_DC_EnemyCombatant_Library(_Enemy)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_Training_Stage("One")
+AND
+CharacterIsControlled(_Player, 1)
+AND
+IsTagged(_Player, "AVATAR", 1)
+AND
+CharacterIsSummon(_Enemy, 0)
+AND
+NOT DB_IsPlayer(_Enemy)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+IntegerProduct(_Level, 150, _Exp)
+AND
+IsGameLevel("DC_Snowfall", 1)
+AND
+Random(50, _Random)
+AND
+IntegerProduct(_Random, _Level, _LevelGold)
+AND
+IntegerDivide(_LevelGold, 2, _HalfLevelGold)
+AND
+IntegerSum(_LevelGold, _HalfLevelGold, _Gold)
+AND
+Random(100, _Dropchance)
+AND
+_Dropchance <= 55
+THEN
+CharacterAddGold(_Enemy, _Gold);
+PartyAddActualExperience(_Player, _Exp);
+
+// STAGE TWO
+
+IF
+CharacterDying(_Enemy)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_Training_Stage("Two")
+AND
+CharacterIsControlled(_Player, 1)
+AND
+IsTagged(_Player, "AVATAR", 1)
+AND
+DB_DC_EnemyCombatant_Library(_Enemy)
+AND
+NOT DB_IsPlayer(_Enemy)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+IntegerProduct(_Level, 200, _Exp)
+AND
+IsGameLevel("DC_Snowfall", 1)
+THEN
+PartyAddActualExperience(_Player, _Exp);
+
+// STAGE THREE
+
+IF
+CharacterDying(_Enemy)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_Training_Stage("Three")
+AND
+CharacterIsControlled(_Player, 1)
+AND
+IsTagged(_Player, "AVATAR", 1)
+AND
+DB_DC_EnemyCombatant_Library(_Enemy)
+AND
+NOT DB_IsPlayer(_Enemy)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+IntegerProduct(_Level, 300, _Exp)
+AND
+IsGameLevel("DC_Snowfall", 1)
+THEN
+PartyAddActualExperience(_Player, _Exp);
+
+// STAGE THREE
+
+IF
+CharacterDying(_Enemy)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_Training_Stage("Four")
+AND
+CharacterIsControlled(_Player, 1)
+AND
+IsTagged(_Player, "AVATAR", 1)
+AND
+DB_DC_EnemyCombatant_Library(_Enemy)
+AND
+NOT DB_IsPlayer(_Enemy)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+IntegerProduct(_Level, 400, _Exp)
+AND
+IsGameLevel("DC_Snowfall", 1)
+THEN
+PartyAddActualExperience(_Player, _Exp);
+
+//END_REGION
+
+//REGION RANDOM GOLD FROM DEAD ENEMIES
+
+// STAGE ONE
+
+IF
+CharacterDying(_Enemy)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_Training_Stage("One")
+AND
+DB_DC_EnemyCombatant_Library(_Enemy)
+AND
+NOT DB_IsPlayer(_Enemy)
+AND
+CharacterGetAbility(_Player, "Luck", _Luck)
+AND
+IntegerProduct(25, _Luck, _Return)
+AND
+Random(1000, _Chance)
+AND
+IntegerSum(_Return, _Chance, _Sum)
+AND
+_Sum >= 470
+AND
+Random(125, _Gold)
+THEN
+CharacterAddGold(_Enemy, _Gold);
+
+// STAGE TWO
+
+IF
+CharacterDying(_Enemy)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_Training_Stage("Two")
+AND
+DB_DC_EnemyCombatant_Library(_Enemy)
+AND
+NOT DB_IsPlayer(_Enemy)
+AND
+CharacterGetAbility(_Player, "Luck", _Luck)
+AND
+IntegerProduct(25, _Luck, _Return)
+AND
+Random(1000, _Chance)
+AND
+IntegerSum(_Return, _Chance, _Sum)
+AND
+_Sum >= 470
+AND
+Random(225, _Gold)
+THEN
+CharacterAddGold(_Enemy, _Gold);
+
+// STAGE THREE
+
+IF
+CharacterDying(_Enemy)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_Training_Stage("Three")
+AND
+DB_DC_EnemyCombatant_Library(_Enemy)
+AND
+NOT DB_IsPlayer(_Enemy)
+AND
+CharacterGetAbility(_Player, "Luck", _Luck)
+AND
+IntegerProduct(25, _Luck, _Return)
+AND
+Random(1000, _Chance)
+AND
+IntegerSum(_Return, _Chance, _Sum)
+AND
+_Sum >= 570
+AND
+Random(425, _Gold)
+THEN
+CharacterAddGold(_Enemy, _Gold);
+
+// STAGE FOUR
+
+IF
+CharacterDying(_Enemy)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_Training_Stage("Four")
+AND
+DB_DC_EnemyCombatant_Library(_Enemy)
+AND
+NOT DB_IsPlayer(_Enemy)
+AND
+CharacterGetAbility(_Player, "Luck", _Luck)
+AND
+IntegerProduct(25, _Luck, _Return)
+AND
+Random(1000, _Chance)
+AND
+IntegerSum(_Return, _Chance, _Sum)
+AND
+_Sum >= 690
+AND
+Random(725, _Gold)
+THEN
+CharacterAddGold(_Enemy, _Gold);
+
+//END_REGION
+
+//REGION STAGES
+
+// STAGE 1-2
+IF
+CharacterLeveledUp(_Player)
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+_Level == 5
+THEN
+NOT DB_DC_Training_Stage("One");
+DB_DC_Training_Stage("Two");
+
+// STAGE 2-3
+IF
+CharacterLeveledUp(_Player)
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+_Level == 10
+THEN
+NOT DB_DC_Training_Stage("Two");
+DB_DC_Training_Stage("Three");
+
+// STAGE 3-4
+IF
+CharacterLeveledUp(_Player)
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+_Level == 15
+THEN
+NOT DB_DC_Training_Stage("Three");
+DB_DC_Training_Stage("Four");
+
+//END_REGION
+
+//REGION UNLOCKS
+
+// LEVEL 4 UNLOCKS
+
+IF
+CharacterLeveledUp(_Player)
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+_Level >= 4
+THEN
+ItemUnLock(ITEMGUID_DOORS_Humans_Graveyard_Shrines_A_Door_A_000_ee9ab89f-14f7-4b5f-8e00-9dd474d71526);
+ItemSetCanInteract(ITEMGUID_S_LV_Mirror_000_9f94cd80-3180-4468-bb52-5117af059cc0, 1);
+
+
+// LEVEL 6
+
+IF
+CharacterLeveledUp(_Player)
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+GlobalGetFlag("DC_Training_PlayersIntroducedToForge", 0)
+AND
+_Level == 6
+THEN
+SetOnStage(CHARACTERGUID_S_DC_Training_Malady_b10961db-76e6-4a4b-8e26-1f3d1eacfb66, 1);
+DB_Dialogs(CHARACTERGUID_S_DC_Training_Malady_b10961db-76e6-4a4b-8e26-1f3d1eacfb66, "DC_CombatTraining_MaladyIntro");
+
+
+// LEVEL 6
+
+IF
+CharacterLeveledUp(_Player)
+AND
+DB_IsPlayer(_Player)
+AND
+GlobalGetFlag("DC_Training_PlayersIntroducedToForge", 1)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+_Level >= 6
+THEN
+GlobalSetFlag("DC_Training_MaladyIntroCollar");
+NOT DB_Dialogs(CHARACTERGUID_S_DC_Training_Malady_b10961db-76e6-4a4b-8e26-1f3d1eacfb66,"DC_CombatTraining_MaladyIntro");
+PROC_RemoveDialogFromCharacter(CHARACTERGUID_S_DC_Training_Malady_b10961db-76e6-4a4b-8e26-1f3d1eacfb66);
+DB_Dialogs(CHARACTERGUID_S_DC_Training_Malady_b10961db-76e6-4a4b-8e26-1f3d1eacfb66,"DC_CombatTraining_MaladySourceCollar");
+
+IF
+CharacterEnteredTrigger(_Player, TRIGGERGUID_DC_Training_MaladyADCheck_95a20539-7414-448b-b49f-aa900f393580)
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+GlobalGetFlag("DC_Training_PlayersIntroducedToForge", 1)
+AND
+_Level >= 6
+AND
+GlobalGetFlag("DC_Training_RemovedCollars", 0)
+THEN
+Proc_StartDialog(1, "DC_Training_AD_MaladyCollar", CHARACTERGUID_S_DC_Training_Malady_b10961db-76e6-4a4b-8e26-1f3d1eacfb66);
+
+IF
+DialogStarted("DC_CombatTraining_MaladySourceCollar", _ID)
+AND
+DialogGetInvolvedPlayer(_ID, 1, _Speaker)
+AND
+CharacterGetReservedUserID((CHARACTERGUID)_Speaker, _User)
+AND
+GetItemForItemTemplateInInventory(_Speaker, "ITEMGUID_S_DC_LOOT_Source_Shard_4816d0a9-2133-4ef9-93e1-f43fc0e92f0f", _Shard)
+AND
+ItemIsInInventory(_Shard, 1)
+THEN
+ObjectSetFlag(_Speaker, "DC_Training_HasSourceShard");
+
+IF
+DialogEnded("DC_CombatTraining_MaladySourceCollar", _ID)
+AND
+DialogGetInvolvedPlayer(_ID, 1, _Speaker)
+AND
+CharacterGetReservedUserID((CHARACTERGUID)_Speaker, _User)
+THEN
+ObjectClearFlag(_Speaker, "DC_Training_HasSourceShard");
+
+IF
+DialogEnded("DC_CombatTraining_MaladySourceCollar", _ID)
+AND
+DB_IsPlayer(_Player)
+AND
+DialogGetInvolvedPlayer(_ID, 1, _Speaker)
+AND
+CharacterGetReservedUserID((CHARACTERGUID)_Speaker, _User)
+AND
+GetItemForItemTemplateInInventory(_Speaker, "ITEMGUID_S_DC_LOOT_Source_Shard_4816d0a9-2133-4ef9-93e1-f43fc0e92f0f", _Shard)
+AND
+ItemIsInInventory(_Shard, 1)
+AND
+ObjectGetFlag(_Speaker, "DC_Training_BreakCollars", 1)
+THEN
+ItemTemplateRemoveFromUser("ITEMGUID_S_DC_LOOT_Source_Shard_4816d0a9-2133-4ef9-93e1-f43fc0e92f0f", _Speaker, 1);
+ProcRemoveSourceCollar(_Player);
+GlobalSetFlag("DC_Training_RemovedCollars");
+
+
+
+// LEVEL 10
+
+IF
+CharacterLeveledUp(_Player)
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+_Level >= 10
+THEN
+CharacterOverrideMaxSourcePoints(_Player, 2);
+CharacterAddSourcePoints(_Player, 1);
+
+// LEVEL 14
+
+IF
+CharacterLeveledUp(_Player)
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+_Level >= 14
+THEN
+CharacterOverrideMaxSourcePoints(_Player, 3);
+CharacterAddSourcePoints(_Player, 1);
+
+//END_REGION
+
+//REGION TRIAL QUEST REWARDS
+
+// TRIAL REWARD - STAGE 1
+PROC
+Proc_DC_Training_TrialReward()
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterIsControlled(_Player, 1)
+AND
+DB_DC_Training_Stage("One")
+THEN
+CharacterGiveQuestReward(_Player, "TheTrialsofTheGuardian", "Reward1");
+
+
+// TRIAL REWARD - STAGE 2
+PROC
+Proc_DC_Training_TrialReward()
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterIsControlled(_Player, 1)
+AND
+DB_DC_Training_Stage("Two")
+THEN
+CharacterGiveQuestReward(_Player, "TheTrialsofTheGuardian", "Reward2");
+
+
+// TRIAL REWARD - STAGE 3
+PROC
+Proc_DC_Training_TrialReward()
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterIsControlled(_Player, 1)
+AND
+DB_DC_Training_Stage("Three")
+THEN
+CharacterGiveQuestReward(_Player, "TheTrialsofTheGuardian", "Reward3");
+
+
+// TRIAL REWARD - STAGE 4
+PROC
+Proc_DC_Training_TrialReward()
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterIsControlled(_Player, 1)
+AND
+DB_DC_Training_Stage("Four")
+THEN
+CharacterGiveQuestReward(_Player, "TheTrialsofTheGuardian", "Reward4");
+
+
+//STAGE ONE
+
+PROC
+Proc_DC_Training_TrialReward()
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_Training_Stage("One")
+AND
+IsGameLevel("DC_Snowfall", 1)
+AND
+CharacterIsControlled(_Player, 1)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+Random(15, _Rnd)
+AND
+IntegerProduct(_Level, 100, _Exp)
+AND
+IntegerProduct(_Exp, _Rnd, _Final)
+THEN
+PartyAddActualExperience(_Player, _Final);
+
+
+//STAGE TWO
+
+PROC
+Proc_DC_Training_TrialReward()
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_Training_Stage("Two")
+AND
+IsGameLevel("DC_Snowfall", 1)
+AND
+CharacterIsControlled(_Player, 1)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+Random(20, _Rnd)
+AND
+IntegerProduct(_Level, 150, _Exp)
+AND
+IntegerProduct(_Exp, _Rnd, _Final)
+THEN
+PartyAddActualExperience(_Player, _Final);
+
+
+//STAGE THREE
+
+PROC
+Proc_DC_Training_TrialReward()
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_Training_Stage("Three")
+AND
+IsGameLevel("DC_Snowfall", 1)
+AND
+CharacterIsControlled(_Player, 1)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+Random(25, _Rnd)
+AND
+IntegerProduct(_Level, 200, _Exp)
+AND
+IntegerProduct(_Exp, _Rnd, _Final)
+THEN
+PartyAddActualExperience(_Player, _Final);
+
+
+//STAGE FOUR
+
+PROC
+Proc_DC_Training_TrialReward()
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_Training_Stage("Four")
+AND
+IsGameLevel("DC_Snowfall", 1)
+AND
+CharacterIsControlled(_Player, 1)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+Random(35, _Rnd)
+AND
+IntegerProduct(_Level, 360, _Exp)
+AND
+IntegerProduct(_Exp, _Rnd, _Final)
+THEN
+PartyAddActualExperience(_Player, _Final);
+//END_REGION
+
+//REGION MISC
+
+IF
+CharacterEnteredTrigger(_Player, TRIGGERGUID_DC_Training_FlagCleanUp_2638942b-1d41-4f80-8f75-bc75b255b286)
+AND
+DB_IsPlayer(_Player)
+AND
+PartyGetFlag(_Player, "DC_Training_VisitedManor", 0)
+THEN
+PartyAddActualExperience(_Player, 2000);
+PartySetFlag(_Player, "DC_Training_VisitedManor");
+
+//END_REGION
+
+
+PROC
+ProcRegionEnded("DC_Snowfall")
+THEN
+GoalCompleted;
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "DC_Snowfall"

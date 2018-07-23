@@ -1,0 +1,472 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+DB_DC_ScalingEnabled(2);
+DB_DC_HighestLevel("HighestLevel", 1, 0, 1);
+DB_DC_ToggleFlag("DC_ScalingOn");
+DB_DC_GaveItem(0);
+
+// DC_ScalingTag
+
+GlobalSetFlag("DC_ScalingOn");
+KBSECTION
+//REGION SCALING SETUP
+
+IF
+SavegameLoaded(_,_,_,_)
+THEN
+PROC_DC_UpdateLevel();
+
+IF
+RegionStarted(_)
+THEN
+PROC_DC_UpdateLevel();
+
+
+IF
+CharacterLeveledUp(_Character)
+THEN
+PROC_DC_UpdateLevel();
+
+PROC
+PROC_DC_UpdateLevel()
+AND
+DB_IsPlayer(_Character)
+AND
+CharacterGetLevel(_Character, _Level)
+AND
+DB_DC_HighestLevel("HighestLevel", _HighestLevel, _Mod, _LevelScale)
+AND
+_Level > _HighestLevel
+AND
+IntegerSum(_Level, _Mod, _NewScale)
+THEN
+NOT DB_DC_HighestLevel("HighestLevel", _HighestLevel, _Mod, _LevelScale);
+DB_DC_HighestLevel("HighestLevel", _Level, _Mod, _NewScale);
+
+PROC
+PROC_DC_EnableScaling()
+AND
+DB_DC_ScalingEnabled(_IsEnabled)
+AND
+_IsEnabled == 2
+THEN
+GlobalSetFlag("DC_ScalingOn");
+
+
+IF
+RegionStarted(_)
+AND
+GlobalGetFlag("DC_ScalingOn", 0)
+THEN
+GlobalSetFlag("DC_ScalingOn");
+
+
+
+//END_REGION
+
+//REGION DATABASING SYSTEM
+
+IF
+CharacterEnteredTrigger(_Player, _ScalingNPCCounterRegion)
+AND
+DB_IsPlayer(_Player)
+AND
+GlobalGetFlag("DC_ScalingOn", 0)
+THEN
+GlobalSetFlag("DC_ScalingOn");
+
+IF
+CharacterEnteredTrigger(_DCNPC, _ScalingNPCCounterRegion)
+AND
+NOT DB_IsPlayer(_DCNPC)
+AND
+DB_ScalingAreaTriggers(_ScalingNPCCounterRegion)
+THEN
+DB_InRegion(_DCNPC, _ScalingNPCCounterRegion);
+
+IF
+CharacterLeftTrigger(_DCNPC, _ScalingNPCCounterRegion)
+AND
+NOT DB_IsPlayer(_DCNPC)
+AND
+DB_ScalingAreaTriggers(_ScalingNPCCounterRegion)
+THEN
+NOT DB_InRegion(_DCNPC, _ScalingNPCCounterRegion);
+
+
+/*IF
+CharacterEnteredTrigger(_Player, _ScalingNPCCounterRegion)
+AND
+DB_IsPlayer(_DCNPC)
+AND
+DB_ScalingAreaTriggers(_ScalingNPCCounterRegion)
+THEN
+DB_InRegion(_Player, _ScalingNPCCounterRegion);*/
+
+//END_REGION
+
+IF
+CharacterEnteredTrigger(_Player, _ScalingNPCCounterRegion)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_InRegion(_DCNPC, _ScalingNPCCounterRegion)
+AND
+NOT DB_IsPlayer(_DCNPC)
+AND
+IsTagged(_DCNPC, "DC_ScalingOverride", 0)
+AND
+DB_ScalingAreaTriggers(_ScalingNPCCounterRegion)
+AND
+CharacterGetLevel(_DCNPC, _Level)
+AND
+CharacterIsInCombat(_DCNPC, 0)
+AND
+CharacterCanSee(_Player, _DCNPC, 0)
+AND
+DB_DC_HighestLevel("HighestLevel", _, _, _HighestLevel)
+AND
+_Level < _HighestLevel
+THEN
+CharacterLevelUpTo(_DCNPC, _HighestLevel);
+Proc_DC_LevelScaling_GenericBoss();
+Proc_DC_LevelScaling_Lvl2Boss();
+Proc_DC_LevelScaling_LoneWolf();
+
+IF
+CharacterLeftTrigger(_Player, _ScalingNPCCounterRegion)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_InRegion(_DCNPC, _ScalingNPCCounterRegion)
+AND
+DB_ScalingAreaTriggers(_ScalingNPCCounterRegion)
+AND
+NOT DB_IsPlayer(_DCNPC)
+AND
+IsTagged(_DCNPC, "DC_ScalingOverride", 0)
+AND
+CharacterGetLevel(_DCNPC, _Level)
+AND
+CharacterIsInCombat(_DCNPC, 0)
+AND
+CharacterCanSee(_Player, _DCNPC, 0)
+AND
+DB_DC_HighestLevel("HighestLevel", _, _, _HighestLevel)
+AND
+_Level < _HighestLevel
+THEN
+CharacterLevelUpTo(_DCNPC, _HighestLevel);
+Proc_DC_LevelScaling_GenericBoss();
+Proc_DC_LevelScaling_Lvl2Boss();
+Proc_DC_LevelScaling_LoneWolf();
+
+IF
+ObjectEnteredCombat((CHARACTERGUID)_Character, _)
+AND
+DB_DC_ScalingEnabled(1)
+AND
+NOT DB_IsPlayer(_Character)
+AND
+CharacterGetLevel(_Character, _Level)
+AND
+DB_DC_HighestLevel("HighestLevel", _, _, _HighestLevel)
+AND
+GlobalGetFlag("DC_ThisFlagDoesntExistSoFeelsBadMan", 1)
+AND
+_Level < _HighestLevel
+AND
+IsTagged(_Character, "DC_ScalingOverride", 0)
+AND
+IsTagged(_Character, "SQUIRREL", 0)
+THEN
+CharacterLevelUpTo(_Character, _HighestLevel);
+//END_REGION
+
+//REGION Level Up Reactions
+
+IF
+CharacterLeveledUp(_Player)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_InRegion(_DCNPC, _ScalingNPCCounterRegion)
+AND
+NOT DB_IsPlayer(_DCNPC)
+AND
+IsTagged(_DCNPC, "DC_ScalingOverride", 0)
+AND
+DB_ScalingAreaTriggers(_ScalingNPCCounterRegion)
+AND
+CharacterIsInCombat(_DCNPC, 0)
+AND
+CharacterCanSee(_Player, _DCNPC, 0)
+AND
+CharacterGetLevel(_DCNPC, _Level)
+AND
+DB_DC_HighestLevel("HighestLevel", _, _, _HighestLevel)
+AND
+_Level < _HighestLevel
+THEN
+CharacterLevelUpTo(_DCNPC, _HighestLevel);
+Proc_DC_LevelScaling_GenericBoss();
+Proc_DC_LevelScaling_Lvl2Boss();
+Proc_DC_LevelScaling_LoneWolf();
+
+
+
+// GENERIC BOSS
+
+PROC
+Proc_DC_LevelScaling_GenericBoss()
+AND
+DB_IsPlayer(_Player)
+AND
+DB_InRegion(_DCNPC, _ScalingNPCCounterRegion)
+AND
+NOT DB_IsPlayer(_DCNPC)
+AND
+DB_ScalingAreaTriggers(_ScalingNPCCounterRegion)
+AND
+CharacterIsInCombat(_DCNPC, 0)
+AND
+CharacterCanSee(_Player, _DCNPC, 0)
+AND
+IsTagged(_DCNPC, "DC_ScalingOverride", 1)
+AND
+IsTagged(_DCNPC, "DC_BOSS", 1)
+AND
+CharacterGetLevel(_DCNPC, _Level)
+AND
+DB_DC_HighestLevel("HighestLevel", _, _, _HighestLevel)
+AND
+_Level < _HighestLevel
+AND
+IntegerSum(_HighestLevel, 1, _NewHighestLevel)
+THEN
+CharacterLevelUpTo(_DCNPC, _NewHighestLevel);
+//END_REGION
+
+//REGION LEVEL 2 BOSS
+PROC
+Proc_DC_LevelScaling_Lvl2Boss()
+AND
+DB_IsPlayer(_Player)
+AND
+DB_InRegion(_DCNPC, _ScalingNPCCounterRegion)
+AND
+NOT DB_IsPlayer(_DCNPC)
+AND
+DB_ScalingAreaTriggers(_ScalingNPCCounterRegion)
+AND
+CharacterIsInCombat(_DCNPC, 0)
+AND
+CharacterCanSee(_Player, _DCNPC, 0)
+AND
+IsTagged(_DCNPC, "DC_ScalingOverride", 1)
+AND
+IsTagged(_DCNPC, "DC_BOSS_LVL2", 1)
+AND
+CharacterGetLevel(_DCNPC, _Level)
+AND
+DB_DC_HighestLevel("HighestLevel", _, _, _HighestLevel)
+AND
+_Level < _HighestLevel
+AND
+IntegerSum(_HighestLevel, 2, _NewHighestLevel)
+THEN
+CharacterLevelUpTo(_DCNPC, _NewHighestLevel);
+//END_REGION
+
+//REGION LONEWOLF
+PROC
+Proc_DC_LevelScaling_LoneWolf()
+AND
+NOT DB_DC_LoneWolfScale("Done")
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterHasTalent(_Player, "LoneWolf", 1)
+AND
+DB_InRegion(_DCNPC, _ScalingNPCCounterRegion)
+AND
+NOT DB_IsPlayer(_DCNPC)
+AND
+CharacterIsInCombat(_DCNPC, 0)
+AND
+CharacterGetLevel(_DCNPC, _Level)
+AND
+IntegerSum(_Level, 1, _NPCLevel)
+AND
+DB_DC_HighestLevel("HighestLevel", _, _, _HighestLevel)
+AND
+CharacterGetAttribute(_Player, "Intelligence", _IntVal)
+AND
+CharacterGetAttribute(_Player, "Strength", _StrVal)
+AND
+CharacterGetAttribute(_Player, "Finesse", _FinVal)
+AND
+CharacterGetAttribute(_Player, "Wits", _WitVal)
+AND
+CharacterGetAttribute(_Player, "Constitution", _ConVal)
+AND
+CharacterGetAttribute(_DCNPC, "Intelligence", _DCNPCIntVal)
+AND
+CharacterGetAttribute(_DCNPC, "Strength", _DCNPCStrVal)
+AND
+CharacterGetAttribute(_DCNPC, "Finesse", _DCNPCFinVal)
+AND
+CharacterGetAttribute(_DCNPC, "Wits", _DCNPCWitVal)
+AND
+CharacterGetAttribute(_DCNPC, "Constitution", _DCNPCConVal)
+AND
+IntegerSubtract(_IntVal, _DCNPCIntVal, _IntSum)
+AND
+IntegerSubtract(_StrVal, _DCNPCStrVal, _StrSum)
+AND
+IntegerSubtract(_FinVal, _DCNPCFinVal, _FinSum)
+AND
+IntegerSubtract(_WitVal, _DCNPCWitVal, _WitSum)
+AND
+IntegerSubtract(_ConVal, _DCNPCConVal, _ConSum)
+AND
+IntegerSubtract(_IntSum, 10, _IntSumX)
+AND
+IntegerSubtract(_StrSum, 10, _StrSumX)
+AND
+IntegerSubtract(_FinSum, 10, _FinSumX)
+AND
+IntegerSubtract(_WitSum, 10, _WitSumX)
+AND
+IntegerSubtract(_ConSum, 10, _ConSumX)
+AND
+Random(_IntSumX, _Int)
+AND
+Random(_StrSumX, _Str)
+AND
+Random(_FinSumX, _Fin)
+AND
+Random(_WitSumX, _Wit)
+AND
+Random(_ConSumX, _Con)
+THEN
+CharacterAddAttribute(_DCNPC, "Intelligence", _Int);
+CharacterAddAttribute(_DCNPC, "Strength", _Str);
+CharacterAddAttribute(_DCNPC, "Finesse", _Fin);
+CharacterAddAttribute(_DCNPC, "Wits", _Wit);
+CharacterAddAttribute(_DCNPC, "Constitution", _Con);
+DB_DC_LoneWolfScale("Done");
+
+//END_REGION
+
+
+
+//REAPPLY LONE WOLF SCALING AT LEVEL 5
+
+IF
+CharacterLeveledUp(_Player)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_LoneWolfScale("Done")
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+_Level == 5
+THEN
+NOT DB_DC_LoneWolfScale("Done");
+
+//REAPPLY LONE WOLF SCALING AT LEVEL 8
+
+IF
+CharacterLeveledUp(_Player)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_LoneWolfScale("Done")
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+_Level == 8
+THEN
+NOT DB_DC_LoneWolfScale("Done");
+
+//REAPPLY LONE WOLF SCALING AT LEVEL 12
+
+IF
+CharacterLeveledUp(_Player)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_LoneWolfScale("Done")
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+_Level == 12
+THEN
+NOT DB_DC_LoneWolfScale("Done");
+
+//REAPPLY LONE WOLF SCALING AT LEVEL 15
+
+IF
+CharacterLeveledUp(_Player)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_LoneWolfScale("Done")
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+_Level == 15
+THEN
+NOT DB_DC_LoneWolfScale("Done");
+
+//REAPPLY LONE WOLF SCALING AT LEVEL 18
+
+IF
+CharacterLeveledUp(_Player)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_LoneWolfScale("Done")
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+_Level == 18
+THEN
+NOT DB_DC_LoneWolfScale("Done");
+
+//REAPPLY LONE WOLF SCALING AT LEVEL 22
+
+IF
+CharacterLeveledUp(_Player)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_LoneWolfScale("Done")
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+_Level == 22
+THEN
+NOT DB_DC_LoneWolfScale("Done");
+
+//REAPPLY LONE WOLF SCALING AT LEVEL 24
+
+IF
+CharacterLeveledUp(_Player)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_LoneWolfScale("Done")
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+_Level == 24
+THEN
+NOT DB_DC_LoneWolfScale("Done");
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "Start"

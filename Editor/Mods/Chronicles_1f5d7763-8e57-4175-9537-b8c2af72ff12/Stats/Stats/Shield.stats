@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<stats stat_object_definition_id="ec8e5086-0ef6-4151-b3d4-a3bdbd25bbd6">
+  <stat_objects>
+    <stat_object index="0" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="SHLD_UNIQUE_DrillWormShield" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" clear_inherited_value="false" value="_Shields" />
+        <field name="ItemGroup" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="SHLD_UNIQUE_DrillWormShield" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="10" enumeration_type_name="ActPart" />
+        <field name="ArmorBoost" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="15" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="500" />
+        <field name="RuneSlots" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="RuneSlots_V1" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Unique" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Earth" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="20" />
+        <field name="ConstitutionBoost" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="13" enumeration_type_name="Penalty Qualifier" />
+        <field name="Skills" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Jump_MiniBurrow" />
+        <field name="ItemColor" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Tenebrium" />
+        <field name="EarthSpecialist" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="2" />
+        <field name="Comment" type="CommentStatObjectFieldDefinition" clear_inherited_value="false" value="Drillworm" />
+      </fields>
+    </stat_object>
+    <stat_object index="1" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="SHIELD_UNIQUE_AirBuckler" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" clear_inherited_value="false" value="_Shields" />
+        <field name="ItemGroup" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="SHIELD_UNIQUE_AirBuckler" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="13" enumeration_type_name="ActPart" />
+        <field name="ArmorBoost" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="-25" />
+        <field name="Movement" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="50" />
+        <field name="WitsBoost" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="13" enumeration_type_name="Penalty Qualifier" />
+        <field name="AirSpecialist" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="2" />
+        <field name="Skills" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Target_Windwalker" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="500" />
+        <field name="RuneSlots" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Unique" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="MagicArmorBoost" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="35" />
+        <field name="Air" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="20" />
+        <field name="DodgeBoost" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="3" />
+        <field name="Comment" type="CommentStatObjectFieldDefinition" clear_inherited_value="false" value="Undecided" />
+      </fields>
+    </stat_object>
+    <stat_object index="2" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="SHIELD_UNIQUE_PaladinShield" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" clear_inherited_value="false" value="_Shields" />
+        <field name="ItemGroup" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="SHIELD_UNIQUE_PaladinShield" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="16" enumeration_type_name="ActPart" />
+        <field name="ArmorBoost" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="20" />
+        <field name="Blocking" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="5" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="550" />
+        <field name="WaterSpecialist" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Skills" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Projectile_ChainHeal" />
+        <field name="ExtraProperties" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Self:OnEquip:FROST_AURA" />
+        <field name="RuneSlots" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Unique" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="ItemColor" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Cobalt" />
+        <field name="Comment" type="CommentStatObjectFieldDefinition" clear_inherited_value="false" value="Rhalic Alter Act 3" />
+      </fields>
+    </stat_object>
+    <stat_object index="3" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="SHIELD_UNIQUE_ReflectorShield" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" clear_inherited_value="false" value="_Shields" />
+        <field name="ItemGroup" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="SHIELD_UNIQUE_ReflectorShield" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="13" enumeration_type_name="ActPart" />
+        <field name="MagicArmorBoost" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="30" />
+        <field name="ExtraProperties" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Self:OnEquip:STATUS_DEFLECTION" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="600" />
+        <field name="IntelligenceBoost" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="13" enumeration_type_name="Penalty Qualifier" />
+        <field name="PainReflection" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="2" />
+        <field name="Unique" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Skills" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Target_ShacklesOfPain" />
+        <field name="RuneSlots" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="ItemColor" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Tenebrium" />
+        <field name="Comment" type="CommentStatObjectFieldDefinition" clear_inherited_value="false" value="The Logger camp main boss" />
+      </fields>
+    </stat_object>
+  </stat_objects>
+</stats>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<stats stat_object_definition_id="d4bbd7d3-eef6-4a97-a253-7fe5d06f83ef">
+  <stat_objects>
+    <stat_object index="0" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="OriginKara" />
+        <field name="Primary Color" type="ColorStatObjectFieldDefinition" clear_inherited_value="false" value="#25262b" />
+        <field name="Secondary Color" type="ColorStatObjectFieldDefinition" clear_inherited_value="false" value="#54181f" />
+        <field name="Tertiary Color" type="ColorStatObjectFieldDefinition" clear_inherited_value="false" value="#f8e5cf" />
+      </fields>
+    </stat_object>
+  </stat_objects>
+</stats>

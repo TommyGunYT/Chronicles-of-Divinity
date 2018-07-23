@@ -1,0 +1,42 @@
+key "SoftLevelCap","35"
+
+key "LeadershipRange","15"
+
+key "CivilAbilityCap","10"
+
+key "CivilAbilityLevelGrowth","3"
+
+key "SneakDefaultAPCost","1"
+
+key "MaximumSummonsInCombat","8"
+
+key "PriceGrowth","1.15"
+
+key "SummoningAbilityBonus","10"
+
+key "TalentSneakingDamageBonus","75"
+
+key "CombatAbilityDodgingBonus","2"
+
+key "CombatAbilityNpcGrowth","0.15"
+
+key "SkillAbilityAirDamageBoostPerPoint","7"
+
+key "SkillAbilityArmorRestoredPerPoint","7"
+
+key "SkillAbilityFireDamageBoostPerPoint","7"
+
+key "SkillAbilityPoisonAndEarthDamageBoostPerPoint","7"
+
+key "PriceModClassicDifficulty","2.6"
+
+key "WandUsesMax","20"
+
+key "TalentCivilAbilityPointsBonus","2"
+
+key "TalentPointPerLevels","5"
+
+key "LevelCap","50"
+
+key "StatusDefaultDistancePerDamage","0.7"
+

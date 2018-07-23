@@ -1,0 +1,406 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+DB_Dialogs(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa,"Grimli_Recruitment_Training");
+DB_Dialogs(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3,"Elethil_Recruitment_Training");
+KBSECTION
+//REGION GRIMLI
+
+
+IF
+DialogEnded("Grimli_Recruitment_Training", _ID)
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterIsInPartyWith(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa, _Player, 0)
+AND
+CharacterIsControlled(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa, 0)
+AND
+DialogGetInvolvedPlayer(_ID, 1, _Speaker)
+AND
+ObjectGetFlag(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa, "AddToParty", 1)
+AND
+CharacterGetReservedUserID((CHARACTERGUID)_Speaker, _User)
+THEN
+CharacterRecruitCharacter(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa, _Speaker);
+ProcCharacterDisableAllCrimes(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa);
+ProcAssignCharacterToPlayer(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa, _Speaker);
+ProcRegisterPlayerTriggers(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa);
+CharacterMakePlayer(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa);
+CharacterAddToParty(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa,(CHARACTERGUID)_Speaker);
+CharacterAttachToGroup(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa, _Speaker);
+DB_IsPlayer(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa);
+Proc_CheckPartyFull();
+PROC_GLO_PartyMembers_RecruiteeAvatarBond_IfDifferent(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa, _Speaker);
+Proc_BondedAvatarTutorial(_Player);
+Proc_UnlockSourcePointsAndPowers(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa, _Speaker);
+CharacterSetCorpseLootable(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa, 0);
+Proc_GLO_DC_GiveGrimliCollar();
+NOT DB_Dialogs(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa,"Grimli_Recruitment_Training");
+PROC_RemoveDialogFromCharacter(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa);
+DB_Dialogs(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa,"DC_Training_GrimliIdle");
+ObjectClearFlag(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa, "AddToParty");
+
+PROC
+Proc_GLO_DC_GiveGrimliCollar()
+AND
+GetItemForItemTemplateInInventory(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa,"RC_FTJ_Amulet_SourceCollar_8bf8b97c-556e-4e69-8fc7-39241783dcc1", _Collar)
+AND
+GlobalGetFlag("DC_Training_RemovedCollars", 0)
+THEN
+ItemTemplateAddTo("RC_FTJ_Amulet_SourceCollar_8bf8b97c-556e-4e69-8fc7-39241783dcc1",CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa,1);
+CharacterEquipItem(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa, _Collar);
+ItemLockUnEquip(_Collar, 1);
+
+IF
+CharacterJoinedParty(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa)
+AND
+IsGameLevel("DC_Snowfall", 1)
+THEN
+ItemTemplateAddTo("RC_FTJ_Amulet_SourceCollar_8bf8b97c-556e-4e69-8fc7-39241783dcc1",CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa,1);
+Proc_DC_Training_GrimliJoined();
+
+PROC
+Proc_DC_Training_GrimliJoined()
+AND
+GlobalGetFlag("DC_Training_RemovedCollars", 0)
+AND
+GetItemForItemTemplateInInventory(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa,"RC_FTJ_Amulet_SourceCollar_8bf8b97c-556e-4e69-8fc7-39241783dcc1", _Collar)
+THEN
+CharacterEquipItem(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa, _Collar);
+ItemLockUnEquip(_Collar, 1);
+
+
+
+
+
+
+IF
+DialogEnded("DC_Training_GrimliIdle", _ID)
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterIsInPartyWith(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa, _Player, 1)
+AND
+DialogGetInvolvedPlayer(_ID, 1, _Speaker)
+AND
+ObjectGetFlag(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa, "RemoveFromParty", 1)
+AND
+CharacterGetReservedUserID((CHARACTERGUID)_Speaker, _User)
+THEN
+TransferItemsToParty(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa);
+CharacterRemoveFromParty(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa);
+NOT DB_IsPlayer(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa);
+NOT DB_Dialogs(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa,"DC_Training_GrimliIdle");
+PROC_RemoveDialogFromCharacter(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa);
+DB_Dialogs(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa,"Grimli_Recruitment_Training");
+CharacterMakeNPC(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa);
+Proc_DC_Training_HenchmenToManor();
+ObjectClearFlag(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa, "RemoveFromParty");
+CharacterMakeNPC(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa);
+//END_REGION
+
+
+//REGION ELETHIL
+
+
+
+IF
+DialogEnded("Elethil_Recruitment_Training", _ID)
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterIsInPartyWith(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3, _Player, 0)
+AND
+CharacterIsControlled(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3, 0)
+AND
+DialogGetInvolvedPlayer(_ID, 1, _Speaker)
+AND
+ObjectGetFlag(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3, "AddToParty", 1)
+AND
+CharacterGetReservedUserID((CHARACTERGUID)_Player, _User)
+THEN
+PROC_GLO_PartyMembers_Add(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3,(CHARACTERGUID)_Player);
+CharacterMakePlayer(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3);
+CharacterRecruitCharacter(_Player, CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3);
+DB_IsPlayer(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3);
+CharacterAddToParty(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3,(CHARACTERGUID)_Player);
+SetVarFixedString(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, "currentState", "");
+CharacterAttachToGroup(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3, _Player);
+ProcAssignCharacterToPlayer(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, _Player);
+CharacterAssignToUser(_User, CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa);
+ProcCharacterDisableAllCrimes(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3);
+ProcRegisterPlayerTriggers(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3);
+Proc_CheckPartyFull();
+Proc_CheckFirstTimeRecruited(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3);
+PROC_GLO_PartyMembers_RecruiteeAvatarBond_IfDifferent(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3, _Player);
+Proc_BondedAvatarTutorial(_Player);
+Proc_UnlockSourcePointsAndPowers(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3, _Player);
+CharacterSetCorpseLootable(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3, 0);
+ItemTemplateAddTo("RC_FTJ_Amulet_SourceCollar_8bf8b97c-556e-4e69-8fc7-39241783dcc1",CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3,1);
+Proc_GLO_DC_GiveElethilCollar();
+NOT DB_Dialogs(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3,"Elethil_Recruitment_Training");
+PROC_RemoveDialogFromCharacter(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3);
+DB_Dialogs(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3,"DC_Training_ElethilIdle");
+ObjectClearFlag(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3, "AddToParty");
+
+PROC
+Proc_GLO_DC_GiveElethilCollar()
+AND
+GlobalGetFlag("DC_Training_RemovedCollars", 0)
+AND
+GetItemForItemTemplateInInventory(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3,"RC_FTJ_Amulet_SourceCollar_8bf8b97c-556e-4e69-8fc7-39241783dcc1", _Collar)
+THEN
+CharacterEquipItem(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3, _Collar);
+ItemLockUnEquip(_Collar, 1);
+
+IF
+CharacterJoinedParty(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3)
+AND
+IsGameLevel("DC_Snowfall", 1)
+AND
+GlobalGetFlag("DC_Training_RemovedCollars", 0)
+THEN
+ItemTemplateAddTo("RC_FTJ_Amulet_SourceCollar_8bf8b97c-556e-4e69-8fc7-39241783dcc1",CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3,1);
+Proc_DC_Training_ElethilJoined();
+
+PROC
+Proc_DC_Training_ElethilJoined()
+AND
+GlobalGetFlag("DC_Training_RemovedCollars", 0)
+AND
+GetItemForItemTemplateInInventory(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3,"RC_FTJ_Amulet_SourceCollar_8bf8b97c-556e-4e69-8fc7-39241783dcc1", _Collar)
+THEN
+CharacterEquipItem(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3, _Collar);
+ItemLockUnEquip(_Collar, 1);
+
+
+
+
+
+IF
+DialogEnded("DC_Training_ElethilIdle", _ID)
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterIsInPartyWith(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3, _Player, 1)
+AND
+DialogGetInvolvedPlayer(_ID, 1, _Speaker)
+AND
+ObjectGetFlag(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3, "RemoveFromParty", 1)
+AND
+CharacterGetReservedUserID((CHARACTERGUID)_Speaker, _User)
+THEN
+TransferItemsToParty(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3);
+CharacterRemoveFromParty(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3);
+CharacterMakeNPC(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3);
+NOT DB_IsPlayer(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3);
+NOT DB_Dialogs(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3,"DC_Training_ElethilIdle");
+PROC_RemoveDialogFromCharacter(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3);
+DB_Dialogs(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3,"Elethil_Recruitment_Training");
+Proc_DC_Training_HenchmenToManor();
+ObjectClearFlag(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3, "RemoveFromParty");
+CharacterMakeNPC(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3);
+
+
+//END_REGION
+
+
+//REGION KARA
+
+PROC
+Proc_DC_Training_HenchmenToManor()
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_ComposerDialogs(_Dialogue)
+AND
+CharacterIsInPartyWith(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, _Player, 0)
+THEN
+TeleportTo(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, TRIGGERGUID_DC_TP_Training_KaraRecruitPoint_d0e0acb8-3fe6-46d9-8f4b-a7cc929b0a50, "DC_Training_KaraToRecruitmentSpot", 1);
+NOT DB_Dialogs(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, _Dialogue);
+PROC_RemoveDialogFromCharacter(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd);
+DB_Dialogs(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd,"DC_Kara_Recruitment_Training");
+
+IF
+StoryEvent(_, "DC_Training_KaraToRecruitmentSpot")
+THEN
+CharacterUseItem(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, ITEMGUID_FUR_Humans_Rich_Sofa_A_102__000_DC_000__000_35249381-8192-c513-f8a3-85ccf29edb3b, "");
+
+IF
+CharacterLeftParty(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd)
+THEN
+Proc_DC_Training_HenchmenToManor();
+
+
+
+IF
+DialogEnded("DC_Kara_Recruitment_Training", _ID)
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterIsInPartyWith(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, _Player, 0)
+AND
+CharacterIsControlled(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, 0)
+AND
+DialogGetInvolvedPlayer(_ID, 1, _Speaker)
+AND
+ObjectGetFlag(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, "AddToParty", 1)
+AND
+CharacterGetReservedUserID((CHARACTERGUID)_Speaker, _User)
+THEN
+PROC_GLO_PartyMembers_Add(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd,(CHARACTERGUID)_Player);
+CharacterMakePlayer(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd);
+CharacterRecruitCharacter(_Player, CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd);
+DB_IsPlayer(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd);
+CharacterAddToParty(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd,(CHARACTERGUID)_Player);
+CharacterAttachToGroup(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, _Player);
+ProcCharacterDisableAllCrimes(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd);
+ProcRegisterPlayerTriggers(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd);
+Proc_CheckPartyFull();
+Proc_CheckFirstTimeRecruited(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd);
+PROC_GLO_PartyMembers_RecruiteeAvatarBond_IfDifferent(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, _Player);
+Proc_BondedAvatarTutorial(_Player);
+Proc_UnlockSourcePointsAndPowers(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, _Player);
+CharacterSetCorpseLootable(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, 0);
+ItemTemplateAddTo("RC_FTJ_Amulet_SourceCollar_8bf8b97c-556e-4e69-8fc7-39241783dcc1",CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd,1);
+Proc_GLO_DC_GiveKaraCollar();
+NOT DB_Dialogs(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd,"DC_Kara_Recruitment_Training");
+PROC_RemoveDialogFromCharacter(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd);
+DB_Dialogs(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd,"DC_Training_KaraIdle");
+ObjectClearFlag(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, "AddToParty");
+
+
+
+IF
+DialogEnded("DC_Training_KaraIdle", _ID)
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterIsInPartyWith(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, _Player, 1)
+AND
+ObjectGetFlag(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, "RemoveFromParty", 1)
+THEN
+TransferItemsToParty(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd);
+CharacterRemoveFromParty(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd);
+CharacterMakeNPC(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd);
+NOT DB_IsPlayer(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd);
+NOT DB_Dialogs(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, "DC_Training_KaraIdle");
+PROC_RemoveDialogFromCharacter(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd);
+DB_Dialogs(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, "DC_Kara_Recruitment_Training");
+Proc_DC_Training_HenchmenToManor();
+ObjectClearFlag(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, "RemoveFromParty");
+PROC_GLO_PartyMembers_ClearRecruiteeBonds(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd);
+
+//END_REGION
+
+// GRIMLI
+
+PROC
+Proc_DC_Training_HenchmenToManor()
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterIsInPartyWith(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa, _Player, 0)
+THEN
+TeleportTo(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa, TRIGGERGUID_DC_TP_Training_GrimliStart_288b3261-dcf4-4fdc-96f3-7231722a1969, "DC_Training_GrimliToRecruitmentSpot", 1);
+CharacterUseItem(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa, ITEMGUID_FUR_Humans_Bench_Stone_B_001_491f83bb-0716-4d39-b90d-4e73925b01c9, "");
+
+IF
+StoryEvent(_, "DC_Training_GrimliToRecruitmentSpot")
+THEN
+CharacterUseItem(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa, ITEMGUID_FUR_Humans_Bench_Stone_B_001_491f83bb-0716-4d39-b90d-4e73925b01c9, "");
+
+IF
+CharacterLeftParty(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa)
+THEN
+Proc_DC_Training_HenchmenToManor();
+PROC_GLO_PartyMembers_ClearRecruiteeBonds(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa);
+
+PROC
+Proc_GLO_DC_GiveKaraCollar()
+AND
+GlobalGetFlag("DC_Training_RemovedCollars", 0)
+AND
+GetItemForItemTemplateInInventory(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd,"RC_FTJ_Amulet_SourceCollar_8bf8b97c-556e-4e69-8fc7-39241783dcc1", _Collar)
+THEN
+CharacterEquipItem(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, _Collar);
+ItemLockUnEquip(_Collar, 1);
+
+
+
+
+
+
+
+
+
+
+
+
+// ELETHIL
+
+PROC
+Proc_DC_Training_HenchmenToManor()
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterIsInPartyWith(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3, _Player, 0)
+THEN
+TeleportTo(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3, TRIGGERGUID_DC_TP_Training_GrimliStart_288b3261-dcf4-4fdc-96f3-7231722a1969, "DC_Training_ElethilToRecruitmentSpot", 1);
+
+IF
+StoryEvent(_, "DC_Training_ElethilToRecruitmentSpot")
+THEN
+CharacterUseItem(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3, ITEMGUID_FUR_Humans_Citz_Bench_B2_005__000_DC_000__000_89854829-139f-c25c-c6dc-28655f24d3c2, "");
+
+IF
+CharacterLeftParty(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3)
+THEN
+Proc_DC_Training_HenchmenToManor();
+PROC_GLO_PartyMembers_ClearRecruiteeBonds(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3);
+
+
+IF
+CharacterJoinedParty(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3)
+AND
+IsGameLevel("DC_Snowfall", 1)
+AND
+ObjectGetFlag(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3, "DC_Training_StatOverwrite", 0)
+THEN
+CharacterAddAttributePoint(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3, 3);
+CharacterAddCivilAbilityPoint(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3, 1);
+CharacterAddTalentPoint(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3, 1);
+CharacterAddAbilityPoint(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3, 2);
+ObjectSetFlag(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3, "DC_Training_StatOverwrite");
+
+
+IF
+CharacterJoinedParty(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa)
+AND
+DB_IsPlayer(_Player)
+AND
+_Player != CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa
+AND
+IsGameLevel("DC_Snowfall", 1)
+AND
+ObjectGetFlag(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa, "DC_Training_StatOverwrite", 0)
+AND
+GetFaction(_Player, _Faction)
+THEN
+CharacterAddAttributePoint(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa, 3);
+CharacterAddCivilAbilityPoint(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa, 1);
+CharacterAddTalentPoint(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa, 1);
+CharacterAddAbilityPoint(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa, 2);
+ObjectSetFlag(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa, "DC_Training_StatOverwrite");
+SetFaction(CHARACTERGUID_DC_Training_Henchman_Grimli_908af3a8-7219-48aa-aafe-a080060c1dfa, _Faction);
+
+
+PROC
+ProcRegionEnded("DC_Snowfall")
+THEN
+GoalCompleted;
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "DC_Snowfall"

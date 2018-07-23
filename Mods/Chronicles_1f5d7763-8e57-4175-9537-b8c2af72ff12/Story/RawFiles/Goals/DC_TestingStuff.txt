@@ -1,0 +1,15 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+IF
+CharacterUsedSkillOnTarget(_Player, _Target, "DCMagusFireConsume", _)
+AND
+GetSurfaceGroundAt(_Target, "SurfaceFire")
+THEN
+TransformSurface(_Target, "Purify", "Ground", 2.0, 0.1, NULL_00000000-0000-0000-0000-000000000000);
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "DC_CrazyPlace"

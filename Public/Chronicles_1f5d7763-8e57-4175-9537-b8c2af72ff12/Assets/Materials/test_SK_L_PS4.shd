@@ -1,0 +1,153 @@
+[Vertex shader]
+
+
+#include "Shaders/PS4/srt_struct.h"
+#include "Shaders/PS4/CommonHelpers.shdh"
+
+struct VertexOutput
+{
+	float4 ProjectedPosition : S_Position;
+	float3 WorldNormal : TEXCOORD0;
+	float3 WorldView : TEXCOORD1;
+	float HeightFog : TEXCOORD2;
+	float DistanceFog : TEXCOORD3;
+};
+
+@uniform row_major float4x4 WorldMatrix;
+VertexOutput main(uint id : S_VERTEX_ID,
+	SrtVsData srtData : S_SRT_DATA)
+{
+	// Retrieve SRT data:
+	@uniform(global_FogPropertyMatrix);
+	@uniform(global_View);
+	@uniform(global_ViewProjection);
+	@uniform(global_ViewPos);
+	@uniform(WorldMatrix);
+
+	VertexOutput Out;
+
+	row_major float3x4 boneMatrix1 = SRT_VS_BONES_BONE(SRT_VS_BONES_INDICIES(id).x);
+	row_major float3x4 boneMatrix2 = SRT_VS_BONES_BONE(SRT_VS_BONES_INDICIES(id).y);
+	row_major float3x4 boneMatrix3 = SRT_VS_BONES_BONE(SRT_VS_BONES_INDICIES(id).z);
+	row_major float3x4 boneMatrix4 = SRT_VS_BONES_BONE(SRT_VS_BONES_INDICIES(id).w);
+	//World space position
+	float4 worldPosition = float4(0.0f, 0.0f, 0.0f, 1.0f);
+	float4 tempPosSkinned = float4(SRT_VS_BUFFER_POSITION(id).xyz, 1.0f);
+	worldPosition.xyz = (worldPosition.xyz + (SRT_VS_BONES_WEIGHTS(id).x * mul(boneMatrix1, tempPosSkinned)));
+	worldPosition.xyz = (worldPosition.xyz + (SRT_VS_BONES_WEIGHTS(id).y * mul(boneMatrix2, tempPosSkinned)));
+	worldPosition.xyz = (worldPosition.xyz + (SRT_VS_BONES_WEIGHTS(id).z * mul(boneMatrix3, tempPosSkinned)));
+	worldPosition.xyz = (worldPosition.xyz + (SRT_VS_BONES_WEIGHTS(id).w * mul(boneMatrix4, tempPosSkinned)));
+	worldPosition = mul(WorldMatrix, worldPosition);
+
+	//Projected position
+	float4 projectedPosition = mul(global_ViewProjection, worldPosition);
+
+	//Pass projected position to pixel shader
+	Out.ProjectedPosition = projectedPosition;
+
+	//Normalize Local Normal
+	float3 localNormalNormalized = normalize(SRT_VS_BUFFER_NORMAL(id));
+
+	//World space Normal
+	float3 worldNormal = float3(0.0f, 0.0f, 0.0f);
+	worldNormal = (worldNormal + (SRT_VS_BONES_WEIGHTS(id).x * mul(boneMatrix1, float4(localNormalNormalized, 0.0f))));
+	worldNormal = (worldNormal + (SRT_VS_BONES_WEIGHTS(id).y * mul(boneMatrix2, float4(localNormalNormalized, 0.0f))));
+	worldNormal = (worldNormal + (SRT_VS_BONES_WEIGHTS(id).z * mul(boneMatrix3, float4(localNormalNormalized, 0.0f))));
+	worldNormal = (worldNormal + (SRT_VS_BONES_WEIGHTS(id).w * mul(boneMatrix4, float4(localNormalNormalized, 0.0f))));
+	worldNormal = mul(WorldMatrix, float4(worldNormal, 0.0f)).xyz;
+
+	//Normalize World Normal
+	float3 worldNormalNormalized = normalize(worldNormal);
+
+	Out.WorldNormal = worldNormalNormalized;
+
+	//World space view vector
+	float3 worldView = (global_ViewPos.xyz - worldPosition.xyz);
+
+	Out.WorldView = worldView;
+
+	//Calculate Height Fog
+	float depthValue = saturate(((global_FogPropertyMatrix[3].y - length(worldView)) / (global_FogPropertyMatrix[3].y - global_FogPropertyMatrix[3].x)));
+	float heightDensity = ((worldPosition.y - global_FogPropertyMatrix[2].z) / global_FogPropertyMatrix[3].z);
+	float heightFog = saturate(max(depthValue, heightDensity));
+
+	Out.HeightFog = heightFog;
+
+	//Calculate Distance Fog
+	float distanceFog = saturate(((global_FogPropertyMatrix[2].y - length(worldView)) / (global_FogPropertyMatrix[2].y - global_FogPropertyMatrix[2].x)));
+
+	Out.DistanceFog = distanceFog;
+
+
+	return Out;
+}
+
+
+[Fragment shader]
+
+
+#pragma PSSL_target_output_format(default FMT_FP16_ABGR)
+#include "Shaders/PS4/srt_struct.h"
+#include "Shaders/PS4/CommonHelpers.shdh"
+#include "Shaders/PS4/PBR.shdh"
+#include "Shaders/PS4/Exposure.shdh"
+#include "Shaders/PS4/ImageBasedLightingHelpers.shdh"
+
+struct PixelInput
+{
+	float4 ProjectedPosition : S_Position;
+	float3 WorldNormal : TEXCOORD0;
+	float3 WorldView : TEXCOORD1;
+	float HeightFog : TEXCOORD2;
+	float DistanceFog : TEXCOORD3;
+};
+
+struct PixelOutput
+{
+	float4 Color0 : S_TARGET_OUTPUT0;
+};
+
+@uniform float _OpacityFade;
+PixelOutput main(PixelInput In,
+	SrtPsData srtData : S_SRT_DATA)
+{
+	// Retrieve SRT data:
+	@uniform(global_LightPropertyMatrix);
+	@uniform(global_FogPropertyMatrix);
+	@uniform(_OpacityFade);
+
+	PixelOutput Out;
+
+	//Normalize World Normal
+	float3 worldNormalNormalized = normalize(In.WorldNormal);
+
+	float matReflectance = 0.5f;
+	matReflectance = RemapReflectance(matReflectance);
+	float matRoughness = 0.5f;
+	matRoughness = max(0.09f, matRoughness);
+	float3 FinalColor = float3(0.0f, 0.0f, 0.0f);
+
+	//Calculate Image Based Lighting
+	//Normalized world space view vector
+	float3 worldViewNormalized = normalize(In.WorldView);
+
+	float3 iblDiffuse;
+	float3 iblSpecular;
+	EvaluateDistantIBL(float3(0.0f, 0.0f, 0.0f), matRoughness, float3(matReflectance, matReflectance, matReflectance), 0.0f, worldNormalNormalized, worldViewNormalized, iblDiffuse, iblSpecular, srtData);
+	FinalColor = ((FinalColor + iblDiffuse) + iblSpecular);
+
+	float3 LightDiffuseColorOut;
+	float3 LightSpecularColorOut;
+	DirectionLight(worldNormalNormalized, worldViewNormalized, global_LightPropertyMatrix, float3(0.0f, 0.0f, 0.0f), matReflectance, matRoughness, 0.0f, LightDiffuseColorOut, LightSpecularColorOut);
+	FinalColor = ((FinalColor + LightDiffuseColorOut) + LightSpecularColorOut);
+
+	FinalColor = PreExpose(FinalColor, srtData);
+
+	FinalColor = lerp(global_FogPropertyMatrix[1].xyz, FinalColor, float3(In.HeightFog, In.HeightFog, In.HeightFog));
+	FinalColor = lerp(global_FogPropertyMatrix[0].xyz, FinalColor, float3(In.DistanceFog, In.DistanceFog, In.DistanceFog));
+
+	Out.Color0 = float4(FinalColor, _OpacityFade);
+	Out.Color0 = max(Out.Color0, 0.0f);
+
+	return Out;
+}

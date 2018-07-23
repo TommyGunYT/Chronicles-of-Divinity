@@ -1,0 +1,24 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+DB_DC_VersionUpdate(1, 0, 0, 4);
+KBSECTION
+IF
+SavegameLoaded(_, _, _, _)
+AND
+DB_DC_VersionUpdate(1)
+THEN
+DB_DC_ItemScalingAreas_Event(TRIGGERGUID_DC_FTJ_ItemScaling_EntryBox_3d314ffd-cd44-460b-9f5c-f36e59d77856);
+DB_DC_ItemScalingAreas_Check(TRIGGERGUID_DC_FTJ_ItemScaling_CheckBox_8b17befd-87ec-4bac-ae5d-7c96d4a4bcae);
+
+IF
+SavegameLoaded(_, _, _, _)
+AND
+DB_DC_VersionUpdate(1, 0, 0, 4)
+THEN
+DB_DC_ItemScalingAreas_Event(TRIGGERGUID_DC_FTJ_ItemScaling_EntryBox_3d314ffd-cd44-460b-9f5c-f36e59d77856);
+DB_DC_ItemScalingAreas_Check(TRIGGERGUID_DC_FTJ_ItemScaling_CheckBox_8b17befd-87ec-4bac-ae5d-7c96d4a4bcae);
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "Start"

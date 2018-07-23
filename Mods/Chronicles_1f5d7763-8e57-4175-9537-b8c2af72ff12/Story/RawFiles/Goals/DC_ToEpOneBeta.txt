@@ -1,0 +1,26 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+IF
+DialogEnded("DC_Training_StartBetaTest", _ID)
+AND
+DB_IsPlayer(_Player)
+AND
+DialogGetInvolvedPlayer(_ID, 1, _Speaker)
+AND
+ObjectGetFlag(_Speaker, "DC_Training_StartBetaTest", 1)
+THEN
+DialogRequestStop(_Speaker);
+ProcForceStopDialog(_Player);
+CharacterTeleportPartiesToTrigger(TRIGGERGUID_DC_Training_Start_7c349835-f86f-4d47-93d1-bfbd60809979, "");
+NOT DB_CheckLevelStart("TUT_Tutorial_A");
+ProcRegionEnded("TUT_Tutorial_A");
+//CharacterTeleportPartiesToTrigger(TRIGGERGUID_PointTrigger_002_2f9c6cfc-3921-4b4d-a5c6-93d3ba90ba73, "");
+//ActivatePersistentLevelTemplate(LEVELTEMPLATEGUID_DC_LV_Snowfall_f575cc31-5834-415e-8c60-7e5ee235abc0);
+//DB_DC_LVStart("DC_Snowfall");
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "Tutorial_PrisonShip"

@@ -1,0 +1,182 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+DB_TUT_LowerDeck_StartingTriggers((TRIGGERGUID)StartPoint_001__000_06873976-bf3c-8249-2074-1733c88957ff,(ITEMGUID)S_TUT_FUR_Humans_Med_OperatingTable_A_002_e0cb593b-8972-4565-9d9c-ca074766dabc);
+DB_TUT_LowerDeck_StartingTriggers(StartPoint_003__000_b97d317e-fb2b-815f-34d8-74786df2cdae,S_TUT_FUR_Humans_Med_OperatingTable_A_004_7e745820-6158-487a-ae83-7b19ba050077);
+DB_TUT_LowerDeck_StartingTriggers(StartPoint_000__000_fe2995bf-aa16-8ce7-33a2-8cb8cf228152,S_TUT_FUR_Humans_Med_OperatingTable_A_003_a0e1ea02-5bff-4c5b-abe5-8c0c4b8e0e7c);
+DB_TUT_LowerDeck_StartingTriggers(StartPoint_002__000_c195287d-e87d-8982-2ff6-2b159d38a966,S_TUT_FUR_Humans_Med_OperatingTable_A_005_07d04404-57d0-437a-9b08-9534d113f111);
+
+DB_TUT_BedCkeckTriggers(TRIGGERGUID_DC_CollarBed_A_86a30def-7a33-4cc8-aa19-06212182d3f8, "DC_CloneForBed_A", CHARACTERGUID_DC_TutClone_4480fd78-a141-4aed-9450-c77d424a4963);
+DB_TUT_BedCkeckTriggers(TRIGGERGUID_DC_CollarBed_B_9a687690-0169-4550-aff8-aa07767037a9, "DC_CloneForBed_B", CHARACTERGUID_DC_TutClone_000_135f041a-eaec-4c90-b122-d287f5d0aa26);
+DB_TUT_BedCkeckTriggers(TRIGGERGUID_DC_CollarBed_C_339288d2-77c7-4f8d-be51-4a94cc48004e, "DC_CloneForBed_C", CHARACTERGUID_DC_TutClone_001_56dcadde-9d98-4ca3-857c-8e08ed63e3e6);
+DB_TUT_BedCkeckTriggers(TRIGGERGUID_DC_CollarBed_D_a266ebdd-bc6e-4e99-8805-614b4b00cc38, "DC_CloneForBed_D", CHARACTERGUID_DC_TutClone_002_8c9ff603-5b34-4476-8992-410b72828f08);
+KBSECTION
+IF
+CharacterEnteredTrigger(_Player, TRIGGERGUID_DC_TUT_EnterBed_A_79cc92c6-be12-47f6-968a-5ac003b7585c)
+AND
+DB_TUT_BedCkeckTriggers(_FutureBed, _Loc, _Timetraveler)
+AND
+GlobalGetFlag("DC_TUT_BedA", 0)
+AND
+GlobalGetFlag("DC_TUT_BedsOff", 0)
+THEN
+ObjectSetFlag(CHARACTERGUID_DC_TutClone_4480fd78-a141-4aed-9450-c77d424a4963, "DC_CollarBed_A");
+ObjectSetFlag(S_TUT_FUR_Humans_Med_OperatingTable_A_002_e0cb593b-8972-4565-9d9c-ca074766dabc, "DC_Occupied");
+CharacterTransformAppearanceTo(CHARACTERGUID_DC_TutClone_4480fd78-a141-4aed-9450-c77d424a4963, _Player, 1, 1);
+GlobalSetFlag("DC_TUT_BedA");
+TimerLaunch("DC_TUT_CollarBeds_Disable", 650);
+TeleportTo(CHARACTERGUID_DC_TutClone_4480fd78-a141-4aed-9450-c77d424a4963, TRIGGERGUID_DC_TP_CollarTable_1_31f0ad1e-5b7c-4a7e-80c0-ddb931f67ffb, "", 1);
+FadeOutBlack(_Player, 6.0, "");
+StartCameraSpline(SPLINEGUID_DC_TUT_StartCam_2737ccad-a17b-449d-b320-70d29887f322,_Player,0.25,1,0,0);
+
+IF
+CharacterEnteredTrigger(_Player, TRIGGERGUID_DC_TUT_EnterBed_B_9d7adf68-d85e-477e-a3aa-74d074aadef7)
+AND
+DB_TUT_BedCkeckTriggers(_FutureBed, _Loc, _Timetraveler)
+AND
+GlobalGetFlag("DC_TUT_BedB", 0)
+AND
+GlobalGetFlag("DC_TUT_BedsOff", 0)
+THEN
+CharacterTransformAppearanceTo(CHARACTERGUID_DC_TutClone_000_135f041a-eaec-4c90-b122-d287f5d0aa26, _Player, 1, 1);
+ObjectSetFlag(CHARACTERGUID_DC_TutClone_000_135f041a-eaec-4c90-b122-d287f5d0aa26, "DC_CollarBed_B");
+ObjectSetFlag(S_TUT_FUR_Humans_Med_OperatingTable_A_004_7e745820-6158-487a-ae83-7b19ba050077, "DC_Occupied");
+GlobalSetFlag("DC_TUT_BedB");
+TeleportTo(CHARACTERGUID_DC_TutClone_000_135f041a-eaec-4c90-b122-d287f5d0aa26, TRIGGERGUID_DC_TP_CollarTable_2_8680b995-1f85-4c47-b4af-593b4eefc426, "", 1);
+TimerLaunch("DC_TUT_CollarBeds_Disable", 650);
+StartCameraSpline(SPLINEGUID_DC_TUT_StartCam_2737ccad-a17b-449d-b320-70d29887f322,_Player,0.25,1,0,0);
+
+IF
+CharacterEnteredTrigger(_Player, TRIGGERGUID_DC_TUT_EnterBed_C_e35d3745-ea7c-482d-b26c-ffe9f24148de)
+AND
+DB_TUT_BedCkeckTriggers(_FutureBed, _Loc, _Timetraveler)
+AND
+GlobalGetFlag("DC_TUT_BedC", 0)
+AND
+GlobalGetFlag("DC_TUT_BedsOff", 0)
+THEN
+CharacterTransformAppearanceTo(CHARACTERGUID_DC_TutClone_001_56dcadde-9d98-4ca3-857c-8e08ed63e3e6, _Player, 1, 1);
+ObjectSetFlag(CHARACTERGUID_DC_TutClone_001_56dcadde-9d98-4ca3-857c-8e08ed63e3e6, "DC_CollarBed_C");
+ObjectSetFlag(S_TUT_FUR_Humans_Med_OperatingTable_A_003_a0e1ea02-5bff-4c5b-abe5-8c0c4b8e0e7c, "DC_Occupied");
+GlobalSetFlag("DC_TUT_BedC");
+TeleportTo(CHARACTERGUID_DC_TutClone_001_56dcadde-9d98-4ca3-857c-8e08ed63e3e6, TRIGGERGUID_DC_TP_CollarTable_3_2c3c4b31-43f6-4140-9497-f1dcad812bc3, "", 1);
+TimerLaunch("DC_TUT_CollarBeds_Disable", 650);
+StartCameraSpline(SPLINEGUID_DC_TUT_StartCam_2737ccad-a17b-449d-b320-70d29887f322,_Player,0.25,1,0,0);
+
+IF
+CharacterEnteredTrigger(_Player, TRIGGERGUID_DC_TUT_EnterBed_D_b57bcbd3-4e53-48f7-9e21-6b4d230bd050)
+AND
+DB_TUT_BedCkeckTriggers(_FutureBed, _Loc, _Timetraveler)
+AND
+GlobalGetFlag("DC_TUT_BedD", 0)
+AND
+GlobalGetFlag("DC_TUT_BedsOff", 0)
+THEN
+CharacterTransformAppearanceTo(CHARACTERGUID_DC_TutClone_002_8c9ff603-5b34-4476-8992-410b72828f08, _Player, 1, 1);
+ObjectSetFlag(CHARACTERGUID_DC_TutClone_002_8c9ff603-5b34-4476-8992-410b72828f08, "DC_CollarBed_D");
+ObjectSetFlag(S_TUT_FUR_Humans_Med_OperatingTable_A_005_07d04404-57d0-437a-9b08-9534d113f111, "DC_Occupied");
+GlobalSetFlag("DC_TUT_BedD");
+TeleportTo(CHARACTERGUID_DC_TutClone_002_8c9ff603-5b34-4476-8992-410b72828f08, TRIGGERGUID_DC_TP_CollarTable_4_4324dff3-b828-4eb4-a3c9-da64230a87b2, "", 1);
+TimerLaunch("DC_TUT_CollarBeds_Disable", 650);
+StartCameraSpline(SPLINEGUID_DC_TUT_StartCam_2737ccad-a17b-449d-b320-70d29887f322,_Player,0.25,1,0,0);
+
+IF
+TimerFinished("DC_TUT_CollarBeds_Disable")
+AND
+GlobalGetFlag("DC_TUT_BedsOff", 0)
+THEN
+GlobalSetFlag("DC_TUT_BedsOff");
+Proc_DC_TUT_OccupyBeds();
+
+
+
+PROC
+Proc_DC_TUT_OccupyBeds()
+AND
+GlobalGetFlag("DC_TUT_BedA", 0)
+AND
+ObjectGetFlag(S_TUT_FUR_Humans_Med_OperatingTable_A_004_7e745820-6158-487a-ae83-7b19ba050077, "DC_Occupied", 0)
+THEN
+TeleportTo(CHARACTERGUID_S_DC_NPC_Godwoken_Markesh_606af11b-0d78-4f7a-bf66-bba9860bb9f3, TRIGGERGUID_PointTrigger_001_710d3269-fba4-4a63-b490-9a38b3a799e2, "", 0);
+CharacterUseItem(CHARACTERGUID_S_DC_NPC_Godwoken_Markesh_606af11b-0d78-4f7a-bf66-bba9860bb9f3, S_TUT_FUR_Humans_Med_OperatingTable_A_004_7e745820-6158-487a-ae83-7b19ba050077, "DC_Markesh_Bed");
+DisplayText(CHARACTERGUID_S_DC_NPC_Godwoken_Markesh_606af11b-0d78-4f7a-bf66-bba9860bb9f3, "");
+
+PROC
+Proc_DC_TUT_OccupyBeds()
+AND
+GlobalGetFlag("DC_TUT_BedB", 0)
+THEN
+TeleportTo(CHARACTERGUID_S_DC_NPC_Godwoken_Greg_000768c0-84ba-4ed4-92ad-e438e9d152c5, TRIGGERGUID_PointTrigger_001_710d3269-fba4-4a63-b490-9a38b3a799e2, "", 0);
+CharacterUseItem(CHARACTERGUID_S_DC_NPC_Godwoken_Greg_000768c0-84ba-4ed4-92ad-e438e9d152c5, S_TUT_FUR_Humans_Med_OperatingTable_A_003_a0e1ea02-5bff-4c5b-abe5-8c0c4b8e0e7c, "DC_Greg_Bed");
+DisplayText(CHARACTERGUID_S_DC_NPC_Godwoken_Greg_000768c0-84ba-4ed4-92ad-e438e9d152c5, "");
+
+PROC
+Proc_DC_TUT_OccupyBeds()
+AND
+GlobalGetFlag("DC_TUT_BedC", 0)
+AND
+ObjectGetFlag(S_TUT_FUR_Humans_Med_OperatingTable_A_002_e0cb593b-8972-4565-9d9c-ca074766dabc, "DC_Occupied", 0)
+THEN
+TeleportTo(CHARACTERGUID_S_DC_NPC_Godwoken_Rekker_90bfbc12-24a8-4a4c-ab8b-ffdf2ecfd273, TRIGGERGUID_PointTrigger_001_710d3269-fba4-4a63-b490-9a38b3a799e2, "", 0);
+CharacterUseItem(CHARACTERGUID_S_DC_NPC_Godwoken_Rekker_90bfbc12-24a8-4a4c-ab8b-ffdf2ecfd273, S_TUT_FUR_Humans_Med_OperatingTable_A_002_e0cb593b-8972-4565-9d9c-ca074766dabc, "DC_Rekker_Bed");
+DisplayText(CHARACTERGUID_S_DC_NPC_Godwoken_Rekker_90bfbc12-24a8-4a4c-ab8b-ffdf2ecfd273, "");
+
+PROC
+Proc_DC_TUT_OccupyBeds()
+AND
+GlobalGetFlag("DC_TUT_BedD", 0)
+AND
+ObjectGetFlag(S_TUT_FUR_Humans_Med_OperatingTable_A_005_07d04404-57d0-437a-9b08-9534d113f111, "DC_Occupied", 0)
+THEN
+TeleportTo(CHARACTERGUID_S_DC_NPC_Godwoken_Zakirah_3981d59a-4479-4f0b-b901-7bb59bbc5c71, TRIGGERGUID_PointTrigger_001_710d3269-fba4-4a63-b490-9a38b3a799e2, "", 0);
+CharacterUseItem(CHARACTERGUID_S_DC_NPC_Godwoken_Zakirah_3981d59a-4479-4f0b-b901-7bb59bbc5c71, S_TUT_FUR_Humans_Med_OperatingTable_A_005_07d04404-57d0-437a-9b08-9534d113f111, "DC_Zakira_Bed");
+DisplayText(CHARACTERGUID_S_DC_NPC_Godwoken_Zakirah_3981d59a-4479-4f0b-b901-7bb59bbc5c71, "");
+
+
+IF
+StoryEvent(_, "DC_Zakira_Bed")
+THEN
+CharacterFreeze(CHARACTERGUID_S_DC_NPC_Godwoken_Zakirah_3981d59a-4479-4f0b-b901-7bb59bbc5c71);
+DisplayText(CHARACTERGUID_S_DC_NPC_Godwoken_Zakirah_3981d59a-4479-4f0b-b901-7bb59bbc5c71, "");
+
+IF
+StoryEvent(_, "DC_Greg_Bed")
+THEN
+CharacterFreeze(CHARACTERGUID_S_DC_NPC_Godwoken_Greg_000768c0-84ba-4ed4-92ad-e438e9d152c5);
+DisplayText(CHARACTERGUID_S_DC_NPC_Godwoken_Greg_000768c0-84ba-4ed4-92ad-e438e9d152c5, "");
+
+IF
+StoryEvent(_, "DC_Markesh_Bed")
+THEN
+CharacterFreeze(CHARACTERGUID_S_DC_NPC_Godwoken_Markesh_606af11b-0d78-4f7a-bf66-bba9860bb9f3);
+DisplayText(CHARACTERGUID_S_DC_NPC_Godwoken_Markesh_606af11b-0d78-4f7a-bf66-bba9860bb9f3, "");
+
+IF
+StoryEvent(_, "DC_Rekker_Bed")
+THEN
+CharacterFreeze(CHARACTERGUID_S_DC_NPC_Godwoken_Rekker_90bfbc12-24a8-4a4c-ab8b-ffdf2ecfd273);
+DisplayText(CHARACTERGUID_S_DC_NPC_Godwoken_Rekker_90bfbc12-24a8-4a4c-ab8b-ffdf2ecfd273, "");
+
+
+
+PROC
+ProcRegionEnded("TUT_Tutorial_A")
+THEN
+CharacterUnfreeze(CHARACTERGUID_S_DC_NPC_Godwoken_Rekker_90bfbc12-24a8-4a4c-ab8b-ffdf2ecfd273);
+CharacterUnfreeze(CHARACTERGUID_S_DC_NPC_Godwoken_Markesh_606af11b-0d78-4f7a-bf66-bba9860bb9f3);
+CharacterUnfreeze(CHARACTERGUID_S_DC_NPC_Godwoken_Greg_000768c0-84ba-4ed4-92ad-e438e9d152c5);
+CharacterUnfreeze(CHARACTERGUID_S_DC_NPC_Godwoken_Zakirah_3981d59a-4479-4f0b-b901-7bb59bbc5c71);
+Proc_DB_TUT_TeleportGodwokenNPC();
+
+PROC
+Proc_DB_TUT_TeleportGodwokenNPC()
+THEN
+TeleportTo(CHARACTERGUID_S_DC_NPC_Godwoken_Rekker_90bfbc12-24a8-4a4c-ab8b-ffdf2ecfd273, TRIGGERGUID_DC_TP_CollarTable_1_31f0ad1e-5b7c-4a7e-80c0-ddb931f67ffb, "", 1);
+TeleportTo(CHARACTERGUID_S_DC_NPC_Godwoken_Markesh_606af11b-0d78-4f7a-bf66-bba9860bb9f3, TRIGGERGUID_DC_TP_CollarTable_1_31f0ad1e-5b7c-4a7e-80c0-ddb931f67ffb, "", 1);
+TeleportTo(CHARACTERGUID_S_DC_NPC_Godwoken_Greg_000768c0-84ba-4ed4-92ad-e438e9d152c5, TRIGGERGUID_DC_TP_CollarTable_1_31f0ad1e-5b7c-4a7e-80c0-ddb931f67ffb, "", 1);
+TeleportTo(CHARACTERGUID_S_DC_NPC_Godwoken_Zakirah_3981d59a-4479-4f0b-b901-7bb59bbc5c71, TRIGGERGUID_DC_TP_CollarTable_1_31f0ad1e-5b7c-4a7e-80c0-ddb931f67ffb, "", 1);
+
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "Tutorial_PrisonShip"

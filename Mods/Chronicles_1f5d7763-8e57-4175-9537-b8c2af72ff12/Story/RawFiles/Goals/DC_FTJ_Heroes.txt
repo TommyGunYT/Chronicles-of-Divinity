@@ -1,0 +1,131 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+DB_Dialogs(CHARACTERGUID_S_DC_Gagne_d13bac17-1380-43fc-9488-b187f19a4a10,"DC_Gagne");
+
+CharacterSetHitpointsPercentage(CHARACTERGUID_S_DC_Gagne_d13bac17-1380-43fc-9488-b187f19a4a10, 10);
+
+
+
+// FINAL BATTLE ADDITIONS
+DB_DC_FTJ_FinalBattleEnemies(CHARACTERGUID_S_DC_FTJ_FinalBattle_Gheist_01_579a65e5-b26b-4250-81bc-20d050ffac38);
+DB_DC_FTJ_FinalBattleEnemies(CHARACTERGUID_S_FTJ_SW_FinalBattleMagister_005_7b2249ac-e5da-411b-8b2a-6a12d03d9e0a);
+
+SetOnStage(CHARACTERGUID_S_DC_FTJ_FinalBattle_Gheist_01_579a65e5-b26b-4250-81bc-20d050ffac38, 0);
+SetOnStage(CHARACTERGUID_S_FTJ_SW_FinalBattleMagister_005_7b2249ac-e5da-411b-8b2a-6a12d03d9e0a, 0);
+
+// ONLY ONCE
+
+GlobalSetFlag("DC_GagneHealDialog");
+KBSECTION
+//REGION HEROES
+
+//REGION GAGNE
+IF
+CharacterUsedSkillOnTarget(_Player, CHARACTERGUID_S_DC_Gagne_d13bac17-1380-43fc-9488-b187f19a4a10, (STRING)_HealingSpell, _)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_RestorationSpells((STRING)_HealingSpell)
+AND
+CharacterGetAbility(_Player, "WaterSpecialist", _Val)
+AND
+_Val >= 2
+AND
+ObjectGetFlag(CHARACTERGUID_S_DC_Gagne_d13bac17-1380-43fc-9488-b187f19a4a10, "IsHealed", 0)
+THEN
+ObjectSetFlag(CHARACTERGUID_S_DC_Gagne_d13bac17-1380-43fc-9488-b187f19a4a10, "IsHealed");
+SetOnStage(CHARACTERGUID_S_DC_FTJ_FinalBattle_Gheist_01_579a65e5-b26b-4250-81bc-20d050ffac38, 1);
+DB_DC_FTJ_RecruitedHeroes(CHARACTERGUID_S_DC_Gagne_d13bac17-1380-43fc-9488-b187f19a4a10, TRIGGERGUID_S_DC_FTJ_Gagne_MoveOutPoint_92099e33-6681-4147-a416-bdc8b78223a7);
+ProcObjectTimer(CHARACTERGUID_S_DC_Gagne_d13bac17-1380-43fc-9488-b187f19a4a10, "GettingUp", 2655);
+ProcObjectTimer(CHARACTERGUID_S_DC_Gagne_d13bac17-1380-43fc-9488-b187f19a4a10, "ReturnToCampFailsafe", 90000);
+
+PROC
+ProcObjectTimerFinished(CHARACTERGUID_S_DC_Gagne_d13bac17-1380-43fc-9488-b187f19a4a10, "GettingUp")
+AND
+DB_IsPlayer(_Player)
+THEN
+Proc_StartDialog(0, "DC_Gagne", CHARACTERGUID_S_DC_Gagne_d13bac17-1380-43fc-9488-b187f19a4a10, _Player);
+
+PROC
+ProcObjectTimerFinished(CHARACTERGUID_S_DC_Gagne_d13bac17-1380-43fc-9488-b187f19a4a10, "ReturnToCampFailsafe")
+AND
+ObjectIsInTrigger(CHARACTERGUID_S_DC_Gagne_d13bac17-1380-43fc-9488-b187f19a4a10, TRIGGERGUID_S_DC_FTJ_GagneCampWander_2d030594-bc5e-4c72-a27d-ca5ff673c03d, 0)
+THEN
+TeleportTo(CHARACTERGUID_S_DC_Gagne_d13bac17-1380-43fc-9488-b187f19a4a10, TRIGGERGUID_S_DC_FTJ_SeekerCamp_GagneHangOut_1d8e34eb-9d5b-4610-b62a-2e553070bc79);
+
+IF
+DialogEnded("DC_Gagne", _ID)
+AND
+ObjectGetFlag(CHARACTERGUID_S_DC_Gagne_d13bac17-1380-43fc-9488-b187f19a4a10, "IsHealed", 1)
+AND
+GlobalGetFlag("DC_GagneHealDialog", 1)
+THEN
+SetVarFixedString(CHARACTERGUID_S_DC_Gagne_d13bac17-1380-43fc-9488-b187f19a4a10, "currentState", "FTJ_Gagne_RunToCamp");
+CharacterSetForceSynch(CHARACTERGUID_S_DC_Gagne_d13bac17-1380-43fc-9488-b187f19a4a10, 1);
+GlobalClearFlag("DC_GagneHealDialog");
+
+IF
+GlobalFlagSet("DC_Gagnehasgotup")
+THEN
+SetVarFixedString(CHARACTERGUID_S_DC_Gagne_d13bac17-1380-43fc-9488-b187f19a4a10, "currentState", "");
+ProcCharacterMoveTo(CHARACTERGUID_S_DC_Gagne_d13bac17-1380-43fc-9488-b187f19a4a10, TRIGGERGUID_S_DC_FTJ_GagneRunPointAfterSaved_11243d17-1b79-47e8-ad1c-2c3e7c3e654f, 1, "DC_FTJ_GagneHelpedReturn");
+
+IF
+StoryEvent(_, "DC_FTJ_GagneHelpedReturn")
+THEN
+TeleportTo(CHARACTERGUID_S_DC_Gagne_d13bac17-1380-43fc-9488-b187f19a4a10, TRIGGERGUID_S_DC_FTJ_SeekerCamp_GagneHangOut_1d8e34eb-9d5b-4610-b62a-2e553070bc79);
+
+IF
+DialogStarted("DC_Gagne", _ID)
+AND
+DB_IsPlayer(_Player)
+AND
+ObjectGetFlag(_Player, "DC_FTJ_MetGagne", 0)
+THEN
+ObjectSetFlag(_Player, "DC_FTJ_MetGagne");
+
+IF
+CharacterEnteredTrigger(CHARACTERGUID_S_DC_Gagne_d13bac17-1380-43fc-9488-b187f19a4a10, TRIGGERGUID_DC_FTJ_SeekerCamp_Gagne_c729ae3c-b3eb-497f-b12e-c4f5b79aebbe)
+THEN
+SetVarFixedString(CHARACTERGUID_S_DC_Gagne_d13bac17-1380-43fc-9488-b187f19a4a10, "currentState", "FTJ_Gagne_AtCamp");
+
+//END_REGION
+
+//END_REGION
+
+//REGION SEND HEROES TO FINAL BATTLE
+
+IF
+GlobalFlagSet("FTJ_SW_LeaveCallToArms")
+AND
+DB_DC_FTJ_RecruitedHeroes(_RecruitedHero, _HeroToArmsLoc)
+THEN
+TeleportTo(_RecruitedHero, _HeroToArmsLoc);
+
+
+PROC
+Proc_FTJ_FinalBattle_InitiateFight()
+AND
+DB_DC_FTJ_RecruitedHeroes(_RecruitedHero, _HeroToArmsLoc)
+AND
+DB_DC_FTJ_FinalBattleEnemies(_FinalEnemy)
+THEN
+SetFaction(_FinalEnemy,"RC_Magister");
+SetCombatGroupID(_FinalEnemy,"f07fa968-7e37-4420-9ee8-7fdeab725837");
+
+// Voidworm joins
+// ObjectEnteredCombat(CHARACTERGUID_S_FTJ_SW_FinalBattle_Voidwoken_7dcf3cc2-d015-4aff-9949-71fc539fcc73,_Combat)
+
+// IF Kara not in party, have her join battle at voidworm?
+//END_REGION
+
+
+IF
+RegionStarted("RC_Main")
+THEN
+GoalCompleted;
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "FortJoy"

@@ -1,0 +1,126 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+//IF
+//RegionStarted("FJ_FortJoy_Main")
+//THEN
+//Proc_DC_TheHold_PastSetup();
+
+//IF
+//GameStarted("FJ_FortJoy_Main", _)
+//THEN
+//Proc_DC_TheHold_PastSetup();
+
+//REGION
+
+PROC
+Proc_DC_TheHold_PastSetup()
+AND
+ObjectIsInTrigger(CHARACTERGUID_S_DC_TutClone_48786aed-957e-4f4e-bf8d-34072cbc8fca, TRIGGERGUID_DC_TheHold_Past_CloneCheck_b65d34f2-90b3-4308-ac70-d4c95468e809, 1)
+THEN
+CharacterUseItem(CHARACTERGUID_S_DC_TutClone_48786aed-957e-4f4e-bf8d-34072cbc8fca, ITEMGUID_S_DC_CollarTable_1_b2ecf660-8666-439e-9e36-f44ff15a8886, "DC_TheHold_Past_CharA");
+
+IF
+StoryEvent(_, "DC_TheHold_Past_CharA")
+THEN
+CharacterFreeze(CHARACTERGUID_S_DC_TutClone_48786aed-957e-4f4e-bf8d-34072cbc8fca);
+
+PROC
+Proc_DC_TheHold_PastSetup()
+AND
+ObjectIsInTrigger(CHARACTERGUID_S_DC_TutClone_B_f13ca2f4-6ab5-48ad-8c03-83ebec831586, TRIGGERGUID_DC_TheHold_Past_CloneCheck_b65d34f2-90b3-4308-ac70-d4c95468e809, 1)
+THEN
+CharacterUseItem(CHARACTERGUID_S_DC_TutClone_B_f13ca2f4-6ab5-48ad-8c03-83ebec831586, ITEMGUID_S_DC_CollarTable_2_4954bd8e-63ee-42b4-bb62-f888a1ebde1c, "DC_TheHold_Past_CharB");
+
+IF
+StoryEvent(_, "DC_TheHold_Past_CharB")
+THEN
+CharacterFreeze(CHARACTERGUID_S_DC_TutClone_B_f13ca2f4-6ab5-48ad-8c03-83ebec831586);
+
+PROC
+Proc_DC_TheHold_PastSetup()
+AND
+ObjectIsInTrigger(CHARACTERGUID_S_DC_TutClone_C_934c3ce9-99dd-4af2-94cf-167f79a221a3, TRIGGERGUID_DC_TheHold_Past_CloneCheck_b65d34f2-90b3-4308-ac70-d4c95468e809, 1)
+THEN
+CharacterUseItem(CHARACTERGUID_S_DC_TutClone_C_934c3ce9-99dd-4af2-94cf-167f79a221a3, ITEMGUID_S_DC_CollarTable_3_6a1b3774-86c0-4305-8b0c-7219761735b9, "DC_TheHold_Past_CharC");
+
+IF
+StoryEvent(_, "DC_TheHold_Past_CharC")
+THEN
+CharacterFreeze(CHARACTERGUID_S_DC_TutClone_C_934c3ce9-99dd-4af2-94cf-167f79a221a3);
+
+PROC
+Proc_DC_TheHold_PastSetup()
+AND
+ObjectIsInTrigger(CHARACTERGUID_S_DC_TutClone_D_4ffa502f-f37d-41d0-a08b-4727626d5ad5, TRIGGERGUID_DC_TheHold_Past_CloneCheck_b65d34f2-90b3-4308-ac70-d4c95468e809, 1)
+THEN
+CharacterUseItem(CHARACTERGUID_S_DC_TutClone_D_4ffa502f-f37d-41d0-a08b-4727626d5ad5, ITEMGUID_S_DC_CollarTable_1_b2ecf660-8666-439e-9e36-f44ff15a8886, "DC_TheHold_Past_CharD");
+
+IF
+StoryEvent(_, "DC_TheHold_Past_CharD")
+THEN
+CharacterFreeze(CHARACTERGUID_S_DC_TutClone_D_4ffa502f-f37d-41d0-a08b-4727626d5ad5);
+
+//END_REGION
+
+PROC
+Proc_DC_TheHold_PastSetup()
+AND
+ObjectIsInTrigger(CHARACTERGUID_S_DC_NPC_Godwoken_Markesh_606af11b-0d78-4f7a-bf66-bba9860bb9f3, TRIGGERGUID_DC_TheHold_Past_CloneCheck_b65d34f2-90b3-4308-ac70-d4c95468e809, 1)
+THEN
+CharacterUseItem(CHARACTERGUID_S_DC_NPC_Godwoken_Markesh_606af11b-0d78-4f7a-bf66-bba9860bb9f3, ITEMGUID_S_DC_CollarTable_1_b2ecf660-8666-439e-9e36-f44ff15a8886, "DC_TheHold_Past_PlayerA");
+
+PROC
+Proc_DC_TheHold_PastSetup()
+AND
+ObjectIsInTrigger(CHARACTERGUID_S_DC_NPC_Godwoken_Greg_000768c0-84ba-4ed4-92ad-e438e9d152c5, TRIGGERGUID_DC_TheHold_Past_CloneCheck_b65d34f2-90b3-4308-ac70-d4c95468e809, 1)
+THEN
+CharacterUseItem(CHARACTERGUID_S_DC_NPC_Godwoken_Greg_000768c0-84ba-4ed4-92ad-e438e9d152c5, ITEMGUID_S_DC_CollarTable_2_4954bd8e-63ee-42b4-bb62-f888a1ebde1c, "DC_TheHold_Past_PlayerB");
+
+PROC
+Proc_DC_TheHold_PastSetup()
+AND
+ObjectIsInTrigger(CHARACTERGUID_S_DC_NPC_Godwoken_Rekker_90bfbc12-24a8-4a4c-ab8b-ffdf2ecfd273, TRIGGERGUID_DC_TheHold_Past_CloneCheck_b65d34f2-90b3-4308-ac70-d4c95468e809, 1)
+THEN
+CharacterUseItem(CHARACTERGUID_S_DC_NPC_Godwoken_Rekker_90bfbc12-24a8-4a4c-ab8b-ffdf2ecfd273, ITEMGUID_S_DC_CollarTable_3_6a1b3774-86c0-4305-8b0c-7219761735b9, "DC_TheHold_Past_PlayerA");
+
+
+PROC
+Proc_DC_TheHold_PastSetup()
+AND
+ObjectIsInTrigger(CHARACTERGUID_S_DC_NPC_Godwoken_Zakirah_3981d59a-4479-4f0b-b901-7bb59bbc5c71, TRIGGERGUID_DC_TheHold_Past_CloneCheck_b65d34f2-90b3-4308-ac70-d4c95468e809, 1)
+THEN
+CharacterUseItem(CHARACTERGUID_S_DC_NPC_Godwoken_Zakirah_3981d59a-4479-4f0b-b901-7bb59bbc5c71, ITEMGUID_S_DC_CollarTable_4_01f3f689-c743-434f-a549-a7025d82fa9d, "DC_TheHold_Past_PlayerD");
+
+
+
+IF
+StoryEvent(_, "DC_TheHold_Past_PlayerA")
+THEN
+CharacterFreeze(CHARACTERGUID_S_DC_NPC_Godwoken_Markesh_606af11b-0d78-4f7a-bf66-bba9860bb9f3);
+
+IF
+StoryEvent(_, "DC_TheHold_Past_PlayerB")
+THEN
+CharacterFreeze(CHARACTERGUID_S_DC_NPC_Godwoken_Greg_000768c0-84ba-4ed4-92ad-e438e9d152c5);
+
+IF
+StoryEvent(_, "DC_TheHold_Past_PlayerC")
+THEN
+CharacterFreeze(CHARACTERGUID_S_DC_NPC_Godwoken_Rekker_90bfbc12-24a8-4a4c-ab8b-ffdf2ecfd273);
+
+IF
+StoryEvent(_, "DC_TheHold_Past_PlayerD")
+THEN
+CharacterFreeze(CHARACTERGUID_S_DC_NPC_Godwoken_Zakirah_3981d59a-4479-4f0b-b901-7bb59bbc5c71);
+
+IF
+RegionStarted("RC_Main")
+THEN
+GoalCompleted;
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "FortJoy"

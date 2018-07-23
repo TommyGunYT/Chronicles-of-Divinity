@@ -1,0 +1,33 @@
+#INCLUDE State_Manager
+INIT
+	USING SHARED State_Manager
+	CHARACTER:__Me
+	EXTERN ITEM:%DummyA = S_SeekerCamp_Dummy_B_ad73a3ef-b264-40cd-bfdc-c7727e9c135c
+	FLOAT:%RandSleep = 1
+
+
+BEHAVIOUR
+REACTION State_Default, 1
+USAGE PEACE
+ACTIONS
+	GetRandom(%currentAction,"DummyA")
+	SetPriority(%currentAction, 1200)
+	
+REACTION DummyA, 0
+USAGE PEACE
+VARS
+	FIXEDSTRING:_animation
+ACTIONS
+	CharacterMoveTo(%DummyA,0,0,0,1,2)
+	CharacterLookAt(%DummyA,0,0)
+	CharacterAttack(%DummyA,1)
+	GetRandomBetween(%RandSleep,1,5)
+	Sleep(%RandSleep)
+	GetRandom(_animation,"Training_2HS_01_Loop","Dust_Off_01","use_drink","attack1","attack2","attack3","attack_cleave","skill_attack_flurry_01_cast")
+	CharacterPlayAnimation(_animation)
+	GetRandomBetween(%RandSleep,3,8)
+	Sleep(%RandSleep)
+	SetPriority(%currentAction, 0)
+INTERRUPT
+ACTIONS
+	SetPriority(%currentAction, 0)

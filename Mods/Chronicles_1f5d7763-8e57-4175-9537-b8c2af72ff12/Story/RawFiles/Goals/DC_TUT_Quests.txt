@@ -1,0 +1,20 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+DB_QuestDef_State("DCTheCollar","Start",1);
+DB_QuestDef_State("DCTheCollar","TheDanglingCollar");
+KBSECTION
+IF
+CharacterUsedItem(_Player, ITEMGUID_DC_SourceCollarRemoverMachine_000_e8ba7ae8-5c77-46e0-adfb-df3e23d2bd13)
+THEN
+ObjectSetFlag(_Player,"QuestUpdate_DCTheCollar_Start");
+
+IF
+CharacterUsedItem(_Player, ITEMGUID_RC_FTJ_Amulet_SourceCollar_000_d062d901-70f9-4b63-8f23-af34f90ac2e8)
+THEN
+ObjectSetFlag(_Player,"QuestUpdate_DCTheCollar_TheDanglingCollar");
+
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "Tutorial_PrisonShip"

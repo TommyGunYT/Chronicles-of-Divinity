@@ -1,0 +1,38 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+SetOnStage(ITEMGUID_S_DC_FTJ_Quest_WandShaft_1c861363-7124-4186-a439-dd3731a22f43, 0);
+KBSECTION
+IF
+CharacterEnteredTrigger(_Player, TRIGGERGUID_DC_FTJ_SeekerIsle_HouseEntrance_129941af-3760-4900-9012-30e884870428)
+AND
+GlobalGetFlag("DC_SeekerIsle_HasEnteredHouse", 0)
+THEN
+SetVarFixedString(CHARACTERGUID_S_DC_FTJ_Cassandra_8bbb61af-4658-4dbe-90af-c9c600401bc6, "currentState", "TalkingWithAsterna");
+GlobalSetFlag("DC_SeekerIsle_HasEnteredHouse");
+
+IF
+ObjectFlagSet("PutsWandOnTable", CHARACTERGUID_S_DC_FTJ_Cassandra_8bbb61af-4658-4dbe-90af-c9c600401bc6, _)
+THEN
+SetOnStage(ITEMGUID_S_DC_FTJ_Quest_WandShaft_1c861363-7124-4186-a439-dd3731a22f43, 1);
+
+
+IF
+AutomatedDialogEnded("DC_FTJ_AD_CassandraAsterna", _ID)
+AND
+DB_IsPlayer(_Player)
+AND
+ObjectGetFlag(CHARACTERGUID_S_DC_FTJ_Asterna_3a3cfc8e-36fe-45d5-9359-c8455de43881, "CassandraAsternaDialogFinish", 1)
+THEN
+SetVarFixedString(CHARACTERGUID_S_DC_FTJ_Cassandra_8bbb61af-4658-4dbe-90af-c9c600401bc6, "currentState", "State_Default");
+
+
+
+IF
+RegionStarted("RC_Main")
+THEN
+GoalCompleted;
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "DC_FTJ_Isles"

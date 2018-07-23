@@ -1,0 +1,127 @@
+new namegroup "ARM_UNIQUE_TwoSummonGloves"
+add name "Hands of the Army","What's better than getting a creature to do your bidding? Two of them! Of course, the concentration for such a task will make each of them weaker."
+
+new namegroup "WPN_UNIQUE_PhysicalWand"
+add name "Andras's Tooth","A vicious tooth of gory delight. Andras's bite will come to haunt your future foes."
+
+new namegroup "ARM_UNIQUE_CrownOfFireSlug"
+add name "Crown of the Fire Slug","It doesn't fit her in the slightest, but it was the crown of the Royal Fire Slug nonetheless. Its constant warmth is definitely not good for your hair."
+
+new namegroup "ARM_UNIQUE_PackHelmet"
+add name "Head of the Abominable Pack","A motley cornucopia of tattered hides, which nonetheless inspires a certain cruel comaraderie"
+
+new namegroup "ARM_UNIQUE_DefilerGloves"
+add name "Defilers","These gloves reek of sickly, wet leather, fresh from a rotten carcass."
+
+new namegroup "ARM_UNIQUE_BlessedBlindfolds"
+add name "Blindfolds of Intuition","Though they completely block your sight, these blindfolds grant you a preternatural awareness and agility. You can hear the organs of nearby creatures churning away."
+
+new namegroup "ARM_UNIQUE_AlexanderSourceCollar"
+add name "Alexander's Source Collar","Despite Alexander's insistence that he had collared himself, he had always provided himself an out with a secret switch to remove the collar. Moreover, he had enchanted the collar so it was not purely a fashion statement."
+
+new namegroup "WPN_UNIQUE_MagicStaff"
+add name "Reliquary of Ataraxia","Most magic you know of has a particular elemental flavor; this staff exudes just plain, bland magic. Powerful, but somehow uninteresting."
+
+new namegroup "WPN_UNIQUE_QuickBow"
+add name "The Shortstop","This bow is built for an esoteric sport of archery where players shoot arrows at each other while running in a circle. Bows built for this value quickness over range. It is not a particularly popular game."
+
+new namegroup "WPN_UNIQUE_WandOfEnslavement"
+add name "Wand of Enslavement","You can't stop thinking of those creepy fellows with the metal jutting out of them when you look at this wand."
+
+new namegroup "WPN_UNIQUE_EpicWoodSword"
+add name "Sword of Imagination","This sword is lovingly carved from a very hard wood, and powered with the magic of a child's imagination. It smells of salt and dreams. "
+
+new namegroup "WPN_UNIQUE_ForkTonguesFork"
+add name "Forktongue's Fork","You can't imagine Forktongue ate with this thing. It's more a knife than a fork. Hmm... maybe that's why he has a forked tongue?"
+
+new namegroup "WPN_UNIQUE_AdvocateSword"
+add name "The Advocater","This sword is very, very convincing. They say the quill is mightier than the sword, but swords are what demons write with."
+
+new namegroup "WPN_UNIQUE_DaggerSpear"
+add name "Sufferer","(This spear can backstab.) This spear's grip is jagged and painful, even with gloves. It makes you want to torture a frog."
+
+new namegroup "SHLD_UNIQUE_DrillWormShield"
+add name "Woken Carapace","This shield is woke. First by the void, then by gods."
+
+new namegroup "ARM_UNIQUE_WeaponMasterGloves"
+add name "Gloves of Technique","Despite the bulk of these gloves, they grant a nimbleness ideal for plucking a bow string or riposting a jab, nevermind dancing about with two blades or a maul."
+
+new namegroup "WPN_UNIQUE_PortalWand"
+add name "Depth Dredger","This wand weaves and bobs in your hand, like a cool summer day on the sea. But there's a storm coming... and some terror from the depths as well. That kind of day."
+
+new namegroup "ARM_UNIQUE_BeastMasterBoots"
+add name "Spirit of the Cliffs","You smell venison, the musk of wild boar. You taste the blood of a wounded bear as you chase it along a cragsome cliff. You feel a kindredness, a resignation turned to loyalty. "
+
+new namegroup "WPN_UNIQUE_ScytheOfStrife"
+add name "Scythe of Strife","Urine and ashes. Turpentine turmoil. Cold sweat. A kailadescope of suffering. The stuff of demons. Why Jahan has this, you do not know."
+
+new namegroup "ARM_UNIQUE_AscendantPriestRobes"
+add name "Ascension","There are tales of a frail priest who prayed for decades, never losing faith in Rhalic. One day, he ascended. He flew into the air with his new wings, but just as he did, a storm approached. He was struck by a bolt of lightning thrown from a jealous god. His shirt survived, maintaining a hint of his ascension, but also his frailty."
+
+new namegroup "ARM_UNIQUE_HelmOfHorns"
+add name "Matador","For some reason, wearing this helmet makes the color red really annoy you."
+
+new namegroup "ARM_UNIQUE_QuiverHands"
+add name "Quiver Hands","These gloves let you draw out elemental arrows from thin air. They feel tingly and warm one second, and cold and stinky the next."
+
+new namegroup "WPN_UNIQUE_SmokeXbow"
+add name "Disrupter","The ultimate guerilla fighters crossbow, clearly built for maximum confusion and scorched earth."
+
+new namegroup "ARM_UNIQUE_PrimordialShard"
+add name "Primordial Shard","You feel an immense warmth, the sort that's comfortable for only a few minutes, but this comfort lasts forever. It makes any other sensation feel more extreme."
+add namecool "Primordial Shard","You feel an immense warmth, the sort that's comfortable for only a few minutes, but this comfort lasts forever. It makes any other sensation feel more extreme."
+
+new namegroup "WPN_UNIQUE_RustClaw"
+add name "Claw of Rust","Mord 'Akaim's claw drips rust, ready to slice through even the strongest armor. "
+
+new namegroup "ARM_UNIQUE_GreaterWeaponMasterGloves"
+add name "Gloves of Greater Technique","Dance among your foes with blade and string, a dervish of multifacted death."
+
+new namegroup "WPN_UNIQUE_QannaStaff"
+add name "Dust and Ash","Qanna's staff has drawn some power from its extended petrification."
+
+new namegroup "ARM_UNIQUE_RingOfUndeath"
+add name "Band of Undeath","Protects you from that all that toxic healing, nevermind that nasty decay. (Grants immunity to Regeneration.)"
+
+new namegroup "SHIELD_UNIQUE_AirBuckler"
+add name "Buffet","This ancient shield had been handed down amongs generations of djinns, before some jerks got their hands on it. "
+
+new namegroup "ARM_UNIQUE_ColdChitin"
+add name "Cold Chitin","These pants feel like the cool side of the pillow."
+
+new namegroup "ARM_UNIQUE_Conductors"
+add name "Conductors","These boots will make electricity give you an energizing jolt. They also make it hurt more."
+
+new namegroup "ARM_UNIQUE_TacticianBoots"
+add name "Strategizers","When it comes to battle, acceleration is the name of the game. More important than long-distance running, if you could ask these boots."
+
+new namegroup "ARM_UNIQUE_AffinityGlove"
+add name "Affinity Gloves","You really just want to snap your fingers with these gloves on. Makes you think you can better control the elements, though not without suffering some punishment for it."
+add namecool "Affinity Gloves","You really just want to snap your fingers with these gloves on. Makes you think you can better control the elements, though not without suffering some punishment for it."
+
+new namegroup "ARM_UNIQUE_GearHandlers"
+add name "The Switcharoo","One second you have a dagger, the next a bow. Let's trade those pants for a dress while we're at it, and maybe change our hat to match."
+
+new namegroup "WPN_UNIQUE_BullyClub"
+add name "Bully","Holding this club makes you want to go for the weakest, most pathetic targets. Naturally, it makes you a bit more nervous about fighting someone your own size (or bigger)."
+
+new namegroup "WPN_UNIQUE_RuneBlade"
+add name "Blade of Ancient Runes","This blade appears to have once had great religious import, with slots for holy symbols. Now it's merely a weapon with great killing potential."
+
+new namegroup "WPN_UNIQUE_RodOfCollection"
+add name "Rod of Collection","A rod so good at catching fish (and other things), it makes fishing even more boring than normal."
+add namecool "Rod of Collection","A rod so good at catching fish (and other things), it makes fishing even more boring than normal."
+
+new namegroup "WPN_UNIQUE_GreaterRodOfCollection"
+add name "Greater Rod of Collection","You're pretty sure you coulch catch a kraken with this thing."
+
+new namegroup "SHIELD_UNIQUE_PaladinShield"
+add name "Rhalic's Guidance","A scratched and bloodied shield that still permeates with holiness."
+
+new namegroup "SHIELD_UNIQUE_ReflectorShield"
+add name "Grimace","It's virtually impossible to smile while holding this shield. All it wants is everyone to suffer. "
+add namecool "Grimace","It's virtually impossible to smile while holding this shield. All it wants is everyone to suffer. "
+
+new namegroup "WPN_UNIQUE_PrayerSword"
+add name "Prayer Blade","There is tiny scripture written into this sword. It could be a whole book's worth, but it is nearly all illegible."
+

@@ -1,0 +1,64 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+SetOnStage(ITEMGUID_DC_SecretPathHatch_1c5906ad-502c-4e0b-b2c0-4b7f97be9365, 0);
+SetOnStage(ITEMGUID_S_DC_AltarMagicWallPedestal_Completed_6a1cd497-6b5e-484c-8004-12b9dd8350ef, 0);
+
+
+ItemSetCanInteract(ITEMGUID_S_DC_AltarKey_Air_d2023b0f-c7bd-8e67-3d43-528ec6c20f61, 0);
+ItemSetCanInteract(ITEMGUID_S_DC_AltarKey_Earth_5d72a693-e3ae-8ef9-2c7d-3c3de5c37ef5, 0);
+ItemSetCanInteract(ITEMGUID_S_DC_AltarKey_Fire_8723e06c-7ba8-8364-451a-e485475fc068, 0);
+ItemSetCanInteract(ITEMGUID_S_DC_AltarKey_Water_83e055e1-d723-8597-3e2d-86d57fe52647, 0);
+ItemSetCanInteract(ITEMGUID_S_DC_AltarKey_Source_8150414e-e24f-40ad-87ff-a61f3638d23f, 0);
+
+ItemSetCanInteract(ITEMGUID_LTS_Weakening_Candle_A_ONLYUSEDIN_THEWEAKENING_000_e116bbbe-2bb9-4574-ba46-04d612241176, 0);
+ItemSetCanInteract(ITEMGUID_LTS_Weakening_Candle_A_ONLYUSEDIN_THEWEAKENING_001_19dab1ca-4b35-4471-8185-7b89194db0a2, 0);
+KBSECTION
+IF
+CharacterEnteredTrigger(_Player, TRIGGERGUID_DC_FTJ_AltarHatch_769d4cca-6753-4842-a28c-6cfd7f79b0ca)
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterGetAttribute(_Player, "Wits", _Wits)
+AND
+_Wits >= 17
+AND
+ObjectGetFlag(ITEMGUID_DC_SecretPathHatch_1c5906ad-502c-4e0b-b2c0-4b7f97be9365, "IsHidden", 0)
+THEN
+SetOnStage(ITEMGUID_DC_SecretPathHatch_1c5906ad-502c-4e0b-b2c0-4b7f97be9365, 1);
+PlayEffect(ITEMGUID_DC_BeachTop_SecretLadder_8c513253-cca1-4561-9606-f7e897daf57c, "RS3_FX_UI_PerceptionReveal_01");
+PlaySound(ITEMGUID_DC_BeachTop_SecretLadder_8c513253-cca1-4561-9606-f7e897daf57c,"Items_Objects_IllusionMaterial_Appear");
+ObjectSetFlag(ITEMGUID_DC_SecretPathHatch_1c5906ad-502c-4e0b-b2c0-4b7f97be9365, "IsHidden");
+
+IF
+CharacterUsedItem(_Player, ITEMGUID_S_DC_AltarMagicWallPedestal_Incompleted_b9f7377b-9fd4-4e09-a86a-53bcd400ff7e)
+AND
+DB_IsPlayer(_Player)
+THEN
+Proc_StartDialog(0, "DC_FTJ_AltarMainEntrancePedestal", ITEMGUID_S_DC_AltarMagicWallPedestal_Incompleted_b9f7377b-9fd4-4e09-a86a-53bcd400ff7e, _Player);
+
+IF
+ItemAddedToCharacter(ITEMGUID_S_DC_AltarMagicWallPedestal_Rune_64d27530-e8a4-4c96-8ec2-7071d505effd, _Player)
+THEN
+ObjectSetFlag(_Player, "DC_IsCarryingAltarKey");
+
+IF
+ItemRemovedFromCharacter(ITEMGUID_S_DC_AltarMagicWallPedestal_Rune_64d27530-e8a4-4c96-8ec2-7071d505effd, _Player)
+THEN
+ObjectClearFlag(_Player, "DC_IsCarryingAltarKey");
+
+IF
+ItemDropped(ITEMGUID_S_DC_AltarMagicWallPedestal_Rune_64d27530-e8a4-4c96-8ec2-7071d505effd)
+AND
+DB_IsPlayer(_Player)
+THEN
+ObjectClearFlag(_Player, "DC_IsCarryingAltarKey");
+
+IF
+RegionStarted("RC_Main")
+THEN
+GoalCompleted;
+EXITSECTION
+ObjectClearFlag(ITEMGUID_DC_SecretPathHatch_1c5906ad-502c-4e0b-b2c0-4b7f97be9365, "IsHidden");
+ENDEXITSECTION
+ParentTargetEdge "DC_FTJ_Isles_ShrineIsle"

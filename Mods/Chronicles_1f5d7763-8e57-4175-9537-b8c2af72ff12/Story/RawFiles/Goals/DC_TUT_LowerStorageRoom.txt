@@ -1,0 +1,108 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+DB_DC_TUT_LowerDecks_Barrels(ITEMGUID_CONT_Barrel_A_Water_004_5dbc3337-a97d-4cf0-b3a9-1f0ec32f09ca);
+DB_DC_TUT_LowerDecks_Barrels(ITEMGUID_CONT_Arena_Humans_Citz_Barrel_A_001_a7e5045e-1a67-44f3-9a42-8745498f7c16);
+DB_DC_TUT_LowerDecks_Barrels(ITEMGUID_CONT_Arena_Humans_Citz_Barrel_A_000_584ce7d4-ba5f-4901-8f07-68e245d5d527);
+KBSECTION
+IF
+CharacterUsedItem(_Player, ITEMGUID_05m_WoodenHouse_A_Stair_Up_B_Item_Dynamic_000_f0307a71-be56-411e-a370-24b99c6baabf)
+THEN
+TeleportTo(_Player, TRIGGERGUID_DC_TP_StorageDeck_Upstairs_75e1fd09-cfa3-4f64-9c6e-04aa8c064000, "", 1);
+
+IF
+CharacterUsedItem(_Player, ITEMGUID_S_DC_TheHold_Hatch_81b44bff-98cc-4479-a806-0d3aecac8bf4)
+AND
+ItemIsLocked(ITEMGUID_S_DC_TheHold_Hatch_81b44bff-98cc-4479-a806-0d3aecac8bf4, 0)
+THEN
+TeleportTo(_Player, TRIGGERGUID_DC_TP_StorageDeck_5407b9b1-0144-4d6b-86b8-e5ff509092a5, "", 1);
+
+
+
+PROC
+Proc_DC_TUTWindegoEncounter()
+AND
+ObjectGetFlag(CHARACTERGUID_S_TUT_Humans_Female_Magister_Priest_000_9d17cf06-6fad-49a8-82de-54518a9bf5df, "GoneToStorageDeck", 0)
+THEN
+ProcCharacterMoveTo(CHARACTERGUID_S_TUT_Humans_Female_Magister_Priest_000_9d17cf06-6fad-49a8-82de-54518a9bf5df, TRIGGERGUID_DC_TP_StorageDeck_Upstairs_75e1fd09-cfa3-4f64-9c6e-04aa8c064000, 0, "DC_SiwanToLowerDeck");
+
+IF
+TimerFinished("DC_SiwanReturnsAfterDaniel")
+AND
+ObjectGetFlag(CHARACTERGUID_S_TUT_Humans_Female_Magister_Priest_000_9d17cf06-6fad-49a8-82de-54518a9bf5df, "GoneToStorageDeck", 0)
+THEN
+SetOnStage(CHARACTERGUID_S_TUT_Humans_Female_Magister_Priest_000_9d17cf06-6fad-49a8-82de-54518a9bf5df, 1);
+ProcCharacterMoveTo(CHARACTERGUID_S_TUT_Humans_Female_Magister_Priest_000_9d17cf06-6fad-49a8-82de-54518a9bf5df, TRIGGERGUID_DC_TP_StorageDeck_Upstairs_75e1fd09-cfa3-4f64-9c6e-04aa8c064000, 0, "DC_SiwanToLowerDeck");
+
+
+IF
+StoryEvent(_, "DC_SiwanToLowerDeck")
+THEN
+PlaySound(ITEMGUID_S_DC_TheHold_Hatch_81b44bff-98cc-4479-a806-0d3aecac8bf4, "Item_Door_Wood_A_Open");
+ObjectSetFlag(CHARACTERGUID_S_TUT_Humans_Female_Magister_Priest_000_9d17cf06-6fad-49a8-82de-54518a9bf5df, "GoneToStorageDeck");
+GlobalSetFlag("DC_TUT_ReadyInDecks");
+SetOnStage(CHARACTERGUID_S_TUT_Humans_Female_Magister_Priest_000_9d17cf06-6fad-49a8-82de-54518a9bf5df, 0);
+
+IF
+CharacterEnteredTrigger(_Player, TRIGGERGUID_DC_TUT_LowerStorage_eca1e529-ca37-4085-a597-b11621a40116)
+AND
+DB_IsPlayer(_Player)
+AND
+GetClosestAlivePlayer(CHARACTERGUID_DC_Malady_UnderCover_000_ccadbe62-57fc-4b3d-8469-f9787c988789, _Player, _Dist)
+AND
+GlobalGetFlag("DC_TUT_ReadyInDecks", 1)
+THEN
+Proc_StartDialog(0, "DC_TUT_ReturnToAltar", CHARACTERGUID_S_TUT_Humans_Female_Magister_Priest_001_bbc7005f-d9c6-4d4a-832b-3536c6c0a085, CHARACTERGUID_DC_Malady_UnderCover_000_ccadbe62-57fc-4b3d-8469-f9787c988789, _Player);
+GlobalClearFlag("DC_TUT_ReadyInDecks");
+
+IF
+DialogEnded("DC_TUT_ReturnToAltar", _ID)
+AND
+GetPosition(CHARACTERGUID_S_TUT_Humans_Female_Magister_Priest_001_bbc7005f-d9c6-4d4a-832b-3536c6c0a085, _X, _Y, _Z)
+THEN
+CharacterSetAnimationOverride(CHARACTERGUID_S_TUT_Humans_Female_Magister_Priest_001_bbc7005f-d9c6-4d4a-832b-3536c6c0a085,"");
+PlayAnimation(CHARACTERGUID_S_TUT_Humans_Female_Magister_Priest_001_bbc7005f-d9c6-4d4a-832b-3536c6c0a085,"skill_prepare_soul_01_start","DC_TUT_Malady_BeginCast");
+PlayEffectAtPosition("RS3_FX_GP_ScriptedEvent_HOE_Channel_Spell_StepB_01", _X, _Y, _Z);
+TimerLaunch("DC_TUT_SiwanTeleportsAway", 2500);
+
+
+IF
+StoryEvent(_,"DC_TUT_Malady_BeginCast")
+AND
+GetPosition(CHARACTERGUID_S_TUT_Humans_Female_Magister_Priest_001_bbc7005f-d9c6-4d4a-832b-3536c6c0a085, _X, _Y, _Z)
+THEN
+CharacterSetAnimationOverride(CHARACTERGUID_S_TUT_Humans_Female_Magister_Priest_001_bbc7005f-d9c6-4d4a-832b-3536c6c0a085,"skill_prepare_soul_01_loop");
+PlayEffect(CHARACTERGUID_S_TUT_Humans_Female_Magister_Priest_001_bbc7005f-d9c6-4d4a-832b-3536c6c0a085, "RS3_FX_GP_ScriptedEvent_ChanelledSource_01");
+PlayEffectAtPosition("RS3_FX_GP_ScriptedEvent_HOE_Channel_Spell_StepB_01", _X, _Y, _Z);
+
+IF
+TimerFinished("DC_TUT_SiwanTeleportsAway")
+AND
+GetPosition(CHARACTERGUID_S_TUT_Humans_Female_Magister_Priest_001_bbc7005f-d9c6-4d4a-832b-3536c6c0a085, _X, _Y, _Z)
+THEN
+PlayEffectAtPosition("RS3_FX_GP_ScriptedEvent_ARX_Ending_Boom_01", _X, _Y, _Z);
+PlayAnimation(CHARACTERGUID_DC_Malady_UnderCover_000_ccadbe62-57fc-4b3d-8469-f9787c988789,"skill_prepare_soul_01_start","DC_TUT_Malady_BeginCast");
+TimerLaunch("DC_TUT_SiwanTeleportsAway2", 600);
+
+IF
+TimerFinished("DC_TUT_SiwanTeleportsAway2")
+AND
+DB_DC_TUT_LowerDecks_Barrels(_Barrels)
+THEN
+ItemDestroy((ITEMGUID)_Barrels);
+PlayEffect(CHARACTERGUID_DC_Malady_UnderCover_000_ccadbe62-57fc-4b3d-8469-f9787c988789, "RS3_FX_Skills_Soul_LastRites_Disappear_Overlay_01");
+PlayEffect(CHARACTERGUID_S_TUT_Humans_Female_Magister_Priest_001_bbc7005f-d9c6-4d4a-832b-3536c6c0a085, "RS3_FX_Skills_Soul_LastRites_Disappear_Overlay_01");
+PlayEffect(CHARACTERGUID_DC_Malady_UnderCover_000_ccadbe62-57fc-4b3d-8469-f9787c988789, "RS3_FX_GP_ScriptedEvent_HOE_AcquireSourceVampirism_01");
+PlayEffect(CHARACTERGUID_S_TUT_Humans_Female_Magister_Priest_001_bbc7005f-d9c6-4d4a-832b-3536c6c0a085, "RS3_FX_GP_ScriptedEvent_HOE_AcquireSourceVampirism_01");
+TimerLaunch("DC_TUT_SiwanTeleportsAway3", 1100);
+
+IF
+TimerFinished("DC_TUT_SiwanTeleportsAway3")
+THEN
+Poof(CHARACTERGUID_DC_Malady_UnderCover_000_ccadbe62-57fc-4b3d-8469-f9787c988789, "DC_TUT_TimeTravelersOffStage");
+Poof(CHARACTERGUID_S_TUT_Humans_Female_Magister_Priest_001_bbc7005f-d9c6-4d4a-832b-3536c6c0a085, "");
+GlobalClearFlag("DC_TUT_ReadyInDecks");
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "Tutorial_PrisonShip"

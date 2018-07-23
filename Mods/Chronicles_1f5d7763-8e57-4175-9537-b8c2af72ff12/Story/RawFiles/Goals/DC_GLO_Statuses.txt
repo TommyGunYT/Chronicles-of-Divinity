@@ -1,0 +1,50 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+DB_DC_ReflectableStatuses("BURNING");
+DB_DC_ReflectableStatuses("CHILLED");
+DB_DC_ReflectableStatuses("SHOCKED");
+DB_DC_ReflectableStatuses("POISONED");
+DB_DC_ReflectableStatuses("BLEEDING");
+DB_DC_ReflectableStatuses("ACID");
+DB_DC_ReflectableStatuses("SUFFOCATING");
+KBSECTION
+// IF PLAYER HAS DEFLECTION; REFLECT STATUS TO CASTER
+
+IF
+CharacterStatusApplied(_Char,_Status,(CHARACTERGUID)_Causee)
+AND
+DB_DC_ReflectableStatuses(_Status)
+AND
+HasActiveStatus(_Char,"STATUS_DEFLECTION",1)
+AND
+Random(4, _int)
+AND
+_int == 1
+AND 
+HasActiveStatus(_Causee,_Status,0)
+AND
+CharacterIsAlly(_Causee,_Char,0)
+AND
+CharacterIsDead(_Causee,0)
+THEN
+ApplyStatus(_Causee,_Status,12.0,1);
+
+
+// EXTRA BLOOD SPILLED IF BLEEDING
+IF
+ObjectTurnStarted((CHARACTERGUID)_Enemy)
+AND
+DB_DC_EnemyCombatant_Library(_Enemy)
+AND
+HasActiveStatus((CHARACTERGUID)_Enemy, "BLEEDING", 1)
+AND
+Random(100, _BleedChance)
+AND
+_BleedChance <= 50
+THEN
+CreatePuddle((CHARACTERGUID)_Enemy, "SurfaceBlood", 5, 25, 5, 10, 0.05);
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "Start"

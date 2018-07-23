@@ -1,0 +1,48 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+IF
+RegionStarted("FJ_FortJoy_Main")
+THEN
+TriggerSetAtmosphere(TRIGGERGUID_DC_ATM_Main_6ab4ffc5-82c3-46b0-9f8b-b0e9472572a7, "72dbd550-ca72-40f6-942a-fe7633cd7a4f");
+
+
+// STORMY WEATHER
+
+
+IF
+CharacterUsedItem(_Player, ITEMGUID_PUZ_Lever_Floor_A_000_5328bb24-d012-4f8f-87f2-a3eef1848c0c)
+THEN
+Proc_DC_Story_FTJ_BoatBuilt();
+
+
+IF
+CharacterUsedItem(_Player, ITEMGUID_PUZ_Lever_Floor_A_000_5328bb24-d012-4f8f-87f2-a3eef1848c0c)
+THEN
+Proc_DC_FTJ_Weather_Storm();
+
+PROC
+Proc_DC_FTJ_Weather_Storm()
+THEN
+TriggerSetAtmosphere(TRIGGERGUID_DC_ATM_Main_6ab4ffc5-82c3-46b0-9f8b-b0e9472572a7, "0a5c3f9a-a5c5-460b-9d5a-f8fc3d31c1b4");
+
+
+// VISION ATMOSPHERE
+
+
+IF
+CharacterUsedItem(_Player, ITEMGUID_PUZ_Lever_Floor_B_000_95865483-dbe9-440e-b482-f634a24d0ffd)
+THEN
+Proc_DC_FTJ_Weather_Vision();
+
+
+PROC
+Proc_DC_FTJ_Weather_Vision()
+THEN
+TriggerSetAtmosphere(TRIGGERGUID_DC_ATM_Main_6ab4ffc5-82c3-46b0-9f8b-b0e9472572a7, "37b5be15-19e2-4a75-9ab6-f011182ed8e6");
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "FortJoy"

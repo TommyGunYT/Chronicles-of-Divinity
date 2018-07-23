@@ -1,0 +1,121 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+// GET PLAYER NAME FOR DIALOGUES
+
+IF
+DialogStarted(_Dialogue, _Instance)
+AND
+DB_Dialogs(_NPC, _Dialogue)
+AND
+DialogGetInvolvedPlayer(_Instance, 1, (CHARACTERGUID)_Player)
+AND
+CharacterGetDisplayName((CHARACTERGUID)_Player, _Handle, _Ref)
+THEN
+DialogSetVariableStringForInstance(_Instance, "DC_GetName_abf7b032-1cc1-4341-a79c-649635affb10", _Ref);
+
+
+
+
+//REGION QUERIES
+
+QRY
+QRY_DC_GetPlayerStats((CHARACTERGUID)_Player)
+AND
+CharacterGetAttribute((CHARACTERGUID)_Player, "Intelligence", _Intelligence)
+AND
+CharacterGetAttribute((CHARACTERGUID)_Player, "Strength", _Strength)
+AND
+CharacterGetAttribute((CHARACTERGUID)_Player, "Finesse", _Finesse)
+AND
+CharacterGetAttribute((CHARACTERGUID)_Player, "Wits", _Wits)
+AND
+CharacterGetAttribute((CHARACTERGUID)_Player, "Constitution", _Constitution)
+THEN
+NOT DB_DC_Systems_CurrentStats((CHARACTERGUID)_Player, _Intelligence, _Strength, _Finesse, _Wits, _Constitution);
+DB_DC_Systems_CurrentStats((CHARACTERGUID)_Player, _Intelligence, _Strength, _Finesse, _Wits, _Constitution);
+
+QRY
+QRY_DC_GetPlayerStats(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd)
+AND
+CharacterGetAttribute(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, "Intelligence", _Int)
+AND
+CharacterGetAttribute(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, "Strength", _Str)
+AND
+CharacterGetAttribute(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, "Finesse", _Fin)
+AND
+CharacterGetAttribute(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, "Wits", _Wit)
+AND
+CharacterGetAttribute(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, "Constitution", _Con)
+AND
+IntegerSubtract(_Int, 10, _Intelligence)
+AND
+IntegerSubtract(_Str, 10, _Strength)
+AND
+IntegerSubtract(_Fin, 10, _Finesse)
+AND
+IntegerSubtract(_Wit, 10, _Wits)
+AND
+IntegerSubtract(_Con, 10, _Constitution)
+THEN
+NOT DB_DC_Systems_CurrentStats(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, _Intelligence, _Strength, _Finesse, _Wits, _Constitution);
+DB_DC_Systems_CurrentStats(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, _Intelligence, _Strength, _Finesse, _Wits, _Constitution);
+
+//END_REGION
+
+
+PROC
+PROC_DC_GiveBook()
+AND
+DB_IsPlayer(_Character)
+AND
+ItemTemplateIsInCharacterInventory(_Character, "DC_Debug_Book_b7e7be57-2940-4260-885f-af92912b1657", 0)
+THEN
+//ItemTemplateAddTo("DC_Debug_Book_b7e7be57-2940-4260-885f-af92912b1657", _Character, 1);
+DB_NOOP(1);
+
+IF
+CharacterUsedItemTemplate(_Character, "DC_Debug_Book_b7e7be57-2940-4260-885f-af92912b1657", _Item)
+THEN
+Proc_StartDialog(0, "DC_DebugSetup", _Item, _Character);
+ObjectSetFlag(_Character,"DEBUG_GiveBook");
+
+
+IF
+ObjectEnteredCombat(_Enemy, _ID)
+AND
+NOT DB_IsPlayer((CHARACTERGUID)_Enemy)
+THEN
+DB_DC_EnemyCombatant_Library(_Enemy);
+
+IF
+ObjectLeftCombat(_Enemy, _ID)
+AND
+DB_DC_EnemyCombatant_Library((CHARACTERGUID)_Enemy)
+THEN
+ProcObjectTimer((CHARACTERGUID)_Enemy, "CleanOutDB", 2000);
+
+PROC
+ProcObjectTimerFinished(_Enemy, "CleanOutDB")
+THEN
+NOT DB_DC_EnemyCombatant_Library((CHARACTERGUID)_Enemy);
+
+
+
+IF
+CharacterLearnedSkill(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, (STRING)_Skill)
+THEN
+DB_DC_ORIGIN_KARA_SKILLS((STRING)_Skill);
+
+IF
+SkillDeactivated(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, (STRING)_Skill)
+AND
+DB_DC_ORIGIN_KARA_SKILLS((STRING)_Skill)
+THEN
+NOT DB_DC_ORIGIN_KARA_SKILLS((STRING)_Skill);
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "Start"

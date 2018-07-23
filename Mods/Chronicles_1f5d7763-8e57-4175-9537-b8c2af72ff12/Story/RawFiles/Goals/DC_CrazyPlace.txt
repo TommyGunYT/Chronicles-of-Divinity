@@ -1,0 +1,25 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+DB_CheckLevelStart("DC_CrazyPlace");
+KBSECTION
+IF
+RegionStarted("DC_CrazyPlace")
+THEN
+GoalCompleted;
+
+IF
+DB_CheckLevelStart("DC_CrazyPlace")
+AND
+DB_CurrentLevel("DC_CrazyPlace")
+THEN
+GoalCompleted;
+
+IF
+DB_DC_LVStart("DC_CrazyPlace")
+THEN
+GoalCompleted;
+EXITSECTION
+NOT DB_CheckLevelStart("DC_CrazyPlace");
+ENDEXITSECTION
+ParentTargetEdge "Start"

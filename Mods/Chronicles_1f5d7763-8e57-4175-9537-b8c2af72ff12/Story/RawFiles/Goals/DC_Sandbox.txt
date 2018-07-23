@@ -1,0 +1,25 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+DB_CheckLevelStart("DC_Sandbox");
+KBSECTION
+IF
+RegionStarted("DC_Sandbox")
+THEN
+GoalCompleted;
+
+IF
+DB_CheckLevelStart("DC_Sandbox")
+AND
+DB_CurrentLevel("DC_Sandbox")
+THEN
+GoalCompleted;
+
+IF
+DB_DC_LVStart("DC_Sandbox")
+THEN
+GoalCompleted;
+EXITSECTION
+NOT DB_CheckLevelStart("DC_Sandbox");
+ENDEXITSECTION
+ParentTargetEdge "Start"

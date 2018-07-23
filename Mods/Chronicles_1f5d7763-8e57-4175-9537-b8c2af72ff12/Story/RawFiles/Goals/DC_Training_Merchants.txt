@@ -1,0 +1,66 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+DB_DC_Training_MerchantLibrary(CHARACTERGUID_S_DC_Training_EquipTraider_d419a393-bebd-4dc2-a421-2d1cf1c7d9b0);
+DB_DC_Training_MerchantLibrary(CHARACTERGUID_S_DC_Training_EquipTraider_000_e29e6041-48d9-479c-81a6-f53e444c3e4e);
+DB_DC_Training_MerchantLibrary(CHARACTERGUID_DC_BrandonKMiddell_000_99b13b23-9dd5-42c7-8164-a22ef0ea908c);
+DB_DC_Training_MerchantLibrary(CHARACTERGUID_S_DC_Training_Malady_b10961db-76e6-4a4b-8e26-1f3d1eacfb66);
+KBSECTION
+PROC
+ProcObjectTimerFinished(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, "DC_TpToManor")
+THEN
+ItemTemplateAddTo("ITEMGUID_WPN_UNIQUE_ForktonguesFork_1b6dbf0b-3b8c-440b-b159-e01861933a6e", CHARACTERGUID_S_DC_Training_EquipTraider_000_e29e6041-48d9-479c-81a6-f53e444c3e4e, 1);
+ItemTemplateAddTo("ITEMGUID_WPN_UNIQUE_PhysicalWand_1df95360-c05b-416c-b116-88ca335aaca0", CHARACTERGUID_S_DC_Training_EquipTraider_000_e29e6041-48d9-479c-81a6-f53e444c3e4e, 1);
+ItemTemplateAddTo("ITEMGUID_WPN_UNIQUE_PortalWand_fe519869-6a0b-492a-9699-0b812b43eedd", CHARACTERGUID_S_DC_Training_EquipTraider_000_e29e6041-48d9-479c-81a6-f53e444c3e4e, 1);
+ItemTemplateAddTo("ITEMGUID_WPN_UNIQUE_PrayerSword_3a290e34-29d9-412e-895c-f40ed46a2907", CHARACTERGUID_S_DC_Training_EquipTraider_000_e29e6041-48d9-479c-81a6-f53e444c3e4e, 1);
+ItemTemplateAddTo("ITEMGUID_WPN_UNIQUE_OldSpoony_ecb49f05-e432-4d1f-82a6-b0dafcd50a95", CHARACTERGUID_S_DC_Training_EquipTraider_000_e29e6041-48d9-479c-81a6-f53e444c3e4e, 1);
+ItemTemplateAddTo("ITEMGUID_WPN_UNIQUE_MagicStaff_239a05d6-1957-406d-8a83-47debd49ce2d", CHARACTERGUID_S_DC_Training_EquipTraider_000_e29e6041-48d9-479c-81a6-f53e444c3e4e, 1);
+ItemTemplateAddTo("ITEMGUID_WPN_UNIQUE_GreaterRodOfCollection_fde516df-9f71-4ebc-8e57-d09b9ea84745", CHARACTERGUID_S_DC_Training_EquipTraider_000_e29e6041-48d9-479c-81a6-f53e444c3e4e, 1);
+ItemTemplateAddTo("ITEMGUID_WPN_UNIQUE_EpicToySword_883203c9-75b2-4f9e-b04d-45d1a88cc721", CHARACTERGUID_S_DC_Training_EquipTraider_000_e29e6041-48d9-479c-81a6-f53e444c3e4e, 1);
+ItemTemplateAddTo("ITEMGUID_WPN_UNIQUE_DaggerSpear_8730e233-3366-428b-8054-6a8293f40680", CHARACTERGUID_S_DC_Training_EquipTraider_000_e29e6041-48d9-479c-81a6-f53e444c3e4e, 1);
+ItemTemplateAddTo("ITEMGUID_WPN_UNIQUE_AdvocateSword_e7696f68-3d52-4abc-b161-c78129e3e7c8", CHARACTERGUID_S_DC_Training_EquipTraider_000_e29e6041-48d9-479c-81a6-f53e444c3e4e, 1);
+ItemTemplateAddTo("ITEMGUID_WPN_UNIQUE_BullyClub_3c39d39d-9ce7-41a2-8762-5a17f917b5dc", CHARACTERGUID_S_DC_Training_EquipTraider_000_e29e6041-48d9-479c-81a6-f53e444c3e4e, 1);
+ItemTemplateAddTo("ITEMGUID_WPN_UNIQUE_QannaStaff_18ac2295-c362-457f-880e-ec88e9f5a1a6", CHARACTERGUID_S_DC_Training_EquipTraider_000_e29e6041-48d9-479c-81a6-f53e444c3e4e, 1);
+ItemTemplateAddTo("ITEMGUID_WPN_UNIQUE_QuickBow_f894659f-56f2-4eea-b58b-553299fe2d92", CHARACTERGUID_S_DC_Training_EquipTraider_000_e29e6041-48d9-479c-81a6-f53e444c3e4e, 1);
+ItemTemplateAddTo("ITEMGUID_WPN_UNIQUE_ReflectorShield_7281288d-69da-4cf7-9dc5-91eb033aa5f1", CHARACTERGUID_S_DC_Training_EquipTraider_000_e29e6041-48d9-479c-81a6-f53e444c3e4e, 1);
+ItemTemplateAddTo("ITEMGUID_WPN_UNIQUE_RodOfCollection_6bafb55a-7c81-4993-be93-fce351205123", CHARACTERGUID_S_DC_Training_EquipTraider_000_e29e6041-48d9-479c-81a6-f53e444c3e4e, 1);
+ItemTemplateAddTo("ITEMGUID_WPN_UNIQUE_RuneBlade_395a57ca-6f28-4e34-9a77-9658b66633d7", CHARACTERGUID_S_DC_Training_EquipTraider_000_e29e6041-48d9-479c-81a6-f53e444c3e4e, 1);
+ItemTemplateAddTo("ITEMGUID_WPN_UNIQUE_RustClaw_17858205-52cd-4848-b2cb-c0a99174a453", CHARACTERGUID_S_DC_Training_EquipTraider_000_e29e6041-48d9-479c-81a6-f53e444c3e4e, 1);
+ItemTemplateAddTo("ITEMGUID_WPN_UNIQUE_SabotogeXbow_4e229e8e-318d-4d95-bb72-cf4a1881c783", CHARACTERGUID_S_DC_Training_EquipTraider_000_e29e6041-48d9-479c-81a6-f53e444c3e4e, 1);
+ItemTemplateAddTo("ITEMGUID_WPN_UNIQUE_ScytheOfStrife_9fa07762-1ace-410e-a319-ad5cb1fe8648", CHARACTERGUID_S_DC_Training_EquipTraider_000_e29e6041-48d9-479c-81a6-f53e444c3e4e, 1);
+ItemTemplateAddTo("ITEMGUID_WPN_UNIQUE_WandOfEnslavement_79439704-561c-42f1-ab92-d980c18efab6", CHARACTERGUID_S_DC_Training_EquipTraider_000_e29e6041-48d9-479c-81a6-f53e444c3e4e, 1);
+ItemTemplateAddTo("ITEMGUID_FUR_Humans_Camping_Sleepingbag_B_4d7216c9-c21e-4ab0-b98e-97d744798912", CHARACTERGUID_S_DC_Training_EquipTraider_d419a393-bebd-4dc2-a421-2d1cf1c7d9b0, 2);
+ItemTemplateAddTo("ITEMGUID_TOOL_IdentifyingGlass_A_32288ce4-3d8d-46b3-a655-598350a96201", CHARACTERGUID_S_DC_Training_EquipTraider_d419a393-bebd-4dc2-a421-2d1cf1c7d9b0, 2);
+
+
+IF
+CharacterLeveledUp(_Player)
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+IntegerProduct(_Level, 150, _Gold)
+AND
+IsGameLevel("DC_Snowfall", 1)
+THEN
+ItemTemplateAddTo("ITEMGUID_S_DC_LOOT_Source_Shard_4816d0a9-2133-4ef9-93e1-f43fc0e92f0f", CHARACTERGUID_S_DC_Training_EquipTraider_d419a393-bebd-4dc2-a421-2d1cf1c7d9b0, 2);
+CharacterAddGold(CHARACTERGUID_S_DC_Training_EquipTraider_d419a393-bebd-4dc2-a421-2d1cf1c7d9b0, _Gold);
+
+PROC
+Proc_DC_Training_CleanUp()
+AND
+DB_DC_Training_MerchantLibrary(_Merchant)
+AND
+CharacterIsDead((CHARACTERGUID)_Merchant, 1)
+THEN
+CharacterResurrect(_Merchant);
+
+PROC
+ProcRegionEnded("DC_Snowfall")
+THEN
+GoalCompleted;
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "DC_Snowfall"

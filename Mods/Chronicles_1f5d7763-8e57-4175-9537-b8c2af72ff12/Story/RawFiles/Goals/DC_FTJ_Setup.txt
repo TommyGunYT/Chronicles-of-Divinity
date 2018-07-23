@@ -1,0 +1,15 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+// TO CHECK WHEN ITEMS ARE PUT ON / TAKEN OFF THE SOURCE FORGE
+DB_DC_ItemScalingAreas_Event(TRIGGERGUID_DC_FTJ_ItemScaling_EntryBox_3d314ffd-cd44-460b-9f5c-f36e59d77856);
+
+// TO CHECK WHEN ITEMS ARE ON SOURCE FORGE
+DB_DC_ItemScalingAreas_Check(TRIGGERGUID_DC_FTJ_ItemScaling_CheckBox_8b17befd-87ec-4bac-ae5d-7c96d4a4bcae);
+KBSECTION
+
+EXITSECTION
+NOT DB_DC_ItemScalingAreas_Check(TRIGGERGUID_DC_FTJ_ItemScaling_CheckBox_8b17befd-87ec-4bac-ae5d-7c96d4a4bcae);
+NOT DB_DC_ItemScalingAreas_Event(TRIGGERGUID_DC_FTJ_ItemScaling_EntryBox_3d314ffd-cd44-460b-9f5c-f36e59d77856);
+ENDEXITSECTION
+ParentTargetEdge "FortJoy"

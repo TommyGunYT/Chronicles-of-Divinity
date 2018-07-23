@@ -1,0 +1,483 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+DB_DC_ComposerDialogs("DC_CombatTraining_Guardian_2");
+DB_DC_ComposerDialogs("DC_CombatTraining_Guardian_Preparation");
+DB_DC_ComposerDialogs("DC_CombatTraining_Guardian_CombatIntro");
+DB_DC_ComposerDialogs("DC_CombatTraining_Guardian_TrialFinish");
+KBSECTION
+//REGION SETUP
+
+IF
+DialogEnded("DC_CombatTraining_Guardian_Preparation", _ID)
+AND
+DB_IsPlayer(_Player)
+AND
+DialogGetInvolvedPlayer(_ID, 1, _Speaker)
+AND
+ObjectGetFlag(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, "DC_Training_StartCombatEvent", 1)
+AND
+CharacterGetReservedUserID((CHARACTERGUID)_Speaker, _User)
+THEN
+ObjectClearFlag(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, "DC_Training_StartCombatEvent");
+Proc_DC_Training_RandomEncounterGeneration();
+
+PROC
+Proc_DC_Training_RandomEncounterGeneration()
+AND
+Random(6, _Random)
+THEN
+SysClear("DB_DC_Training_RandomFight", 1);
+NOT DB_DC_Training_RandomFight(_Random);
+DB_DC_Training_RandomFight((INTEGER)_Random);
+
+
+
+IF
+DB_DC_Training_RandomFight((INTEGER)_Random)
+AND
+_Random == 0
+AND
+DB_DC_ComposerDialogs(_Dialogue)
+THEN
+NOT DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, _Dialogue);
+SetOnStage(CHARACTERGUID_DC_NPC_TheGuardian_Male_002_a2a6a515-bf47-4efd-bf40-6c2c53546f99, 0);
+PROC_RemoveDialogFromCharacter(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e);
+DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e,"DC_CombatTraining_Guardian_CombatIntro");
+CharacterTeleportPartiesToTrigger(TRIGGERGUID_DC_TP_Training_CentralArena_d5cffbf1-4c40-428c-ab88-f2ca1d1e2787, "DC_Training_InitiateWavesDialogue");
+TeleportTo(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, TRIGGERGUID_DC_TP_Training_ComposerAtCentralArena_a177d2a2-1f7c-4492-9c4e-54424ab53fa5, "", 1);
+NOT DB_DC_Training_RandomFight(0);
+GlobalSetFlag("DC_Training_Encounters_Hatchling_Wave");
+
+IF
+StoryEvent(_, "DC_Training_InitiateWavesDialogue")
+AND
+DB_IsPlayer(_Player)
+THEN
+Proc_StartDialog(0, "DC_CombatTraining_Guardian_CombatIntro", CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, _Player);
+
+IF
+DialogEnded("DC_CombatTraining_Guardian_CombatIntro", _ID)
+AND
+GlobalGetFlag("DC_Training_Encounters_Hatchling_Wave", 1)
+AND
+DB_IsPlayer(_Player)
+AND
+DialogGetInvolvedPlayer(_ID, 1, _Speaker)
+AND
+ObjectGetFlag(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, "StartCombat", 1)
+AND
+CharacterGetReservedUserID((CHARACTERGUID)_Speaker, _User)
+THEN
+Proc_DC_Training_WavesEncounter_Spawn();
+ObjectClearFlag(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, "StartCombat");
+
+//END_REGION
+
+
+//REGION ONE: Waves of Hatchlings
+
+
+
+// WAVE ONE
+
+PROC
+Proc_DC_Training_WavesEncounter_Spawn()
+AND
+GlobalGetFlag("DC_Training_Encounters_Hatchling_Wave1", 0)
+THEN
+GlobalSetFlag("DC_Training_Encounters_Hatchling_Wave1");
+Proc_DB_DC_Training_SpawnEnemy_One();
+Proc_DB_DC_Training_SpawnEnemy_Two();
+Proc_DB_DC_Training_SpawnEnemy_Three();
+Proc_DB_DC_Training_SpawnEnemy_Four();
+Proc_DC_Training_TeleportComposerToManor_Idle();
+DB_DC_Training_WaveController("Wave One");
+
+
+IF
+CombatEnded(_ID)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_Training_WaveController("Wave One")
+AND
+DB_DC_TrainingCombat_SpawnedEnemies(_Voidling)
+AND
+CharacterIsDead(_Voidling, 1)
+THEN
+TimerLaunch("DC_Training_Waves_One", 15000);
+NOT DB_DC_TrainingCombat_SpawnedEnemies(_Voidling);
+GlobalClearFlag("DC_Training_Encounters_Hatchling_Wave1");
+OpenMessageBox(_Player, "New wave in 15 seconds.");
+
+
+// WAVE TWO
+
+IF
+TimerFinished("DC_Training_Waves_One")
+AND
+DB_DC_Training_WaveController("Wave One")
+THEN
+Proc_DB_DC_Training_SpawnEnemy_One();
+Proc_DB_DC_Training_SpawnEnemy_Two();
+Proc_DB_DC_Training_SpawnEnemy_Three();
+Proc_DB_DC_Training_SpawnEnemy_Four();
+Proc_DB_DC_Training_SpawnEnemy_Five();
+Proc_DB_DC_Training_SpawnEnemy_Six();
+NOT DB_DC_Training_WaveController("Wave One");
+DB_DC_Training_WaveController("Wave Two");
+TimerLaunch("DC_Training_WaveCombat_Voids_Levelup", 650);
+
+IF
+CombatEnded(_ID)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_Training_WaveController("Wave Two")
+AND
+DB_DC_TrainingCombat_SpawnedEnemies(_Voidling)
+AND
+CharacterIsDead(_Voidling, 1)
+THEN
+TimerLaunch("DC_Training_Waves_Two", 15000);
+NOT DB_DC_TrainingCombat_SpawnedEnemies(_Voidling);
+OpenMessageBox(_Player, "New wave in 15 seconds.");
+
+IF
+TimerFinished("DC_Training_Waves_Two")
+AND
+DB_DC_Training_WaveController("Wave Two")
+THEN
+Proc_DB_DC_Training_SpawnEnemy_One();
+Proc_DB_DC_Training_SpawnEnemy_Two();
+Proc_DB_DC_Training_SpawnEnemy_Three();
+Proc_DB_DC_Training_SpawnEnemy_Four();
+Proc_DB_DC_Training_SpawnEnemy_Five();
+Proc_DB_DC_Training_SpawnEnemy_Six();
+Proc_DB_DC_Training_SpawnEnemy_Seven();
+Proc_DB_DC_Training_SpawnEnemy_Eight();
+Proc_DB_DC_Training_SpawnEnemy_Nine();
+NOT DB_DC_Training_WaveController("Wave Two");
+DB_DC_Training_WaveController("Wave Three");
+TimerLaunch("DC_Training_WaveCombat_Voids_Levelup", 850);
+
+
+
+
+
+
+
+IF
+CombatEnded(_ID)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_TrainingCombat_SpawnedEnemies(_Voidling)
+AND
+DB_DC_Training_WaveController("Wave Three")
+AND
+DB_DC_ComposerDialogs(_Dialogues)
+THEN
+NOT DB_DC_TrainingCombat_SpawnedEnemies(_Voidling);
+NOT DB_DC_Training_WaveController("Wave Three");
+GlobalSetFlag("DC_TrialFinish_Hatchlings");
+SysClear("DB_DC_TrainingCombat_SpawnedEnemies", 1);
+NOT DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, _Dialogues);
+PROC_RemoveDialogFromCharacter(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e);
+DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e,"DC_CombatTraining_Guardian_TrialFinish");
+Proc_TeleportSmoke(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e);
+TeleportTo(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, TRIGGERGUID_DC_TP_Training_ComposerAtCentralArena_a177d2a2-1f7c-4492-9c4e-54424ab53fa5, "DC_CombatTraining_Guardian_TrialFinish", 1);
+
+//END_REGION
+
+//END_REGION
+
+//REGION ENEMY SPAWN PROCS
+
+
+PROC
+Proc_DB_DC_Training_SpawnEnemy_One()
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_Encounter1_RNDBox_d1167df2-826f-49e9-9565-cb1406e28d74, _X, _Y, _Z)
+AND
+CharacterCreateAtPosition(_X, _Y, _Z, "CHARACTERGUID_TUT_Creatures_Voidwoken_Hatchling_d3d153ae-4f4c-4d15-9082-2a8208831626", 1, _Voidling)
+THEN
+SetFaction(_Voidling, "Evil NPC");
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Voidling);
+TimerLaunch("DC_Training_WaveCombat_Voids_Levelup", 600);
+
+PROC
+Proc_DB_DC_Training_SpawnEnemy_Two()
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_Encounter1_RNDBox_d1167df2-826f-49e9-9565-cb1406e28d74, _X2, _Y2, _Z2)
+AND
+CharacterCreateAtPosition(_X2, _Y2, _Z2, "CHARACTERGUID_TUT_Creatures_Voidwoken_Hatchling_d3d153ae-4f4c-4d15-9082-2a8208831626", 1, _Voidling)
+THEN
+SetFaction(_Voidling, "Evil NPC");
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Voidling);
+ApplyStatus((CHARACTERGUID)_Voidling,"INFECTIOUS_DISEASED",-1.0,1);
+
+PROC
+Proc_DB_DC_Training_SpawnEnemy_Three()
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_Encounter1_RNDBox_d1167df2-826f-49e9-9565-cb1406e28d74, _X3, _Y3, _Z3)
+AND
+CharacterCreateAtPosition(_X3, _Y3, _Z3, "CHARACTERGUID_TUT_Creatures_Voidwoken_Hatchling_d3d153ae-4f4c-4d15-9082-2a8208831626", 1, _Voidling)
+THEN
+SetFaction(_Voidling, "Evil NPC");
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Voidling);
+
+PROC
+Proc_DB_DC_Training_SpawnEnemy_Four()
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_Encounter1_RNDBox_d1167df2-826f-49e9-9565-cb1406e28d74, _X, _Y, _Z)
+AND
+CharacterCreateAtPosition(_X, _Y, _Z, "CHARACTERGUID_TUT_Creatures_Voidwoken_Hatchling_d3d153ae-4f4c-4d15-9082-2a8208831626", 1, _Voidling)
+THEN
+SetFaction(_Voidling, "Evil NPC");
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Voidling);
+
+PROC
+Proc_DB_DC_Training_SpawnEnemy_Five()
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_Encounter1_RNDBox_d1167df2-826f-49e9-9565-cb1406e28d74, _X, _Y, _Z)
+AND
+CharacterCreateAtPosition(_X, _Y, _Z, "CHARACTERGUID_TUT_Creatures_Voidwoken_Hatchling_d3d153ae-4f4c-4d15-9082-2a8208831626", 1, _Voidling)
+THEN
+SetFaction(_Voidling, "Evil NPC");
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Voidling);
+ApplyStatus((CHARACTERGUID)_Voidling,"CURSED",-1.0,1);
+
+PROC
+Proc_DB_DC_Training_SpawnEnemy_Six()
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+_Level >= 4
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_Encounter1_RNDBox_d1167df2-826f-49e9-9565-cb1406e28d74, _X, _Y, _Z)
+AND
+CharacterCreateAtPosition(_X, _Y, _Z, "CHARACTERGUID_DC_Creature_Voidling_Explo_00f613f1-ae2a-4581-ac1c-e3bb027b4d85", 1, _Voidling)
+THEN
+SetFaction(_Voidling, "Evil NPC");
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Voidling);
+
+PROC
+Proc_DB_DC_Training_SpawnEnemy_Seven()
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+_Level >= 5
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_Encounter1_RNDBox_d1167df2-826f-49e9-9565-cb1406e28d74, _X, _Y, _Z)
+AND
+CharacterCreateAtPosition(_X, _Y, _Z, "CHARACTERGUID_DC_Voidwoken_Easy_Molespitter_Poison_c51c07aa-e257-4878-8154-4fb8ae3d75cb", 1, _Voidling)
+THEN
+SetFaction(_Voidling, "Evil NPC");
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Voidling);
+
+
+PROC
+Proc_DB_DC_Training_SpawnEnemy_Eight()
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+_Level >= 6
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_Encounter1_RNDBox_d1167df2-826f-49e9-9565-cb1406e28d74, _X, _Y, _Z)
+AND
+CharacterCreateAtPosition(_X, _Y, _Z, "CHARACTERGUID_DC_Voidwoken_Easy_Molespitter_Poison_c51c07aa-e257-4878-8154-4fb8ae3d75cb", 1, _Voidling)
+THEN
+SetFaction(_Voidling, "Evil NPC");
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Voidling);
+
+
+PROC
+Proc_DB_DC_Training_SpawnEnemy_Nine()
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+_Level >= 9
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_Encounter1_RNDBox_d1167df2-826f-49e9-9565-cb1406e28d74, _X, _Y, _Z)
+AND
+CharacterCreateAtPosition(_X, _Y, _Z, "CHARACTERGUID_DC_Creature_Voidling_Explo_00f613f1-ae2a-4581-ac1c-e3bb027b4d85", 1, _Voidling)
+THEN
+SetFaction(_Voidling, "Evil NPC");
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Voidling);
+ApplyStatus((CHARACTERGUID)_Voidling,"FIRE_IMMUNITY_AURA",-1.0,1);
+
+IF
+TimerFinished("DC_Training_WaveCombat_Voids_Levelup")
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+DB_DC_TrainingCombat_SpawnedEnemies(_Voidling)
+THEN
+CharacterLevelUpTo(_Voidling, _Level);
+EnterCombat((CHARACTERGUID)_Voidling, _Player);
+
+//END_REGION
+
+
+//END_REGION
+
+
+
+
+
+
+
+
+//REGION TWO: The Guardian Sentinels
+
+IF
+DB_DC_Training_RandomFight((INTEGER)_Random)
+AND
+_Random == 1
+AND
+DB_DC_ComposerDialogs(_Dialogue)
+THEN
+NOT DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, _Dialogue);
+PROC_RemoveDialogFromCharacter(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e);
+DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e,"DC_CombatTraining_Guardian_CombatIntro");
+CharacterTeleportPartiesToTrigger(TRIGGERGUID_DC_Training_Start_7c349835-f86f-4d47-93d1-bfbd60809979, "DC_Training_InitGuardianSentinel");
+TeleportTo(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, TRIGGERGUID_DC_TP_Composer_GuardianSentinelsINIT_92df0d9f-41cf-40c1-9a55-2945dcf2d3e3, "", 1);
+NOT DB_DC_Training_RandomFight(1);
+GlobalSetFlag("DC_Training_GuardianStatues");
+
+IF
+StoryEvent(_, "DC_Training_InitGuardianSentinel")
+AND
+DB_IsPlayer(_Player)
+THEN
+Proc_StartDialog(0, "DC_CombatTraining_Guardian_CombatIntro", CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, _Player);
+
+IF
+DialogEnded("DC_CombatTraining_Guardian_CombatIntro", _ID)
+AND
+DB_IsPlayer(_Player)
+AND
+DialogGetInvolvedPlayer(_ID, 1, _Speaker)
+AND
+ObjectGetFlag(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, "Encounter_GuardianSentinels", 1)
+AND
+CharacterGetReservedUserID((CHARACTERGUID)_Speaker, _User)
+THEN
+Proc_DC_Training_Spawn_GuardianSentinels();
+ObjectClearFlag(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, "Encounter_GuardianSentinels");
+DB_DC_Training_SentinelEncounter("Started");
+
+
+//REGION WAVE ONE
+PROC
+Proc_DC_Training_Spawn_GuardianSentinels()
+AND
+DB_DC_Training_SentinelEncounter("Started")
+THEN
+Proc_DB_DC_Training_Spawn_GuardianSentinelOne();
+Proc_DB_DC_Training_Spawn_GuardianSentinelTwo();
+DB_DC_Training_CombatStarted_Guardians(1);
+Proc_DC_TP_ComposerToFinish();
+GlobalSetFlag("DC_Training_GuardianStatues");
+SetOnStage(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, 0);
+
+IF
+CombatEnded(_ID)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_Training_CombatStarted_Guardians(1)
+AND
+DB_DC_ComposerDialogs(_Dialogue)
+AND
+DB_DC_TrainingCombat_SpawnedEnemies(_Guardian)
+AND
+DB_DC_Training_SentinelEncounter("Started")
+AND
+CharacterIsDead(_Guardian, 1)
+THEN
+SetOnStage(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, 1);
+NOT DB_DC_Training_CombatStarted_Guardians(1);
+NOT DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, _Dialogue);
+PROC_RemoveDialogFromCharacter(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e);
+DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e,"DC_CombatTraining_Guardian_TrialFinish");
+TeleportTo(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, TRIGGERGUID_DC_Training_TP_GuardianSentinel_Finish_cc727465-8039-437e-b95b-c8b640c73d80, "DC_CombatTraining_Guardian_TrialFinish", 1);
+NOT DB_DC_Training_SentinelEncounter("Started");
+//END_REGION
+
+//END_REGION
+
+
+//REGION ENEMY SPAWN PROCS
+
+PROC
+Proc_DB_DC_Training_Spawn_GuardianSentinelOne()
+AND
+DB_DC_Training_SentinelEncounter("Started")
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_SpawnTrigger_GuardianSentinels_87e149f2-d3a4-4294-a5d2-88ea73bd4cf4, _X, _Y, _Z)
+AND
+CharacterCreateAtPosition(_X, _Y, _Z, "CHARACTERGUID_DC_Statue_A_Voidwoken_B_33e57d62-72ba-45d3-819e-ed1c94cbf204", 1, _Guardian)
+THEN
+SetFaction(_Guardian, "Evil NPC");
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Guardian);
+TimerLaunch("DC_Training_WaveCombat_Levels_GuardianSentinels", 600);
+
+PROC
+Proc_DB_DC_Training_Spawn_GuardianSentinelTwo()
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+_Level >= 8
+AND
+DB_DC_Training_SentinelEncounter("Started")
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_SpawnTrigger_GuardianSentinels_87e149f2-d3a4-4294-a5d2-88ea73bd4cf4, _X2, _Y2, _Z2)
+AND
+CharacterCreateAtPosition(_X2, _Y2, _Z2, "CHARACTERGUID_DC_Statue_A_Voidwoken_B_33e57d62-72ba-45d3-819e-ed1c94cbf204", 1, _Guardian)
+THEN
+SetFaction(_Guardian, "Evil NPC");
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Guardian);
+
+IF
+TimerFinished("DC_Training_WaveCombat_Levels_GuardianSentinels")
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_Training_SentinelEncounter("Started")
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+DB_DC_TrainingCombat_SpawnedEnemies(_Guardian)
+AND
+Random(50, _Random)
+AND
+IntegerSum(_Random, 30, _Armor)
+THEN
+CharacterLevelUpTo(_Guardian, _Level);
+CharacterSetArmorPercentage(_Guardian, _Armor);
+EnterCombat((CHARACTERGUID)_Guardian, _Player);
+//END_REGION
+
+PROC
+ProcRegionEnded("DC_Snowfall")
+THEN
+GoalCompleted;
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "DC_Snowfall"

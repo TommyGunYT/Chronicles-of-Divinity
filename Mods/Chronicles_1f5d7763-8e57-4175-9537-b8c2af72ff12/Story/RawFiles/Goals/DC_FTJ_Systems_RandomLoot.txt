@@ -1,0 +1,294 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+DB_DC_FTJ_WorldChests_Skillbooks("ITEMGUID_BOOK_Skill_Air_SmokeCover_74adc1a7-7dc7-420d-8ba1-e71efb07d886", 1);
+DB_DC_FTJ_WorldChests_Skillbooks("ITEMGUID_BOOK_Skill_Air_LightningBolt_8b820d2d-76ee-4ec7-a7ee-6169fc81df38", 2);
+DB_DC_FTJ_WorldChests_Skillbooks("ITEMGUID_BOOK_Skill_Air_FavourableWind_af67492d-77dd-4e07-bb06-01779c2f6b0e", 3);
+DB_DC_FTJ_WorldChests_Skillbooks("ITEMGUID_BOOK_Skill_Earth_Blank_A_59402b38-b42b-43e5-8af1-7ef64ebc9f42", 4);
+DB_DC_FTJ_WorldChests_Skillbooks("ITEMGUID_BOOK_Skill_Polymorph_ChickenTouch_e8c712ce-6927-4578-abff-742407dd3ad2", 5);
+DB_DC_FTJ_WorldChests_Skillbooks("ITEMGUID_BOOK_Skill_Ranger_FirstAid_e14201d7-3ba5-4481-a849-620a7bf5fd68", 6);
+DB_DC_FTJ_WorldChests_Skillbooks("ITEMGUID_BOOK_Skill_Summoning_RangedInfusion_ea057307-256d-4fa9-b971-1ccb8fc3c2c7", 7);
+DB_DC_FTJ_WorldChests_Skillbooks("ITEMGUID_BOOK_Skill_Warrior_BlinkStrike_86fc9d54-877f-4ad8-9e49-166a4acf6602", 8);
+DB_DC_FTJ_WorldChests_Skillbooks("ITEMGUID_BOOK_Skill_Water_ChainHeal_a4d37aea-d9b8-4ba6-bd0b-aaaad48d13aa", 9);
+DB_DC_FTJ_WorldChests_Skillbooks("ITEMGUID_BOOK_Skill_Water_Restoration_179a1a74-60db-4f34-b9cc-35905c4d1cfa", 10);
+DB_DC_FTJ_WorldChests_Skillbooks("ITEMGUID_BOOK_Skill_Earth_PoisonDart_e23f2893-1aef-44aa-8288-2eebf2a3caaa", 11);
+DB_DC_FTJ_WorldChests_Skillbooks("ITEMGUID_BOOK_Skill_Fire_LaunchExplosiveTrap_aace8d2a-5ddf-4891-9b19-d35dc9c617fb", 12);
+
+DB_DC_Randomloot_UniqueEquipments("ITEMGUID_WPN_UNIQUE_OldSpoony_ecb49f05-e432-4d1f-82a6-b0dafcd50a95", 0);
+DB_DC_Randomloot_UniqueEquipments("ITEMGUID_WPN_UNIQUE_EpicToySword_883203c9-75b2-4f9e-b04d-45d1a88cc721", 1);
+
+DB_DC_FTJ_WorldLoot("ITEMGUID_BOOK_Skill_Fire_LaunchExplosiveTrap_aace8d2a-5ddf-4891-9b19-d35dc9c617fb");
+
+
+
+// LIST OF CHESTS
+
+
+DB_DC_FTJ_WorldChests(ITEMGUID_DC_FTJ_WorldChest_000_53cff401-df4c-4523-ab61-914644792535);
+DB_DC_FTJ_WorldChests(ITEMGUID_DC_FTJ_WorldChest_001_8ab1dbb9-5425-4316-8a1a-a3d5c665ef98);
+DB_DC_FTJ_WorldChests(ITEMGUID_DC_FTJ_WorldChest_002_41a028e1-f18a-4949-a476-f790a2553262);
+DB_DC_FTJ_WorldChests(ITEMGUID_DC_FTJ_WorldChest_003_dc6d5325-d5ca-47c3-9858-27043f5575ce);
+DB_DC_FTJ_WorldChests(ITEMGUID_DC_FTJ_WorldChest_004_d7f11070-a8bd-44f6-8825-4576d28bc532);
+DB_DC_FTJ_WorldChests(ITEMGUID_DC_FTJ_WorldChest_005_05fe576d-9520-4050-9acf-e27f372c2291);
+DB_DC_FTJ_WorldChests(ITEMGUID_DC_FTJ_WorldChest_006_d4910869-7718-44d6-bd5f-0bcf485fe1ba);
+DB_DC_FTJ_WorldChests(ITEMGUID_DC_FTJ_WorldChest_007_116470af-3fd6-4f3c-b5d6-3e224c1d37fc);
+DB_DC_FTJ_WorldChests(ITEMGUID_DC_FTJ_WorldChest_008_5b5cf1d7-0327-4a36-bfb8-34a3254bfc97);
+DB_DC_FTJ_WorldChests(ITEMGUID_DC_FTJ_WorldChest_009_f767cb1d-695c-49ad-9514-24cc0f014374);
+DB_DC_FTJ_WorldChests(ITEMGUID_DC_FTJ_WorldChest_010_557243d3-0806-4970-b320-eb179ea32323);
+DB_DC_FTJ_WorldChests(ITEMGUID_DC_FTJ_WorldChest_011_9d555e42-0566-4960-b0ed-087d3f26c871);
+DB_DC_FTJ_WorldChests(ITEMGUID_DC_FTJ_WorldChest_012_a23e102a-56f4-480a-9de9-4e97ab1c83c5);
+DB_DC_FTJ_WorldChests(ITEMGUID_DC_FTJ_WorldChest_013_fb034c1e-e0ce-4e8a-93ba-d9dfc4bb8a55);
+DB_DC_FTJ_WorldChests(ITEMGUID_DC_FTJ_WorldChest_014_099426fa-bc6d-4157-bb51-9610e5acd5da);
+DB_DC_FTJ_WorldChests(ITEMGUID_DC_FTJ_WorldChest_015_712b32e5-cfd6-457d-a6e1-e3d3cdccea7d);
+DB_DC_FTJ_WorldChests(ITEMGUID_DC_FTJ_WorldChest_016_a7c9b54a-adba-4292-9ba8-b4a96dd98639);
+DB_DC_FTJ_WorldChests(ITEMGUID_DC_FTJ_WorldChest_017_56b94f2f-f15f-417a-bb31-d57ec024a553);
+DB_DC_FTJ_WorldChests(ITEMGUID_DC_FTJ_WorldChest_018_4ce87f12-a2e3-41c8-86d8-2ca89ef9090c);
+DB_DC_FTJ_WorldChests(ITEMGUID_DC_FTJ_WorldChest_019_c3d653c5-bd05-4097-ae81-e114a528cfe0);
+DB_DC_FTJ_WorldChests(ITEMGUID_DC_FTJ_WorldChest_020_f94a7a99-f858-4f21-bb65-64e4734d4ddc);
+DB_DC_FTJ_WorldChests(ITEMGUID_DC_FTJ_WorldChest_021_3f7b2da2-fe3d-4574-b9a2-1601c3402582);
+DB_DC_FTJ_WorldChests(ITEMGUID_DC_FTJ_WorldChest_022_48e98ea9-6283-4a6a-bec5-d6964171ff7f);
+DB_DC_FTJ_WorldChests(ITEMGUID_DC_FTJ_WorldChest_023_d227ecd3-c06c-4770-8e0b-5173c53f6967);
+DB_DC_FTJ_WorldChests(ITEMGUID_DC_FTJ_WorldChest_024_20747214-f78e-49cc-9cbb-3895d9b6d1df);
+DB_DC_FTJ_WorldChests(ITEMGUID_DC_FTJ_WorldChest_025_efcf2d5a-a46d-4c8f-a8fb-6f1857475168);
+
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Chest_Rich_A_000_bdd49628-cd9d-4b84-8ea2-7233ba744a0c);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Chest_Used_A_035_a8f545ff-8c0f-4e8e-b7a0-0984ab1d2239);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Chest_Used_A_053_2a74271e-a5d3-41e3-9798-b36ee012968e);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Chest_Used_A_042_85f3ef94-a55e-4cb3-a637-38ecbf02447a);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Chest_Used_A_054_90af3f24-8255-46e6-a275-96360c2e5799);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Chest_Used_A_044_da0409cc-0c04-4746-b326-ac324a03b2b8);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Chest_Used_A_043_eb1343d0-e6c7-48e5-900b-b7171176d374);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Chest_Used_A_036_ad6539a2-afb1-4cd4-b915-6a42d10ae0a6);
+DB_DC_FTJ_WorldChests(ITEMGUID_FTJ_CONT_Chest_Simple_Fortress_003_ed4b9f11-848e-44aa-b495-5bbcf1fe69f1);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Chest_Used_A_038_926b22d8-a93b-47ee-94ec-0de1f095fc47);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Chest_A_004_DC_FortJoy_000_1ba44bd0-3d0b-4c75-9a87-ec5826b0880e);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Chest_Used_A_000_DC_FortJoy_000_41651357-774d-4d96-8d40-c014e283632e);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Chest_Used_A_003_DC_FortJoy_000_5502bf11-92ec-4c20-a6b7-09b3d37c751d);
+DB_DC_FTJ_WorldChests(ITEMGUID_FTJ_CONT_Chest_Ornate_Fortress_000_DC_FortJoy_000_56a0daf6-1dda-4a96-932e-5ccccb9d2e75);
+DB_DC_FTJ_WorldChests(ITEMGUID_FTJ_CONT_Chest_Steel_Fortress_001_DC_FortJoy_000_6461f9e3-ea4c-4561-a9f0-66b4746137c4);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Chest_A_003_DC_FortJoy_000_bf635c1a-ac6d-4db7-8b6e-a0adc08c5d0f);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Chest_Used_A_001_DC_FortJoy_000_c95619d1-00c7-453b-835e-a40323876b8a);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Chest_Used_A_004_DC_PlayerBoat_LowerDeck_000_DC_FortJoy_000_001c9c35-99b0-83fe-5c24-da12bd10468b);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Chest_Used_A_003_DC_PlayerBoat_LowerDeck_000_DC_FortJoy_000_06b08bdc-501d-8ef4-2ce7-79dda2ae0edc);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Chest_Rich_A_000_DC_000_DC_FortJoy_000_90436181-fb6d-8343-17c9-0514bd67e6d4);
+DB_DC_FTJ_WorldChests(ITEMGUID_FTJ_CONT_Chest_Steel_Fortress_000_DC_FTJ_000_fd602688-208f-81ef-2677-344e40be8424);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Chest_Used_A_000_DC_000_dce81950-eac6-8f03-40ac-aec8cef50a82);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Chest_Used_A_000_DC_FJI_ExplorationIsle_000__000_DC_FortJoy_000_09f56511-1f65-4bb1-b073-ff9f82333d7d);
+DB_DC_FTJ_WorldChests(ITEMGUID_FTJ_CONT_Chest_Steel_Fortress_001_DC_FJI_ExplorationIsle_000__000_DC_FortJoy_000_a95e3b51-a5a2-4a54-9d57-f30a3b504c5f);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Chest_Used_A_000_DC_FJI_ExplorationIsle_04_DragonIsle_000__000_DC_FortJoy_000_4c5aefe1-7847-c166-df1e-8add50afb2ec);
+DB_DC_FTJ_WorldChests(ITEMGUID_FTJ_CONT_Chest_Steel_Fortress_000_DC_FJI_ExplorationIsle_04_DragonIsle_000__000_DC_FortJoy_000_a0dcaaa8-a72d-cda3-c6e9-77d6aed5c3b6);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Chest_Used_A_046_ORI_Terrain_Main_Rework_000_6bf09975-9d9b-84c7-19b1-606344c379b6);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Chest_Used_A_002_DC_FortJoy_000_885ad851-50eb-4dbd-9776-710d8817ef1d);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Chest_Used_A_046_24cfcec5-32b7-4436-bee4-4239c4d065ef);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Chest_A_003_39adf83a-4144-48c9-93bc-9c05a138d730);
+DB_DC_FTJ_WorldChests(ITEMGUID_FTJ_CONT_Humans_Citz_Chest_Rich_A_Fortress_002_57141f49-3dd4-4aed-8631-1dcddc80366c);
+DB_DC_FTJ_WorldChests(ITEMGUID_FTJ_CONT_Chest_Simple_Fortress_002_5f277bd9-971b-4b28-8e29-6d47d365626c);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Chest_Used_A_039_66d156e0-7312-42a3-b0a4-022bba4a349c);
+DB_DC_FTJ_WorldChests(ITEMGUID_FTJ_CONT_Chest_Ornate_Fortress_001_73b6a5ad-beaf-4ec2-9b04-57dfa974d51a);
+DB_DC_FTJ_WorldChests(ITEMGUID_S_FTJ_UndergroundChest_74457456-65a3-4eed-876a-af702fe98614);
+DB_DC_FTJ_WorldChests(ITEMGUID_FTJ_CONT_Chest_Ornate_Fortress_000_7639ab3a-8159-4732-ad48-d86ae7a3f11d);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Chest_Used_A_055_76dd6bea-4856-4832-95f0-fe3521446457);
+DB_DC_FTJ_WorldChests(ITEMGUID_FTJ_CONT_Humans_Citz_Chest_Used_A_000_999b3aed-58d6-4b75-8f50-edf824e5df24);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_FTJ_Chest_CuriousChest_a058142f-b52d-4a42-ba6c-3ae31eb8b7ce);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Chest_Used_A_057_a63b565a-12c5-4a59-ad17-7389a7ff1c84);
+DB_DC_FTJ_WorldChests(ITEMGUID_FTJ_CONT_Chest_Simple_Fortress_001_a80b945b-f92d-4ad6-b8da-720e06721fe0);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Chest_Used_A_052_b4c7909a-6daa-45a2-996b-d3cd80feec47);
+DB_DC_FTJ_WorldChests(ITEMGUID_FTJ_CONT_Chest_Ornate_Fortress_002_b7179664-9a4b-48a8-99d8-58b5e311c36d);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Chest_Used_A_058_b9099f2e-31b1-469f-9845-f821ccca944a);
+DB_DC_FTJ_WorldChests(ITEMGUID_FTJ_CONT_Chest_Simple_Fortress_000_cf52887e-15b1-46f1-b07c-bea3e3fd1a94);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Crate_A_331_e8a553dd-2e14-4e7a-85b5-241cb9948980);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Chest_A_001_DC_FortJoy_000_296cb360-b6e4-4dd3-82dd-14867de9ace6);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Chest_A_000_DC_FortJoy_000_e4fffe8b-4d55-4355-a2fc-d2fb048e69c1);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Crate_A_331__000_DC_FortJoyMisery_000_0cecd261-d4fd-8038-3caa-7495bef222a2);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Chest_A_003__000_DC_FortJoyMisery_000_5de477ce-f72d-8a87-4aa1-ec8ea6967052);
+DB_DC_FTJ_WorldChests(ITEMGUID_FTJ_CONT_Humans_Citz_Chest_Rich_A_Fortress_002__000_DC_FortJoyMisery_000_7b5b9edd-e3bd-8cab-3d26-6d46d1eedf8e);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_Humans_Citz_Chest_Used_A_039__000_DC_FortJoyMisery_000_8a18d574-29fb-8461-6799-52a4bfa8ddbe);
+DB_DC_FTJ_WorldChests(ITEMGUID_CONT_FTJ_Chest_CuriousChest__000_DC_FortJoyMisery_000_c49f93b3-6b06-8c00-6151-8a6c131650e0);
+DB_DC_FTJ_WorldChests(ITEMGUID_FTJ_CONT_Chest_Simple_Fortress_001__000_DC_FortJoyMisery_000_cc4213ef-af06-8c94-6fcf-c2870bd0b802);
+KBSECTION
+//REGION WORLD
+
+PROC
+ProcRegionStarted("FJ_FortJoy_Main")
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_FTJ_WorldChests(_Chest)
+AND
+DB_DC_FTJ_WorldChests_Skillbooks(_Book, _Type)
+AND
+Random(12, _Rnd)
+AND
+_Rnd == _Type
+AND
+CharacterGetAbility(_Player, "Luck", _Luck)
+AND
+IntegerProduct(3, _Luck, _Return)
+AND
+Random(100, _Chance)
+AND
+IntegerSum(_Return, _Chance, _Sum)
+AND
+_Sum >= 94
+THEN
+ItemTemplateAddTo((STRING)_Book, (ITEMGUID)_Chest, 1);
+
+PROC
+ProcRegionStarted("FJ_FortJoy_Main")
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_FTJ_WorldChests(_Chest)
+AND
+CharacterGetAbility(_Player, "Luck", _Luck)
+AND
+IntegerProduct(10, _Luck, _Return)
+AND
+Random(1000, _Chance)
+AND
+IntegerSum(_Return, _Chance, _Sum)
+AND
+_Sum >= 990
+THEN
+ItemTemplateAddTo("ITEMGUID_DC_PUZ_WorldChest_Key_7876fffa-68ea-4e62-8a42-5425f18170a7", _Chest, 1);
+
+IF
+CharacterUsedItem(_Player, _WorldChest)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_FTJ_WorldChests(_WorldChest)
+AND
+ObjectGetFlag(_WorldChest, "IsLooted", 0)
+AND
+GetItemForItemTemplateInInventory(_Player, "ITEMGUID_DC_PUZ_WorldChest_Key_7876fffa-68ea-4e62-8a42-5425f18170a7", _Key)
+AND
+ItemIsInInventory(_Key, 1)
+THEN
+ObjectSetFlag(_WorldChest, "IsLooted");
+ItemTemplateRemoveFrom("ITEMGUID_DC_PUZ_WorldChest_Key_7876fffa-68ea-4e62-8a42-5425f18170a7", _Player, 1);
+
+//END_REGION
+
+
+//REGION LOOT ON NPC DEATH
+
+// SKILLBOOK ON DEATH
+IF
+CharacterDying(_Enemy)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_EnemyCombatant_Library(_Enemy)
+AND
+NOT DB_IsPlayer(_Enemy)
+AND
+CharacterGetAbility(_Player, "Luck", _Luck)
+AND
+IntegerProduct(10, _Luck, _Return)
+AND
+Random(1000, _Chance)
+AND
+IntegerSum(_Return, _Chance, _Sum)
+AND
+_Sum >= 980
+AND
+DB_DC_FTJ_WorldChests_Skillbooks((STRING)_Book, _Type)
+AND
+Random(12, _Rnd)
+AND
+_Rnd == _Type
+THEN
+ItemTemplateAddTo((STRING)_Book, _Enemy, 1);
+
+// CHEST KEYS
+IF
+CharacterDying(_Enemy)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_EnemyCombatant_Library(_Enemy)
+AND
+NOT DB_IsPlayer(_Enemy)
+AND
+CharacterGetAbility(_Player, "Luck", _Luck)
+AND
+IntegerProduct(4, _Luck, _Return)
+AND
+Random(1100, _Chance)
+AND
+IntegerSum(_Return, _Chance, _Sum)
+AND
+_Sum >= 1080
+THEN
+ItemTemplateAddTo("ITEMGUID_DC_PUZ_WorldChest_Key_7876fffa-68ea-4e62-8a42-5425f18170a7", _Enemy, 1);
+
+IF
+CharacterDying(_Enemy)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_EnemyCombatant_Library(_Enemy)
+AND
+NOT DB_IsPlayer(_Enemy)
+AND
+CharacterGetAbility(_Player, "Luck", _Luck)
+AND
+IntegerProduct(5, _Luck, _Return)
+AND
+Random(2000, _Chance)
+AND
+IntegerSum(_Return, _Chance, _Sum)
+AND
+_Sum >= 1980
+AND
+DB_DC_Randomloot_UniqueEquipments(_Equipment, _Item)
+AND
+Random(1, _Rnd)
+AND
+_Rnd == _Item
+THEN
+ItemTemplateAddTo((STRING)_Equipment, (CHARACTERGUID)_Enemy, 1);
+
+
+IF
+ItemAddedToCharacter(_Item, _Enemy)
+AND
+DB_DC_EnemyCombatant_Library(_Enemy)
+AND
+DB_DC_Randomloot_UniqueEquipments((STRING)_Equipment, _)
+AND
+CharacterGetLevel(_Enemy, _Level)
+AND
+GetItemForItemTemplateInInventory(_Enemy, (STRING)_Equipment, _Item)
+THEN
+ItemLevelUpTo(_Item, _Level);
+
+
+// SOURCE SHARDS
+IF
+CharacterDying(_Enemy)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_EnemyCombatant_Library(_Enemy)
+AND
+NOT DB_IsPlayer(_Enemy)
+AND
+CharacterGetAbility(_Player, "Luck", _Luck)
+AND
+IntegerProduct(6, _Luck, _Return)
+AND
+Random(1000, _Chance)
+AND
+IntegerSum(_Return, _Chance, _Sum)
+AND
+_Sum >= 970
+THEN
+ItemTemplateAddTo("ITEMGUID_S_DC_LOOT_Source_Shard_4816d0a9-2133-4ef9-93e1-f43fc0e92f0f", (CHARACTERGUID)_Enemy, 1);
+
+//END_REGION
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "FortJoy"

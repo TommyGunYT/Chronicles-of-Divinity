@@ -1,0 +1,96 @@
+#INCLUDE State_Manager
+INIT
+	USING SHARED State_Manager
+	CHARACTER:__Me
+	CHARACTER:%Asterna = S_DC_FTJ_Asterna_3a3cfc8e-36fe-45d5-9359-c8455de43881
+	INT:%CanDoIntro = 1
+	EXTERN TRIGGER:%BookShelfWalk = S_FTJ_SeekerIsle_CassandraBookShelfA_4cd9a148-8433-4cfc-b962-4133c1e95e43
+	EXTERN TRIGGER:%BookShelfLookAt = S_FTJ_SeekerIsle_CassandraBookShelfLookat_7eb63746-3802-4c96-8579-6c9263fe7dbc
+	EXTERN TRIGGER:%AlchemyWalk = S_FTJ_SeekerIsle_CassandraAlchemy_df136d59-73f7-4aae-842a-c9c9b81c6a85
+	EXTERN TRIGGER:%AlchemyLookAt = S_FTJ_SeekerIsle_CassandraAlchemyLookAt_624e8bea-6263-4a50-ba64-f095fd2e4a3e
+	EXTERN ITEM:%Object = S_Map_beafa2e6-11cc-4d6f-bfad-35501d8f8356
+	INT: %resetTimeout = 0
+	FLOAT:%RandSleep = 1
+
+
+BEHAVIOUR
+REACTION State_Default, 1
+USAGE PEACE
+ACTIONS
+	GetRandom(%currentAction,"Bookshelf","Alchemy")
+	SetPriority(%currentAction, 1200)
+
+REACTION TalkingWithAsterna,0
+USAGE PEACE
+VARS
+	FIXEDSTRING:_animation
+ACTIONS
+	IF "c1"
+	IsEqual(%CanDoIntro,1)
+	THEN
+	CharacterLookAt(%Asterna,0,0)
+	DialogStart(_,"DC_FTJ_AD_CassandraAsterna",__Me,%Asterna)
+	GetRandomBetween(%RandSleep,1,3)
+	Sleep(%RandSleep)
+	Set(%CanDoIntro,0)
+	SetPriority(%currentAction, 0)
+ELSE
+	SetPriority(%currentAction, 0)
+	ENDIF
+INTERRUPT
+ACTIONS
+	SetPriority(%currentAction, 0)
+	
+REACTION Bookshelf,0
+USAGE PEACE
+VARS
+	FIXEDSTRING:_animation
+ACTIONS
+	CharacterMoveTo(%BookShelfWalk,0,0,0,1,2)
+	CharacterLookAt(%BookShelfLookAt,0,0)
+	GetRandom(_animation,"Think_01","Think_02","use_craft","Fidget_High_01","Fidget_High_02","Fidget_Low_01","Fidget_Low_02","Stand_Read_01","Stand_Read_01","Stand_Read_01","Stand_Read_01","Yawn_01")
+	CharacterPlayAnimation(_animation)
+	GetRandomBetween(%RandSleep,6,14)
+	Sleep(%RandSleep)
+	GetRandom(_animation,"Think_01","Think_02","use_craft","Fidget_High_01","Fidget_High_02","Fidget_Low_01","Fidget_Low_02","Stand_Read_01","Stand_Read_01","Stand_Read_01","Stand_Read_01","Yawn_01")
+	CharacterPlayAnimation(_animation)
+	GetRandomBetween(%RandSleep,8,16)
+	GetRandom(_animation,"Think_01","Think_02","use_craft","Fidget_High_01","Fidget_High_02","Fidget_Low_01","Fidget_Low_02","Stand_Read_01","Stand_Read_01","Stand_Read_01","Stand_Read_01","Yawn_01")
+	CharacterPlayAnimation(_animation)
+	GetRandomBetween(%RandSleep,6,14)
+	Sleep(%RandSleep)
+	GetRandom(_animation,"Think_01","Think_02","use_craft","Fidget_High_01","Fidget_High_02","Fidget_Low_01","Fidget_Low_02","Stand_Read_01","Stand_Read_01","Stand_Read_01","Stand_Read_01","Yawn_01")
+	CharacterPlayAnimation(_animation)
+	GetRandomBetween(%RandSleep,8,16)
+	Sleep(%RandSleep)
+	SetPriority(%currentAction, 0)
+INTERRUPT
+ACTIONS
+	SetPriority(%currentAction, 0)
+	
+REACTION Alchemy,0
+USAGE PEACE
+VARS
+	FIXEDSTRING:_animation
+ACTIONS
+	CharacterMoveTo(%AlchemyWalk,0,0,0,1,2)
+	CharacterLookAt(%AlchemyLookAt,0,0)
+	GetRandom(_animation,"Think_01","Think_02","use_craft","use_inspect")
+	CharacterPlayAnimation(_animation)
+	GetRandomBetween(%RandSleep,7,14)
+	Sleep(%RandSleep)
+	GetRandom(_animation,"Think_01","Think_02","use_craft","use_inspect")
+	CharacterPlayAnimation(_animation)
+	GetRandomBetween(%RandSleep,7,14)
+	Sleep(%RandSleep)
+	GetRandom(_animation,"Think_01","Think_02","use_craft","use_inspect")
+	CharacterPlayAnimation(_animation)
+	GetRandomBetween(%RandSleep,7,14)
+	Sleep(%RandSleep)
+	CharacterPlayAnimation("use_inspect")
+	GetRandomBetween(%RandSleep,2,6)
+	Sleep(%RandSleep)
+	SetPriority(%currentAction, 4)
+INTERRUPT
+ACTIONS
+	SetPriority(%currentAction, 0)

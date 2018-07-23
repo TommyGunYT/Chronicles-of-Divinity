@@ -1,0 +1,198 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e,"DC_CombatTraining_Guardian");
+KBSECTION
+//REGION COMPOSER SETUP
+
+
+
+IF
+CharacterEnteredTrigger(_Player, TRIGGERGUID_DC_Training_Intro_Composer_dd15c7aa-950b-42f5-b672-cf90a3a97a73)
+AND
+DB_IsPlayer(_Player)
+AND
+GlobalGetFlag("DC_Training_FirstTime_Composer", 0)
+THEN
+Proc_StartDialog(0, "DC_CombatTraining_Guardian", CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, _Player);
+CharacterUseItem(CHARACTERGUID_DC_Training_Henchman_Elethil_ed514d3e-5b6d-4d16-872b-99ad5dac68a3, ITEMGUID_FUR_Humans_Citz_Bench_B1_003_5e52208e-b693-43fe-a01b-02a39972d481, "");
+
+
+IF
+DialogStarted("DC_CombatTraining_Guardian", _Instance)
+AND
+DialogGetInvolvedPlayer(_Instance, 1, (CHARACTERGUID)_Player)
+AND
+CharacterGetDisplayName((CHARACTERGUID)_Player, _Handle, _Ref)
+THEN
+DialogSetVariableStringForInstance(_Instance, "DC_GetName_abf7b032-1cc1-4341-a79c-649635affb10", _Ref);
+
+
+IF
+DialogEnded("DC_CombatTraining_Guardian", _Instance)
+AND
+DB_IsPlayer(_Player)
+AND
+GlobalGetFlag("DC_Training_MetComposer", 1)
+THEN
+CharacterAddSkill(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e,"Jump_EnemyCurseDive_Braccus");
+CharacterUseSkill(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, "Jump_EnemyCurseDive_Braccus", CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, 1);
+PlayEffect(_Player, "RS3_FX_GP_Combat_CameraShake_A");
+ProcObjectTimer(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, "DC_TpToManor", 1550);
+GlobalClearFlag("DC_Training_MetComposer");
+GlobalSetFlag("DC_Training_FirstTime_Composer");
+DB_DC_Training_Stage("One");
+
+
+PROC
+ProcObjectTimerFinished(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, "DC_TpToManor")
+THEN
+Proc_TeleportSmoke(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e);
+TeleportTo(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, TRIGGERGUID_DC_Training_TP_GuardianToManor_9bdae2f1-d3ea-4534-b894-ee2bbd4fbb69, "DC_Training_Composer_ReadyForManor", 1);
+
+IF
+StoryEvent(_, "DC_Training_Composer_ReadyForManor")
+THEN
+NOT DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e,"DC_CombatTraining_Guardian");
+PROC_RemoveDialogFromCharacter(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e);
+DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e,"DC_CombatTraining_Guardian_2");
+
+IF
+DialogEnded("DC_CombatTraining_Guardian_2", _ID)
+AND
+DB_IsPlayer(_Player)
+AND
+DialogGetInvolvedPlayer(_ID, 1, _Speaker)
+AND
+ObjectGetFlag(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, "TPToManor", 1)
+AND
+CharacterGetReservedUserID((CHARACTERGUID)_Speaker, _User)
+THEN
+ObjectClearFlag(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, "TPToManor");
+Proc_TeleportSmoke(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e);
+CharacterTeleportPartiesToTrigger(TRIGGERGUID_DC_Training_Manor_Start_485e0887-9a21-436e-9a0c-584975339552, "");
+TeleportTo(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, TRIGGERGUID_DC_TP_Training_ComposerAtManorGate_56c20487-1bb0-4fd6-b7ea-8d68e7e1fead, "", 1);
+Proc_DC_Training_HenchmenToManor();
+
+IF
+DialogEnded("DC_CombatTraining_Guardian_2", _ID)
+AND
+DB_IsPlayer(_Player)
+AND
+DialogGetInvolvedPlayer(_ID, 1, _Speaker)
+AND
+ObjectGetFlag(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, "Training_OpenGate", 1)
+AND
+CharacterGetReservedUserID((CHARACTERGUID)_Speaker, _User)
+THEN
+ItemUnlockAndOpen(ITEMGUID_ARX_Neighborhood_HouseDemon_BasementDoor_ARX_Main_Rework_000__000_DC_000__000_75b62a9b-388a-089a-875e-066986ecd413);
+ProcCharacterMoveTo(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, TRIGGERGUID_DC_Training_Manor_ComposerCombatInit_e75b7642-d1d9-4eea-aa4a-32fff4ec11a4, 0, "DC_Training_ComposerCombatInit");
+
+IF
+StoryEvent(_, "DC_Training_ComposerCombatInit")
+THEN
+NOT DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e,"DC_CombatTraining_Guardian_2");
+PROC_RemoveDialogFromCharacter(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e);
+DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e,"DC_CombatTraining_Guardian_Preparation");
+//END_REGION
+
+
+
+
+//REGION FANE SETUP
+
+IF
+CombatEnded(_ID)
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterIsInPartyWith(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, _Player, 0)
+AND
+CharacterIsControlled(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, 0)
+AND
+CharacterIsDead(CHARACTERGUID_DC_NPC_TheGuardian_Male_002_a2a6a515-bf47-4efd-bf40-6c2c53546f99, 1)
+AND
+ObjectGetFlag(CHARACTERGUID_DC_NPC_TheGuardian_Male_002_a2a6a515-bf47-4efd-bf40-6c2c53546f99, "IsDead", 0)
+AND
+DB_Dialogs(_NPC, _Dialogue)
+THEN
+TeleportTo(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, TRIGGERGUID_DC_Training_TP_GuardianSentinel_Finish_cc727465-8039-437e-b95b-c8b640c73d80, "Kara_Recruitment_Training", 1);
+ObjectSetFlag(CHARACTERGUID_DC_NPC_TheGuardian_Male_002_a2a6a515-bf47-4efd-bf40-6c2c53546f99, "IsDead");
+NOT DB_Dialogs(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd,_Dialogue);
+PROC_RemoveDialogFromCharacter(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd);
+DB_Dialogs(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd,"Kara_Recruitment_Training");
+
+IF
+StoryEvent(_, "Kara_Recruitment_Training")
+AND
+DB_IsPlayer(_Player)
+AND
+GetClosestAlivePlayer(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, _Player, _Dist)
+THEN
+ProcCharacterMoveToAndTalk(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, _Player, "Kara_Recruitment_Training", 0, "", 1, 35.0);
+
+
+IF
+DialogEnded("Kara_Recruitment_Training", _ID)
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterIsInPartyWith(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, _Player, 0)
+AND
+CharacterIsControlled(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, 0)
+AND
+DialogGetInvolvedPlayer(_ID, 1, _Speaker)
+AND
+ObjectGetFlag(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, "KaraAddToParty", 1)
+AND
+CharacterGetReservedUserID((CHARACTERGUID)_Speaker, _User)
+THEN
+CharacterMakePlayer(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd);
+CharacterRecruitCharacter(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, _Player);
+DB_IsPlayer(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd);
+CharacterAddToParty(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd,(CHARACTERGUID)_Player);
+SetVarFixedString(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, "currentState", "");
+ProcCharacterDisableAllCrimes(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd);
+ProcAssignCharacterToPlayer(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, _Player);
+ProcRegisterPlayerTriggers(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd);
+CharacterAttachToGroup(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, _Player);
+Proc_CheckPartyFull();
+Proc_CheckFirstTimeRecruited(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd);
+PROC_GLO_PartyMembers_RecruiteeAvatarBond_IfDifferent(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, _Player);
+Proc_BondedAvatarTutorial(_Player);
+Proc_UnlockSourcePointsAndPowers(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, _Player);
+CharacterSetCorpseLootable(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, 0);
+ItemTemplateAddTo("RC_FTJ_Amulet_SourceCollar_8bf8b97c-556e-4e69-8fc7-39241783dcc1",CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd,1);
+Proc_GLO_DC_GiveKaraCollar();
+NOT DB_Dialogs(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd,"Kara_Recruitment_Training");
+PROC_RemoveDialogFromCharacter(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd);
+DB_Dialogs(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd,"DC_Training_KaraIdle");
+CharacterApplyPreset(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, "Enchanter");
+
+
+PROC
+Proc_GLO_DC_GiveKaraCollar()
+AND
+CharacterGetEquippedItem(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, "Helmet", _Helm)
+THEN
+CharacterUnequipItem(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, (ITEMGUID)_Helm);
+
+PROC
+Proc_GLO_DC_GiveKaraCollar()
+AND
+GetItemForItemTemplateInInventory(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd,"RC_FTJ_Amulet_SourceCollar_8bf8b97c-556e-4e69-8fc7-39241783dcc1", _Collar)
+THEN
+CharacterEquipItem(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, _Collar);
+ItemLockUnEquip(_Collar, 1);
+
+
+//END_REGION
+
+PROC
+ProcRegionEnded("DC_Snowfall")
+THEN
+GoalCompleted;
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "DC_Snowfall"

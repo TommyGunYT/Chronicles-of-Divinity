@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<stats stat_object_definition_id="e078e210-b9ba-48e5-afe3-c5eb91ba8545">
+  <stat_objects>
+    <stat_object index="0" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="DC_FTJ_DanielDiary" />
+        <field name="InventoryTab" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="6" enumeration_type_name="InventoryTabs" />
+        <field name="AddToBottomBar" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="ObjectCategory" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="DC_Daniel" />
+      </fields>
+    </stat_object>
+    <stat_object index="1" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="LOOT_DC_SourceShard" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" clear_inherited_value="false" value="_OrbCharms" />
+        <field name="RootTemplate" type="RootTemplateStatObjectFieldDefinition" clear_inherited_value="false" value="a705a41e-f965-4aa3-8927-65c0f6eec388" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="8" enumeration_type_name="ActPart" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="350" />
+        <field name="Weight" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="5" />
+        <field name="InventoryTab" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="3" enumeration_type_name="InventoryTabs" />
+        <field name="AddToBottomBar" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="MinAmount" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="0" />
+        <field name="MaxAmount" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="100" />
+      </fields>
+    </stat_object>
+    <stat_object index="2" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="SKILLBOOK_DC_SourceInfusion" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" clear_inherited_value="false" value="_Skillbooks" />
+        <field name="RootTemplate" type="RootTemplateStatObjectFieldDefinition" clear_inherited_value="false" value="0379bd08-c28b-4477-9900-d523de77aa0c" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="ActPart" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1000" />
+        <field name="MinAmount" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="MaxAmount" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Priority" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="MinLevel" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="6" />
+        <field name="Weight" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="5" />
+        <field name="InventoryTab" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="2" enumeration_type_name="InventoryTabs" />
+        <field name="AddToBottomBar" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+      </fields>
+    </stat_object>
+  </stat_objects>
+</stats>

@@ -1,0 +1,115 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+//REGION TELEPORTS
+IF
+DialogEnded("DC_DebugSetup", _ID)
+AND
+DB_IsPlayer(_Player)
+AND
+DialogGetInvolvedPlayer(_ID, 1, _Speaker)
+AND
+ObjectGetFlag(_Speaker, "DC_Debug_TPToFTJStart", 1)
+THEN
+CharacterTeleportPartiesToTrigger(TRIGGERGUID_DC_TestingArea_FTJ_Start_cc6880b1-da9c-41db-9b51-5ec691f234e6, "");
+ObjectClearFlag(_Speaker, "DC_Debug_TPToFTJStart");
+
+IF
+DialogEnded("DC_DebugSetup", _ID)
+AND
+DB_IsPlayer(_Player)
+AND
+DialogGetInvolvedPlayer(_ID, 1, _Speaker)
+AND
+ObjectGetFlag(_Speaker, "DC_Debug_TPToFTJShrineIsle", 1)
+THEN
+CharacterTeleportPartiesToTrigger(TRIGGERGUID_DC_TestingArea_ShrineIsle_dd00f9f2-ac30-45c7-996e-b84f062f24d2, "");
+ObjectClearFlag(_Speaker, "DC_Debug_TPToFTJShrineIsle");
+
+IF
+DialogEnded("DC_DebugSetup", _ID)
+AND
+DB_IsPlayer(_Player)
+AND
+DialogGetInvolvedPlayer(_ID, 1, _Speaker)
+AND
+ObjectGetFlag(_Speaker, "DC_Debug_TpToTheVeil", 1)
+THEN
+CharacterTeleportPartiesToTrigger(TRIGGERGUID_DC_DEBUG_TP_TheVeil_59fc7cbd-8276-490e-aa93-8043f8ea5bec, "");
+ObjectClearFlag(_Speaker, "DC_Debug_TPToFTJShrineIsle");
+///END_REGION
+
+
+//REGION BRANDON SETUP + BOAT
+IF
+DialogEnded("DC_DebugSetup", _ID)
+AND
+DB_IsPlayer(_Player)
+AND
+DialogGetInvolvedPlayer(_ID, 1, _Speaker)
+AND
+ObjectGetFlag(_Speaker, "DC_DEBUG_BrandonSaved", 1)
+THEN
+GlobalSetFlag("RescuedBrandon");
+DisplayText(CHARACTERGUID_S_DC_GLO_Brandon_52af7d79-a56e-4a18-a7af-72d6aab2d888,"Thank you!");
+ObjectSetFlag(_Player,"QuestUpdate_FatherAndDaughter_SavedBrandon");
+TeleportTo(CHARACTERGUID_S_DC_GLO_Brandon_52af7d79-a56e-4a18-a7af-72d6aab2d888, TRIGGERGUID_S_DC_SeekerCamp_BrandonLandingSaved_6f06483e-c419-4781-aace-2853fd2318b6);
+SetStoryEvent(CHARACTERGUID_DC_FTJ_Dima_1f927f25-9625-472e-8ba0-8a065130b4d9,"DimaTakeDownPoster");
+SetVarInteger(CHARACTERGUID_DC_FTJ_Dima_1f927f25-9625-472e-8ba0-8a065130b4d9,"CanADBrandon",1);
+Proc_DC_FTJ_DimaAndBrandonAtCampINIT();
+
+IF
+DialogEnded("DC_DebugSetup", _ID)
+AND
+DB_IsPlayer(_Player)
+AND
+DialogGetInvolvedPlayer(_ID, 1, _Speaker)
+AND
+ObjectGetFlag(_Speaker, "DC_DEBUG_BrandonBuildBoat", 1)
+THEN
+ObjectSetFlag(_Player, "DC_FTJ_DeliveredHammer");
+ObjectSetFlag(_Player, "DC_FTJ_DeliveredNails");
+ObjectSetFlag(_Player, "DC_FTJ_DeliveredCloth");
+Proc_BrandonBoatBuildingCheck();
+
+
+
+
+//REGION TRAVEL AGENCY FOR PLAYTESTING
+IF
+GlobalFlagSet("TP_Isles_Main")
+THEN
+CharacterTeleportPartiesToTrigger(TRIGGERGUID_DC_TP_FTJ_Isles_BeachMain_fda011da-df2c-4696-868b-a9fe5591df55,"");
+GlobalClearFlag("TP_Isles_Main");
+
+IF
+GlobalFlagSet("TP_Isles_DragonIsland")
+THEN
+CharacterTeleportPartiesToTrigger(TRIGGERGUID_DC_TP_FTJ_Isles_DragonIsland_7e24ada7-03ce-414e-9c3a-eb18c9c418f6,"");
+GlobalClearFlag("TP_Isles_DragonIsland");
+//END_REGION
+
+//REGION DEBUG Book
+IF
+GlobalFlagSet("DC_DEBUG_KaraToFTJ")
+AND
+CharacterIsControlled(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, 0)
+THEN
+TeleportTo(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, TRIGGERGUID_DC_Kara_StartPoint_9f4326f0-68c4-4aab-84de-0f412c8dd979);
+//END_REGION
+
+
+IF
+DialogEnded("GEN_Debug_Item", _ID)
+AND
+DB_IsPlayer(_Character)
+AND
+ItemTemplateIsInCharacterInventory(_Character, "DC_Debug_Book_b7e7be57-2940-4260-885f-af92912b1657", 0)
+THEN
+ItemTemplateAddTo("DC_Debug_Book_b7e7be57-2940-4260-885f-af92912b1657", _Character, 1);
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "Start"

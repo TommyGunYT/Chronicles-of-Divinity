@@ -1,0 +1,30 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+DB_DC_FTJ_BrandonAndMaya(CHARACTERGUID_S_DC_GLO_Brandon_52af7d79-a56e-4a18-a7af-72d6aab2d888);
+DB_DC_FTJ_BrandonAndMaya(CHARACTERGUID_S_DC_Maya_dcb9edbe-3470-428b-8684-785e5648a04d);
+KBSECTION
+IF
+CharacterUsedItem(_Player, _DockShip)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DCPlayerBoat(_PlayerShip)
+AND
+DB_DCBoatAgency(_DockLoc, _DockShip, _PlayerShipStart, _LandingStart, _LandCam, _BoatStartCam)
+AND
+DB_DC_FTJ_BrandonAndMaya(_BrandonMaya)
+AND
+ObjectIsInTrigger(_BrandonMaya, (TRIGGERGUID)_DockLoc, 1)
+THEN
+DB_NOOP(1);
+
+IF
+RegionStarted("RC_Main")
+THEN
+GoalCompleted;
+EXITSECTION
+NOT DB_DC_FTJ_BrandonAndMaya(CHARACTERGUID_S_DC_GLO_Brandon_52af7d79-a56e-4a18-a7af-72d6aab2d888);
+NOT DB_DC_FTJ_BrandonAndMaya(CHARACTERGUID_S_DC_Maya_dcb9edbe-3470-428b-8684-785e5648a04d);
+ENDEXITSECTION
+ParentTargetEdge "FortJoy"

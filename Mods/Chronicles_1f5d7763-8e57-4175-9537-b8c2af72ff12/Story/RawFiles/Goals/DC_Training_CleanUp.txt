@@ -1,0 +1,122 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+// FAILSAFE - CLEAR FLAGS WHEN RETURNING TO MANOR
+
+IF
+CharacterEnteredTrigger(_Player, TRIGGERGUID_DC_Training_FlagCleanUp_2638942b-1d41-4f80-8f75-bc75b255b286)
+AND
+DB_IsPlayer(_Player)
+THEN
+NOT DB_DC_Training_CombatStarted_DivinityRoyale(1);
+NOT DB_DC_Training_RandomFight(1);
+NOT DB_DC_Training_RandomFight(2);
+NOT DB_DC_Training_RandomFight(3);
+NOT DB_DC_Training_RandomFight(4);
+NOT DB_DC_Training_RandomFight(5);
+NOT DB_DC_Training_RandomFight(6);
+ObjectClearFlag(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, "Encounter_DivinityRoyale");
+GlobalClearFlag("DC_Training_GuardianStatues");
+GlobalClearFlag("DC_Training_Encounters_Hatchling_Wave");
+GlobalClearFlag("DC_Training_Encounters_Hatchling_Wave1");
+GlobalClearFlag("DC_Training_DivinityRoyale");
+GlobalClearFlag("DC_Training_CombatEncounterInitFailed");
+GlobalClearFlag("DC_Training_BasementFight");
+SysClear("DB_DC_Training_RandomFight",1);
+SysClear("DB_DC_Training_CombatantTrialsCheckpoint",1);
+SysClear("DB_DC_Training_CombatantTrialsLocationsOverride",1);
+SysClear("DB_DC_TrainingCombat_SpawnedEnemies",1);
+
+PROC
+Proc_DC_Training_TeleportComposerToManor_Idle()
+THEN
+Proc_TeleportSmoke(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e);
+TeleportTo(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, TRIGGERGUID_DC_Training_Manor_ComposerCombatInit_e75b7642-d1d9-4eea-aa4a-32fff4ec11a4, "", 1);
+
+
+PROC
+Proc_DC_Training_CleanUp()
+THEN
+NOT DB_DC_Training_CombatStarted_DivinityRoyale(1);
+NOT DB_DC_Training_RandomFight(1);
+NOT DB_DC_Training_RandomFight(2);
+NOT DB_DC_Training_RandomFight(3);
+NOT DB_DC_Training_RandomFight(4);
+NOT DB_DC_Training_RandomFight(5);
+NOT DB_DC_Training_RandomFight(6);
+ObjectClearFlag(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, "Encounter_DivinityRoyale");
+GlobalClearFlag("DC_Training_GuardianStatues");
+GlobalClearFlag("DC_Training_Encounters_Hatchling_Wave");
+GlobalClearFlag("DC_Training_Encounters_Hatchling_Wave1");
+GlobalClearFlag("DC_Training_DivinityRoyale");
+GlobalClearFlag("DC_Training_CombatEncounterInitFailed");
+GlobalClearFlag("DC_Training_BasementFight");
+ObjectClearFlag(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, "Encounter_GuardianSentinels");
+SysClear("DB_DC_Training_RandomFight",1);
+SysClear("DB_DC_Training_CombatantTrialsCheckpoint",1);
+SysClear("DB_DC_Training_CombatantTrialsLocationsOverride",1);
+SysClear("DB_DC_TrainingCombat_SpawnedEnemies",1);
+
+PROC
+Proc_DC_Training_CleanUp()
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterIsDead(_Player, 1)
+THEN
+CharacterResurrect(_Player);
+
+
+//REGION CLEANUP
+PROC
+Proc_DC_TP_ComposerToFinish()
+AND
+DB_DC_ComposerDialogs(_Dialogues)
+THEN
+NOT DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, _Dialogues);
+PROC_RemoveDialogFromCharacter(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e);
+DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e,"DC_CombatTraining_Guardian_TrialFinish");
+Proc_TeleportSmoke(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e);
+TeleportTo(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, TRIGGERGUID_DC_Training_TP_GuardianToManor_9bdae2f1-d3ea-4534-b894-ee2bbd4fbb69, "DC_CombatTraining_Guardian_TrialFinish", 1);
+
+IF
+DialogEnded("DC_CombatTraining_Guardian_TrialFinish", _ID)
+AND
+DB_IsPlayer(_Player)
+AND
+DialogGetInvolvedPlayer(_ID, 1, _Speaker)
+AND
+ObjectGetFlag(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, "DC_TP_ToManor", 1)
+AND
+CharacterGetReservedUserID((CHARACTERGUID)_Speaker, _User)
+THEN
+CharacterTeleportPartiesToTrigger(TRIGGERGUID_DC_Training_Manor_Start_485e0887-9a21-436e-9a0c-584975339552, "DC_Training_TrialFinish_Reward");
+GlobalClearFlag("DC_TrialFinish_Hatchlings");
+Proc_TeleportSmoke(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e);
+TeleportTo(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, TRIGGERGUID_DC_Training_Manor_ComposerCombatInit_e75b7642-d1d9-4eea-aa4a-32fff4ec11a4, "DC_Training_ComposerCombatInit", 1);
+Proc_DC_Training_TrialReward();
+ShroudRender(1);
+Proc_DC_Training_CleanUp();
+
+IF
+StoryEvent(_, "DC_Training_ComposerCombatInit")
+AND
+DB_DC_ComposerDialogs(_Dialogues)
+THEN
+NOT DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, _Dialogues);
+PROC_RemoveDialogFromCharacter(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e);
+DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e,"DC_CombatTraining_Guardian_Preparation");
+
+//END_REGION
+
+
+PROC
+ProcRegionEnded("DC_Snowfall")
+THEN
+GoalCompleted;
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "DC_Snowfall"

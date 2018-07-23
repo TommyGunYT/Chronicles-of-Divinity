@@ -1,0 +1,83 @@
+[Vertex shader]
+
+
+#include "Shaders/PS4/srt_struct.h"
+#include "Shaders/PS4/CommonHelpers.shdh"
+
+struct VertexOutput
+{
+	float4 ProjectedPosition : S_Position;
+};
+
+@uniform SamplerState _DefaultWrapSampler;
+@uniform Texture2D Texture2DParameter_1acfc61d8c0b43f192187ceba9525c77_DefaultWrapSampler;
+@uniform row_major float4x4 WorldMatrix;
+void CalculateMatWorldPositionOffset(SrtVsData srtData : S_SRT_DATA,
+	float2 in_0,
+	out float3 out_0)
+{
+	// Retrieve SRT data:
+	@uniform(_DefaultWrapSampler);
+	@uniform(Texture2DParameter_1acfc61d8c0b43f192187ceba9525c77_DefaultWrapSampler);
+
+	float4 Local0 = Texture2DParameter_1acfc61d8c0b43f192187ceba9525c77_DefaultWrapSampler.SampleLOD(_DefaultWrapSampler, in_0, 0.0f);
+	//[Local0] Get needed components
+	float3 Local1 = Local0.xyz;
+	out_0 = Local1;
+}
+
+VertexOutput main(uint id : S_VERTEX_ID,
+	SrtVsData srtData : S_SRT_DATA)
+{
+	// Retrieve SRT data:
+	@uniform(global_View);
+	@uniform(global_ViewProjection);
+	@uniform(WorldMatrix);
+
+	VertexOutput Out;
+
+	float3 matWorldPositionOffset;
+	CalculateMatWorldPositionOffset(srtData, SRT_VS_BUFFER_TEXCOORD0(id), matWorldPositionOffset);
+	float4 tempPosStatic = float4(SRT_VS_BUFFER_POSITION(id).xyz, 1.0f);
+	//World space position
+	float4 worldPosition = mul(WorldMatrix, tempPosStatic);
+
+	worldPosition = (worldPosition + float4(matWorldPositionOffset, 0.0f));
+
+	//Projected position
+	float4 projectedPosition = mul(global_ViewProjection, worldPosition);
+
+	//Pass projected position to pixel shader
+	Out.ProjectedPosition = projectedPosition;
+
+
+	return Out;
+}
+
+
+[Fragment shader]
+
+
+#pragma PSSL_target_output_format(default FMT_FP16_ABGR)
+#include "Shaders/PS4/srt_struct.h"
+#include "Shaders/PS4/CommonHelpers.shdh"
+
+struct PixelInput
+{
+	float4 ProjectedPosition : S_Position;
+};
+
+struct PixelOutput
+{
+	float4 Color0 : S_TARGET_OUTPUT0;
+};
+
+PixelOutput main(PixelInput In,
+	SrtPsData srtData : S_SRT_DATA)
+{
+	PixelOutput Out;
+
+	Out.Color0 = float4(1.0f, 1.0f, 1.0f, 1.0f);
+
+	return Out;
+}

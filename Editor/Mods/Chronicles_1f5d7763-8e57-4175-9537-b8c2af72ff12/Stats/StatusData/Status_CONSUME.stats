@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<stats stat_object_definition_id="e2a8d59b-0e34-4a7c-bf5f-db7a2bb34cde">
+  <stat_objects>
+    <stat_object index="0" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="PACKMENTALITY" />
+        <field name="Type" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="CONSUME" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="InitiateCombat" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" clear_inherited_value="false" value="Pack Mentality" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" clear_inherited_value="false" value="Character's damage is increased by nearby allies." />
+        <field name="Icon" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Skill_Warrior_ThickOfTheFight" />
+        <field name="FormatColor" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="8" enumeration_type_name="FormatStringColor" />
+        <field name="StatusEffect" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="RS3_FX_GP_Status_ThickOfTheFight_Hand_01:Dummy_L_HandFX,Dummy_R_HandFX" />
+        <field name="StatsId" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Stats_PackMentality" />
+        <field name="StackId" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Stack_ThickOfTheFight" />
+      </fields>
+    </stat_object>
+    <stat_object index="1" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="AURAOFDECAY" />
+        <field name="Type" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="CONSUME" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="InitiateCombat" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" clear_inherited_value="false" value="Aura of Decay" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" clear_inherited_value="false" value="Apply decaying touch to enemies within 3m." />
+        <field name="Icon" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="statIcons_Pain_Aura" />
+        <field name="FormatColor" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="4" enumeration_type_name="FormatStringColor" />
+        <field name="StatusEffect" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="RS3_FX_GP_Status_Nightmarish_01:Dummy_L_HandFX,Dummy_R_HandFX" />
+        <field name="AuraRadius" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="3" />
+        <field name="AuraEnemies" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="DECAYING_TOUCH" />
+      </fields>
+    </stat_object>
+    <stat_object index="2" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="STATUS_DEFLECTION" />
+        <field name="Type" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="CONSUME" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="InitiateCombat" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" clear_inherited_value="false" value="Deflection Shield" />
+        <field name="Icon" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Skill_Warrior_ThickOfTheFight" />
+        <field name="FormatColor" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="10" enumeration_type_name="FormatStringColor" />
+        <field name="StatusEffect" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="RS3_FX_GP_Status_Shackles_of_Pain_01:Dummy_L_HandFX" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" clear_inherited_value="false" value="When enemy applies Burning, Chilled, Shocked, Poisoned, Acid, Bleeding, or Suffocating to you, you have a 25% chance to also apply it to the enemy for 2 turns." />
+      </fields>
+    </stat_object>
+    <stat_object index="3" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="DCCOLD" />
+        <field name="Type" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="CONSUME" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="InitiateCombat" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" clear_inherited_value="false" value="Freezing Cold" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" clear_inherited_value="false" value="It's really cold here..." />
+        <field name="Icon" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="statIcons_Chill" />
+        <field name="FormatColor" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="23" enumeration_type_name="FormatStringColor" />
+        <field name="StatusEffect" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="RS3_FX_GP_Status_Chilled_01:Dummy_StatusFX" />
+        <field name="StatusEffectOverrideForItems" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="RS3_FX_GP_Status_Item_Chilled_01" />
+        <field name="MaterialType" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="2" enumeration_type_name="MaterialType" />
+        <field name="MaterialApplyBody" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyArmor" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyWeapon" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyNormalMap" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="MaterialFadeAmount" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="3000" />
+        <field name="SavingThrow" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="SavingThrow" />
+        <field name="ImmuneFlag" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="AttributeFlag" />
+        <field name="StatsId" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Freezing Cold" />
+        <field name="StackId" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Stack_Chilled" />
+      </fields>
+    </stat_object>
+    <stat_object index="4" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="DRUNK" />
+        <field name="Type" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="CONSUME" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="InitiateCombat" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" clear_inherited_value="false" value="Drunk" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" clear_inherited_value="false" value="Character is drunk." />
+        <field name="Icon" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="statIcons_Drunk" />
+        <field name="FormatColor" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="FormatStringColor" />
+        <field name="StatusEffect" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="RS3_FX_GP_Status_Drunk_01:Dummy_StatusFX" />
+        <field name="ImmuneFlag" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="21" enumeration_type_name="AttributeFlag" />
+        <field name="StatsId" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Stats_Drunk" />
+        <field name="StackId" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Stack_Drunk" />
+      </fields>
+    </stat_object>
+    <stat_object index="5" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="BONE_CAGE" />
+        <field name="Type" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="CONSUME" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="InitiateCombat" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" clear_inherited_value="false" value="Bone Cage" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" clear_inherited_value="false" value="Barrier of bone fragments protects the owner from physical damage." />
+        <field name="Icon" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Skill_Decay_BoneCage" />
+        <field name="FormatColor" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="8" enumeration_type_name="FormatStringColor" />
+        <field name="StatusEffect" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="RS3_FX_GP_Status_BoneCage_01,KeepRot:Dummy_BodyFX" />
+        <field name="StatsId" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Stats_BoneCage" />
+        <field name="StackId" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Stack_BoneCage" />
+      </fields>
+    </stat_object>
+    <stat_object index="6" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="CHILLED" />
+        <field name="Type" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="CONSUME" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="InitiateCombat" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" clear_inherited_value="false" value="Chilled" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" clear_inherited_value="false" value="Character is chilled." />
+        <field name="Icon" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="statIcons_Chill" />
+        <field name="FormatColor" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="23" enumeration_type_name="FormatStringColor" />
+        <field name="StatusEffect" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="RS3_FX_GP_Status_Chilled_01:Dummy_StatusFX" />
+        <field name="StatusEffectOverrideForItems" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="RS3_FX_GP_Status_Item_Chilled_01" />
+        <field name="MaterialType" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="2" enumeration_type_name="MaterialType" />
+        <field name="MaterialApplyBody" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyArmor" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyWeapon" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyNormalMap" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="MaterialFadeAmount" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="3000" />
+        <field name="SavingThrow" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="SavingThrow" />
+        <field name="ImmuneFlag" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="9" enumeration_type_name="AttributeFlag" />
+        <field name="StatsId" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Stats_Chilled" />
+        <field name="StackId" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Stack_Chilled" />
+      </fields>
+    </stat_object>
+    <stat_object index="7" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="FORTIFIED" />
+        <field name="Type" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="CONSUME" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="InitiateCombat" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" clear_inherited_value="false" value="Fortified" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" clear_inherited_value="false" value="Maximum Physical Armor increased." />
+        <field name="Icon" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="statIcons_Fortified" />
+        <field name="FormatColor" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="15" enumeration_type_name="FormatStringColor" />
+        <field name="StatusEffect" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="RS3_FX_GP_Status_Fortified_01" />
+        <field name="MaterialType" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="2" enumeration_type_name="MaterialType" />
+        <field name="MaterialApplyBody" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyArmor" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyWeapon" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyNormalMap" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="MaterialFadeAmount" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="3000" />
+        <field name="MaterialParameters" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="CharacterHeight:Height" />
+        <field name="SoundStart" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Status_Tex_Fortified_Start" />
+        <field name="SoundLoop" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Status_Tex_Fortified_Loop" />
+        <field name="SoundStop" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Status_Tex_Fortified_Stop" />
+        <field name="StatsId" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Stats_Fortified" />
+        <field name="StackId" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Stack_Fortified" />
+      </fields>
+    </stat_object>
+    <stat_object index="8" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="HASTED" />
+        <field name="Type" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="CONSUME" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="InitiateCombat" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" clear_inherited_value="false" value="Hasted" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" clear_inherited_value="false" value="Character is hasted." />
+        <field name="Icon" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="statIcons_Hasted" />
+        <field name="FormatColor" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="22" enumeration_type_name="FormatStringColor" />
+        <field name="StatusEffect" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="RS3_FX_GP_Status_Hasted_01,KeepRot:Dummy_BodyFX" />
+        <field name="MaterialType" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="MaterialType" />
+        <field name="MaterialApplyBody" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyArmor" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyWeapon" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyNormalMap" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="ImmuneFlag" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="34" enumeration_type_name="AttributeFlag" />
+        <field name="StatsId" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Stats_Hasted" />
+        <field name="StackId" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Stack_Hasted" />
+      </fields>
+    </stat_object>
+    <stat_object index="9" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="SHOCKED" />
+        <field name="Type" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="CONSUME" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="InitiateCombat" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" clear_inherited_value="false" value="Shocked" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" clear_inherited_value="false" value="Character is shocked by electricity." />
+        <field name="Icon" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="statIcons_Shocked" />
+        <field name="FormatColor" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="22" enumeration_type_name="FormatStringColor" />
+        <field name="StatusEffect" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="RS3_FX_GP_Status_Shocked_01:Dummy_OverheadFX" />
+        <field name="StatusEffectOverrideForItems" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="RS3_FX_GP_Status_Stunned_01" />
+        <field name="MaterialType" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="MaterialType" />
+        <field name="MaterialApplyBody" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyArmor" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyWeapon" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="MaterialApplyNormalMap" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="SavingThrow" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="17" enumeration_type_name="SavingThrow" />
+        <field name="ImmuneFlag" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="52" enumeration_type_name="AttributeFlag" />
+        <field name="StatsId" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Stats_Shocked" />
+        <field name="StackId" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Stack_Shocked" />
+      </fields>
+    </stat_object>
+    <stat_object index="10" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="DC_MIRRORIMAGES" />
+        <field name="Type" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="CONSUME" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" clear_inherited_value="false" value="Mirror Images" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" clear_inherited_value="false" value="Character has torn two splinters of themself from other timelines." />
+        <field name="Icon" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="statIcons_Hasted" />
+        <field name="FormatColor" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="18" enumeration_type_name="FormatStringColor" />
+        <field name="StatsId" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Stats_MagicMirrors" />
+        <field name="StackId" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Stack_MagicMirrors" />
+      </fields>
+    </stat_object>
+  </stat_objects>
+</stats>

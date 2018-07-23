@@ -1,0 +1,16 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+IF
+SavegameLoaded(_, _, _, _)
+AND
+DB_DC_VersionUpdate(1)
+THEN
+NOT DB_DC_VersionUpdate(1);
+DB_DC_VersionUpdate(1, 0, 0, 4);
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "Start"

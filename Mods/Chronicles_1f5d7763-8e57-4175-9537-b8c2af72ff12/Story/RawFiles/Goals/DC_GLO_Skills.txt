@@ -1,0 +1,162 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+DB_DC_RestorationSpells("Target_Restoration");
+DB_DC_RestorationSpells("Shout_HealingTears");
+DB_DC_RestorationSpells("Projectile_ChainHeal");
+DB_DC_RestorationSpells("Cone_SteamLance");
+DB_DC_RestorationSpells("Projectile_Grenade_Holy");
+DB_DC_RestorationSpells("Target_Restoration");
+
+DB_DC_ORIGIN_KARA_SKILLS("Projectile_DimensionalBolt");
+KBSECTION
+//REGION KARAS MIRROR IMAGES
+
+QRY
+QRY_DC_MagicMirrors(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd)
+AND
+GetPosition(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, _X, _Y, _Z)
+AND
+RealSum(_X, 2.0, _XR)
+AND
+TemporaryCharacterCreateAtPosition(_XR, _Y, _Z, "CHARACTERGUID_S_Image_Kara_af1e5feb-cbfe-4934-8faf-06cdfec212bb", 1, _MagicMirror)
+AND
+PlayLoopEffect(_MagicMirror, "DC_Spirit_Overlay", "", _MirrorOverlay)
+AND
+QRY_DC_GetPlayerStats(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd)
+AND
+DB_DC_Systems_CurrentStats(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, _Intelligence, _Strength, _Finesse, _Wits, _Constitution)
+AND
+IntegerDivide(_Constitution, 2, _FinCon)
+AND
+GetFaction(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, _PlayerFaction)
+AND
+DB_DC_ORIGIN_KARA_SKILLS((STRING)_Skill)
+AND
+CharacterGetLevel(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, _Level)
+THEN
+CharacterLevelUpTo(_MagicMirror, _Level);
+SetFaction(_MagicMirror, _PlayerFaction);
+CharacterAddSkill(_MagicMirror, _Skill);
+CharacterAddAttribute(_MagicMirror, "Intelligence", _Intelligence);
+CharacterAddAttribute(_MagicMirror, "Strength", _Strength);
+CharacterAddAttribute(_MagicMirror, "Finesse", _Finesse);
+CharacterAddAttribute(_MagicMirror, "Wits", _Wits);
+CharacterAddAttribute(_MagicMirror, "Constitution", _FinCon);
+//ProcCharacterFollowCharacter(_MagicMirror, CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd);
+CharacterTransformAppearanceTo(_MagicMirror, CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, 1, 1);
+DB_DC_Skills_MagicMirror((CHARACTERGUID)_MagicMirror);
+
+QRY
+QRY_DC_MagicMirrorsTwo(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd)
+AND
+GetPosition(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, _X, _Y, _Z)
+AND
+RealSum(_X, -2.0, _XR)
+AND
+TemporaryCharacterCreateAtPosition(_XR, _Y, _Z, "CHARACTERGUID_S_Image_Kara_af1e5feb-cbfe-4934-8faf-06cdfec212bb", 1, _MagicMirrorTwo)
+AND
+PlayLoopEffect(_MagicMirrorTwo, "DC_Spirit_Overlay", "", _MirrorOverlay)
+AND
+QRY_DC_GetPlayerStats(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd)
+AND
+DB_DC_Systems_CurrentStats(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, _Intelligence, _Strength, _Finesse, _Wits, _Constitution)
+AND
+IntegerDivide(_Constitution, 2, _FinCon)
+AND
+GetFaction(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, _PlayerFaction)
+AND
+DB_DC_ORIGIN_KARA_SKILLS((STRING)_Skill)
+AND
+CharacterGetLevel(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, _Level)
+THEN
+CharacterLevelUpTo(_MagicMirrorTwo, _Level);
+SetFaction(_MagicMirrorTwo, _PlayerFaction);
+CharacterAddSkill(_MagicMirrorTwo, _Skill);
+CharacterAddAttribute(_MagicMirrorTwo, "Intelligence", _Intelligence);
+CharacterAddAttribute(_MagicMirrorTwo, "Strength", _Strength);
+CharacterAddAttribute(_MagicMirrorTwo, "Finesse", _Finesse);
+CharacterAddAttribute(_MagicMirrorTwo, "Wits", _Wits);
+CharacterAddAttribute(_MagicMirrorTwo, "Constitution", _FinCon);
+//ProcCharacterFollowCharacter(_MagicMirrorTwo, CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd);
+CharacterTransformAppearanceTo(_MagicMirrorTwo, CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, 1, 1);
+DB_DC_Skills_MagicMirrorTwo((CHARACTERGUID)_MagicMirrorTwo);
+
+
+IF
+CharacterUsedSkill(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, "Shout_DCMirrorImages", _)
+AND
+DB_IsPlayer(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd)
+AND
+QRY_DC_MagicMirrors(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd)
+AND
+QRY_DC_MagicMirrorsTwo(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd)
+THEN
+ApplyStatus(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, "DC_MIRRORIMAGES", 9.0, 1);
+
+
+
+IF
+CharacterStatusRemoved(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, "DC_MIRRORIMAGES", _)
+AND
+DB_DC_Skills_MagicMirror(_MagicMirror)
+AND
+DB_DC_Skills_MagicMirrorTwo(_MagicMirrorTwo)
+THEN
+ObjectClearFlag(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, "DC_MirrorOneSpawned");
+ObjectClearFlag(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, "DC_MirrorTwoSpawned");
+PROC_StopLoopEffect(_MagicMirror, "DC_Spirit_Overlay");
+PROC_StopLoopEffect(_MagicMirrorTwo, "DC_Spirit_Overlay");
+PlayEffect(_MagicMirror, "RS3_FX_GP_ScriptedEvent_Mordus_VoidTransform_Overlay_01");
+PlayEffect(_MagicMirrorTwo, "RS3_FX_GP_ScriptedEvent_Mordus_VoidTransform_Overlay_01");
+ProcCharacterStopFollow(_MagicMirror);
+ProcCharacterStopFollow(_MagicMirrorTwo);
+TimerLaunch("DC_Skills_MirrorImagesEnd", 1700);
+
+IF
+TimerFinished("DC_Skills_MirrorImagesEnd")
+AND
+DB_DC_Skills_MagicMirror(_MagicMirror)
+AND
+DB_DC_Skills_MagicMirrorTwo(_MagicMirrorTwo)
+THEN
+PlayEffect(_MagicMirror, "RS3_FX_GP_ScriptedEvent_Replenish_SourcePoint_01");
+PlayEffect(_MagicMirrorTwo, "RS3_FX_GP_ScriptedEvent_Replenish_SourcePoint_01");
+CharacterDie(_MagicMirror, 1, "Physical");
+CharacterDie(_MagicMirrorTwo, 1, "Physical");
+SetOnStage(_MagicMirror, 0);
+SetOnStage(_MagicMirrorTwo, 0);
+NOT DB_DC_Skills_MagicMirror(_MagicMirror);
+NOT DB_DC_Skills_MagicMirrorTwo(_MagicMirrorTwo);
+SysClear("DB_DC_Skills_MagicMirror",1);
+SysClear("DB_DC_Skills_MagicMirrorTwo",1);
+
+//END_REGION
+
+// Time Travel Spell
+
+IF
+CharacterUsedSkill(_Player, "Shout_DCTimeTravel", _)
+AND
+ObjectIsInTrigger(_Player, TRIGGERGUID_DC_Sandbox_BoxTrigger_000_0f8cf1a2-4f1f-4be6-b77c-95eb57adabcc, 1)
+THEN
+PlayEffect(_Player, "RS3_FX_Skills_Soul_LastRites_Disappear_Overlay_01");
+PlayEffect(_Player, "RS3_FX_GP_ScriptedEvent_HOE_AcquireSourceVampirism_01");
+ProcObjectTimer(_Player, "DC_TimeTravelTo", 1600);
+
+PROC
+ProcObjectTimerFinished(_Player, "DC_TimeTravelTo")
+THEN
+TeleportTo(_Player, TRIGGERGUID_PointTrigger_002_fbe7eb44-6e89-47a8-a84f-4868b2b7cd61, "DC_TimeTravelCast", 1);
+
+IF
+StoryEvent(_, "DC_TimeTravelCast")
+AND
+DB_IsPlayer(_Player)
+THEN
+PlayEffect(_Player, "RS3_FX_Skills_Soul_LastRites_Reappear_Overlay_01");
+PlayEffect(_Player, "RS3_FX_GP_ScriptedEvent_HOE_AcquireSourceVampirism_01");
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "Start"

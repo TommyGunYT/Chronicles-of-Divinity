@@ -1,0 +1,15 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+IF
+CharacterUsedItem(_Player, ITEMGUID_PUZ_Lever_Floor_B_000_95865483-dbe9-440e-b482-f634a24d0ffd)
+AND
+DB_IsPlayer(_Player)
+THEN
+TriggerSetAtmosphere(TRIGGERGUID_S_DC_ATM_FortJoyBeachAndFort_540ce656-d3f6-4468-b7ce-37bcc1651377, "37b5be15-19e2-4a75-9ab6-f011182ed8e6");
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "FortJoy"

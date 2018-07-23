@@ -1,0 +1,18 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+IF
+ItemOpened(ITEMGUID_DOORS_Humans_Graveyard_Shrines_A_Door_A_000_ee9ab89f-14f7-4b5f-8e00-9dd474d71526)
+THEN
+ItemSetCanInteract(ITEMGUID_S_LV_Mirror_000_9f94cd80-3180-4468-bb52-5117af059cc0, 1);
+
+PROC
+ProcRegionEnded("DC_Snowfall")
+THEN
+GoalCompleted;
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "DC_Snowfall"

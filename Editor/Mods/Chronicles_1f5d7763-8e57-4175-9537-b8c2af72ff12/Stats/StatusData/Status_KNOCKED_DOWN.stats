@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<stats stat_object_definition_id="53eea14d-0e3f-4411-9d44-36d1ff0a6775">
+  <stat_objects>
+    <stat_object index="0" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="MAGIC_KNOCKDOWN" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" clear_inherited_value="false" value="KNOCKED_DOWN" />
+        <field name="InitiateCombat" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" clear_inherited_value="false" value="Knocked Down" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" clear_inherited_value="false" value="Character has fallen down from a strong gust of wind, and cannot move. Cured by Rested." />
+        <field name="SavingThrow" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="34" enumeration_type_name="SavingThrow" />
+      </fields>
+    </stat_object>
+    <stat_object index="1" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="KNOCKED_DOWN" />
+        <field name="Type" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="KNOCKED_DOWN" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="InitiateCombat" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" clear_inherited_value="false" value="Knocked Down" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" clear_inherited_value="false" value="Character is knocked down and cannot move. Cured by Rested." />
+        <field name="Icon" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="statIcons_KnockedDown" />
+        <field name="FormatColor" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="FormatStringColor" />
+        <field name="StatusEffect" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="RS3_FX_GP_Status_KnockedDown_01:Dummy_StatusFX" />
+        <field name="SavingThrow" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="33" enumeration_type_name="SavingThrow" />
+        <field name="ImmuneFlag" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="7" enumeration_type_name="AttributeFlag" />
+        <field name="StatsId" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Stats_KnockedDown" />
+        <field name="Instant" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+      </fields>
+    </stat_object>
+  </stat_objects>
+</stats>

@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<stats stat_object_definition_id="43178832-7920-4a69-8b7e-bcebc518c388">
+  <stat_objects>
+    <stat_object index="0" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="SoftLevelCap" />
+        <field name="Value" type="FloatStatObjectFieldDefinition" clear_inherited_value="false" value="35" />
+      </fields>
+    </stat_object>
+    <stat_object index="1" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="LeadershipRange" />
+        <field name="Value" type="FloatStatObjectFieldDefinition" clear_inherited_value="false" value="15" />
+      </fields>
+    </stat_object>
+    <stat_object index="2" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="CivilAbilityCap" />
+        <field name="Value" type="FloatStatObjectFieldDefinition" clear_inherited_value="false" value="10" />
+      </fields>
+    </stat_object>
+    <stat_object index="3" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="CivilAbilityLevelGrowth" />
+        <field name="Value" type="FloatStatObjectFieldDefinition" clear_inherited_value="false" value="3" />
+      </fields>
+    </stat_object>
+    <stat_object index="4" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="SneakDefaultAPCost" />
+        <field name="Value" type="FloatStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+      </fields>
+    </stat_object>
+    <stat_object index="5" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="MaximumSummonsInCombat" />
+        <field name="Value" type="FloatStatObjectFieldDefinition" clear_inherited_value="false" value="8" />
+      </fields>
+    </stat_object>
+    <stat_object index="6" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="PriceGrowth" />
+        <field name="Value" type="FloatStatObjectFieldDefinition" clear_inherited_value="false" value="1.15" />
+      </fields>
+    </stat_object>
+    <stat_object index="7" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="SummoningAbilityBonus" />
+        <field name="Value" type="FloatStatObjectFieldDefinition" clear_inherited_value="false" value="10" />
+      </fields>
+    </stat_object>
+    <stat_object index="8" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="TalentSneakingDamageBonus" />
+        <field name="Value" type="FloatStatObjectFieldDefinition" clear_inherited_value="false" value="75" />
+      </fields>
+    </stat_object>
+    <stat_object index="9" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="CombatAbilityDodgingBonus" />
+        <field name="Value" type="FloatStatObjectFieldDefinition" clear_inherited_value="false" value="2" />
+      </fields>
+    </stat_object>
+    <stat_object index="10" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="CombatAbilityNpcGrowth" />
+        <field name="Value" type="FloatStatObjectFieldDefinition" clear_inherited_value="false" value="0.15" />
+      </fields>
+    </stat_object>
+    <stat_object index="11" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="SkillAbilityAirDamageBoostPerPoint" />
+        <field name="Value" type="FloatStatObjectFieldDefinition" clear_inherited_value="false" value="7" />
+      </fields>
+    </stat_object>
+    <stat_object index="12" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="SkillAbilityArmorRestoredPerPoint" />
+        <field name="Value" type="FloatStatObjectFieldDefinition" clear_inherited_value="false" value="7" />
+      </fields>
+    </stat_object>
+    <stat_object index="13" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="SkillAbilityFireDamageBoostPerPoint" />
+        <field name="Value" type="FloatStatObjectFieldDefinition" clear_inherited_value="false" value="7" />
+      </fields>
+    </stat_object>
+    <stat_object index="14" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="SkillAbilityPoisonAndEarthDamageBoostPerPoint" />
+        <field name="Value" type="FloatStatObjectFieldDefinition" clear_inherited_value="false" value="7" />
+      </fields>
+    </stat_object>
+    <stat_object index="15" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="PriceModClassicDifficulty" />
+        <field name="Value" type="FloatStatObjectFieldDefinition" clear_inherited_value="false" value="2.6" />
+      </fields>
+    </stat_object>
+    <stat_object index="16" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WandUsesMax" />
+        <field name="Value" type="FloatStatObjectFieldDefinition" clear_inherited_value="false" value="20" />
+      </fields>
+    </stat_object>
+    <stat_object index="17" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="TalentCivilAbilityPointsBonus" />
+        <field name="Value" type="FloatStatObjectFieldDefinition" clear_inherited_value="false" value="2" />
+      </fields>
+    </stat_object>
+    <stat_object index="18" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="TalentPointPerLevels" />
+        <field name="Value" type="FloatStatObjectFieldDefinition" clear_inherited_value="false" value="5" />
+      </fields>
+    </stat_object>
+    <stat_object index="19" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="LevelCap" />
+        <field name="Value" type="FloatStatObjectFieldDefinition" clear_inherited_value="false" value="50" />
+      </fields>
+    </stat_object>
+    <stat_object index="20" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="StatusDefaultDistancePerDamage" />
+        <field name="Value" type="FloatStatObjectFieldDefinition" clear_inherited_value="false" value="0.7" />
+      </fields>
+    </stat_object>
+  </stat_objects>
+</stats>

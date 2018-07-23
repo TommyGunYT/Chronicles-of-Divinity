@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<stats stat_object_definition_id="a46ee13b-92c9-474f-9b83-2561b63cf414">
+  <stat_objects>
+    <stat_object index="0" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="ARM_UNIQUE_TwoSummonGloves" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Hands of the Army" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="What's better than getting a creature to do your bidding? Two of them! Of course, the concentration for such a task will make each of them weaker." />
+      </fields>
+    </stat_object>
+    <stat_object index="1" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_PhysicalWand" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Andras's Tooth" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="A vicious tooth of gory delight. Andras's bite will come to haunt your future foes." />
+      </fields>
+    </stat_object>
+    <stat_object index="2" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="ARM_UNIQUE_CrownOfFireSlug" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Crown of the Fire Slug" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="It doesn't fit her in the slightest, but it was the crown of the Royal Fire Slug nonetheless. Its constant warmth is definitely not good for your hair." />
+      </fields>
+    </stat_object>
+    <stat_object index="3" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="ARM_UNIQUE_PackHelmet" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Head of the Abominable Pack" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="A motley cornucopia of tattered hides, which nonetheless inspires a certain cruel comaraderie" />
+      </fields>
+    </stat_object>
+    <stat_object index="4" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="ARM_UNIQUE_DefilerGloves" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Defilers" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="These gloves reek of sickly, wet leather, fresh from a rotten carcass." />
+      </fields>
+    </stat_object>
+    <stat_object index="5" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="ARM_UNIQUE_BlessedBlindfolds" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Blindfolds of Intuition" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Though they completely block your sight, these blindfolds grant you a preternatural awareness and agility. You can hear the organs of nearby creatures churning away." />
+      </fields>
+    </stat_object>
+    <stat_object index="6" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="ARM_UNIQUE_AlexanderSourceCollar" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Alexander's Source Collar" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Despite Alexander's insistence that he had collared himself, he had always provided himself an out with a secret switch to remove the collar. Moreover, he had enchanted the collar so it was not purely a fashion statement." />
+      </fields>
+    </stat_object>
+    <stat_object index="7" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_MagicStaff" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Reliquary of Ataraxia" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Most magic you know of has a particular elemental flavor; this staff exudes just plain, bland magic. Powerful, but somehow uninteresting." />
+      </fields>
+    </stat_object>
+    <stat_object index="8" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_QuickBow" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="The Shortstop" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="This bow is built for an esoteric sport of archery where players shoot arrows at each other while running in a circle. Bows built for this value quickness over range. It is not a particularly popular game." />
+      </fields>
+    </stat_object>
+    <stat_object index="9" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_WandOfEnslavement" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Wand of Enslavement" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="You can't stop thinking of those creepy fellows with the metal jutting out of them when you look at this wand." />
+      </fields>
+    </stat_object>
+    <stat_object index="10" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_EpicWoodSword" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Sword of Imagination" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="This sword is lovingly carved from a very hard wood, and powered with the magic of a child's imagination. It smells of salt and dreams. " />
+      </fields>
+    </stat_object>
+    <stat_object index="11" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_ForkTonguesFork" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Forktongue's Fork" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="You can't imagine Forktongue ate with this thing. It's more a knife than a fork. Hmm... maybe that's why he has a forked tongue?" />
+      </fields>
+    </stat_object>
+    <stat_object index="12" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_AdvocateSword" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="The Advocater" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="This sword is very, very convincing. They say the quill is mightier than the sword, but swords are what demons write with." />
+      </fields>
+    </stat_object>
+    <stat_object index="13" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_DaggerSpear" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Sufferer" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="(This spear can backstab.) This spear's grip is jagged and painful, even with gloves. It makes you want to torture a frog." />
+      </fields>
+    </stat_object>
+    <stat_object index="14" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="SHLD_UNIQUE_DrillWormShield" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Woken Carapace" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="This shield is woke. First by the void, then by gods." />
+      </fields>
+    </stat_object>
+    <stat_object index="15" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="ARM_UNIQUE_WeaponMasterGloves" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Gloves of Technique" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Despite the bulk of these gloves, they grant a nimbleness ideal for plucking a bow string or riposting a jab, nevermind dancing about with two blades or a maul." />
+      </fields>
+    </stat_object>
+    <stat_object index="16" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_PortalWand" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Depth Dredger" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="This wand weaves and bobs in your hand, like a cool summer day on the sea. But there's a storm coming... and some terror from the depths as well. That kind of day." />
+      </fields>
+    </stat_object>
+    <stat_object index="17" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="ARM_UNIQUE_BeastMasterBoots" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Spirit of the Cliffs" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="You smell venison, the musk of wild boar. You taste the blood of a wounded bear as you chase it along a cragsome cliff. You feel a kindredness, a resignation turned to loyalty. " />
+      </fields>
+    </stat_object>
+    <stat_object index="18" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_ScytheOfStrife" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Scythe of Strife" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Urine and ashes. Turpentine turmoil. Cold sweat. A kailadescope of suffering. The stuff of demons. Why Jahan has this, you do not know." />
+      </fields>
+    </stat_object>
+    <stat_object index="19" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="ARM_UNIQUE_AscendantPriestRobes" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Ascension" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="There are tales of a frail priest who prayed for decades, never losing faith in Rhalic. One day, he ascended. He flew into the air with his new wings, but just as he did, a storm approached. He was struck by a bolt of lightning thrown from a jealous god. His shirt survived, maintaining a hint of his ascension, but also his frailty." />
+      </fields>
+    </stat_object>
+    <stat_object index="20" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="ARM_UNIQUE_HelmOfHorns" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Matador" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="For some reason, wearing this helmet makes the color red really annoy you." />
+      </fields>
+    </stat_object>
+    <stat_object index="21" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="ARM_UNIQUE_QuiverHands" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Quiver Hands" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="These gloves let you draw out elemental arrows from thin air. They feel tingly and warm one second, and cold and stinky the next." />
+      </fields>
+    </stat_object>
+    <stat_object index="22" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_SmokeXbow" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Disrupter" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="The ultimate guerilla fighters crossbow, clearly built for maximum confusion and scorched earth." />
+      </fields>
+    </stat_object>
+    <stat_object index="23" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="ARM_UNIQUE_PrimordialShard" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Primordial Shard" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="You feel an immense warmth, the sort that's comfortable for only a few minutes, but this comfort lasts forever. It makes any other sensation feel more extreme." />
+        <field name="NameCool" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Primordial Shard" />
+      </fields>
+    </stat_object>
+    <stat_object index="24" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_RustClaw" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Claw of Rust" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Mord 'Akaim's claw drips rust, ready to slice through even the strongest armor. " />
+      </fields>
+    </stat_object>
+    <stat_object index="25" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="ARM_UNIQUE_GreaterWeaponMasterGloves" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Gloves of Greater Technique" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Dance among your foes with blade and string, a dervish of multifacted death." />
+      </fields>
+    </stat_object>
+    <stat_object index="26" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_QannaStaff" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Dust and Ash" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Qanna's staff has drawn some power from its extended petrification." />
+      </fields>
+    </stat_object>
+    <stat_object index="27" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="ARM_UNIQUE_RingOfUndeath" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Band of Undeath" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Protects you from that all that toxic healing, nevermind that nasty decay. (Grants immunity to Regeneration.)" />
+      </fields>
+    </stat_object>
+    <stat_object index="28" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="SHIELD_UNIQUE_AirBuckler" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Buffet" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="This ancient shield had been handed down amongs generations of djinns, before some jerks got their hands on it. " />
+      </fields>
+    </stat_object>
+    <stat_object index="29" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="ARM_UNIQUE_ColdChitin" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Cold Chitin" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="These pants feel like the cool side of the pillow." />
+      </fields>
+    </stat_object>
+    <stat_object index="30" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="ARM_UNIQUE_Conductors" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Conductors" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="These boots will make electricity give you an energizing jolt. They also make it hurt more." />
+      </fields>
+    </stat_object>
+    <stat_object index="31" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="ARM_UNIQUE_TacticianBoots" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Strategizers" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="When it comes to battle, acceleration is the name of the game. More important than long-distance running, if you could ask these boots." />
+      </fields>
+    </stat_object>
+    <stat_object index="32" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="ARM_UNIQUE_AffinityGlove" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Affinity Gloves" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="You really just want to snap your fingers with these gloves on. Makes you think you can better control the elements, though not without suffering some punishment for it." />
+        <field name="NameCool" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Affinity Gloves" />
+      </fields>
+    </stat_object>
+    <stat_object index="33" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="ARM_UNIQUE_GearHandlers" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="The Switcharoo" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="One second you have a dagger, the next a bow. Let's trade those pants for a dress while we're at it, and maybe change our hat to match." />
+      </fields>
+    </stat_object>
+    <stat_object index="34" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_BullyClub" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Bully" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Holding this club makes you want to go for the weakest, most pathetic targets. Naturally, it makes you a bit more nervous about fighting someone your own size (or bigger)." />
+      </fields>
+    </stat_object>
+    <stat_object index="35" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_RuneBlade" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Blade of Ancient Runes" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="This blade appears to have once had great religious import, with slots for holy symbols. Now it's merely a weapon with great killing potential." />
+      </fields>
+    </stat_object>
+    <stat_object index="36" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_RodOfCollection" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Rod of Collection" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="A rod so good at catching fish (and other things), it makes fishing even more boring than normal." />
+        <field name="NameCool" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Rod of Collection" />
+      </fields>
+    </stat_object>
+    <stat_object index="37" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_GreaterRodOfCollection" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Greater Rod of Collection" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="You're pretty sure you coulch catch a kraken with this thing." />
+      </fields>
+    </stat_object>
+    <stat_object index="38" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="SHIELD_UNIQUE_PaladinShield" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Rhalic's Guidance" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="A scratched and bloodied shield that still permeates with holiness." />
+      </fields>
+    </stat_object>
+    <stat_object index="39" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="SHIELD_UNIQUE_ReflectorShield" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Grimace" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="It's virtually impossible to smile while holding this shield. All it wants is everyone to suffer. " />
+        <field name="NameCool" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Grimace" />
+      </fields>
+    </stat_object>
+    <stat_object index="40" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_PrayerSword" />
+        <field name="ItemName" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Prayer Blade" />
+        <field name="Description" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="There is tiny scripture written into this sword. It could be a whole book's worth, but it is nearly all illegible." />
+      </fields>
+    </stat_object>
+  </stat_objects>
+</stats>

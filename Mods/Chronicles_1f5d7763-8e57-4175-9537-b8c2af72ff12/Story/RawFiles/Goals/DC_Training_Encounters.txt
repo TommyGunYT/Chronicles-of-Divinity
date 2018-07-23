@@ -1,0 +1,1065 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+DB_DC_Training_CombatantLibrary("CHARACTERGUID_ARX_Humans_Female_Blackring_Witch_9963e453-adbd-48d6-9e28-3b571911499b", 0);
+DB_DC_Training_CombatantLibrary("CHARACTERGUID_ARX_Humans_Female_Paladin_Healer_04832cfc-2e61-4542-82e1-3937efc390fc", 1);
+DB_DC_Training_CombatantLibrary("CHARACTERGUID_ARX_Humans_Female_Paladin_Mage_043166eb-541e-488d-bfb6-0c4f3f9f6bf0", 2);
+DB_DC_Training_CombatantLibrary("CHARACTERGUID_ARX_Humans_Female_Paladin_Melee_5eadf529-c276-4817-a732-4f1f7d9a16a5", 3);
+DB_DC_Training_CombatantLibrary("CHARACTERGUID_ARX_Humans_Female_Paladin_Ranger_c4e7c000-e288-4d06-acef-2ad247ad7c62", 4);
+DB_DC_Training_CombatantLibrary("CHARACTERGUID_ARX_Humans_Male_Fat_BlackRing_Brute_b6003c07-3b46-4c84-9498-7254c12e5e14", 5);
+DB_DC_Training_CombatantLibrary("CHARACTERGUID_Animals_Crab_A_c816ba20-114b-47f2-b755-2ddcc9c40ea6", 6);
+DB_DC_Training_CombatantLibrary("CHARACTERGUID_DC_Creatures_Undead_Zombie_A_e5fe0336-e620-4047-a1dd-b7a70d1146e9", 7);
+DB_DC_Training_CombatantLibrary("CHARACTERGUID_DC_FTJI_FireOoze_c97748f7-705a-4c1a-9f29-1d267fb35515", 8);
+DB_DC_Training_CombatantLibrary("CHARACTERGUID_ARX_Humans_Male_Guard_af9d3268-a870-4f63-a20c-e71b0030c583", 9);
+DB_DC_Training_CombatantLibrary("CHARACTERGUID_FTJ_Dwarves_Male_Seeker_0ccdc5a1-f34c-48e7-b72b-f714a7332195", 10);
+DB_DC_Training_CombatantLibrary("CHARACTERGUID_DC_SourcePuppet_A_64f74a36-f818-4491-8b85-09b0a25e135d", 11);
+DB_DC_Training_CombatantLibrary("CHARACTERGUID_DC_SourcePuppet_B_e5cf1124-7cac-4374-99ca-bf4931569894", 12);
+DB_DC_Training_CombatantLibrary("CHARACTERGUID_DC_SourcePuppet_C_d48c8700-25b9-4996-b989-24156d06cfd4", 13);
+DB_DC_Training_CombatantLibrary("CHARACTERGUID_DC_Creatures_Demon_Hound_A_2510898b-c6bf-4350-acc3-114c92bf9b1a", 14);
+DB_DC_Training_CombatantLibrary("CHARACTERGUID_DC_Creatures_Undead_Zombie_A_e5fe0336-e620-4047-a1dd-b7a70d1146e9", 15);
+DB_DC_Training_CombatantLibrary("CHARACTERGUID_ARX_Humans_Female_Paladin_Mage_043166eb-541e-488d-bfb6-0c4f3f9f6bf0", 16);
+DB_DC_Training_CombatantLibrary("CHARACTERGUID_DC_Creatures_Demon_Hound_A_2510898b-c6bf-4350-acc3-114c92bf9b1a", 17);
+DB_DC_Training_CombatantLibrary("CHARACTERGUID_DC_Animals_Spider_Large_5294e2ac-b00e-4e38-b733-a747223a090a", 18);
+DB_DC_Training_CombatantLibrary("CHARACTERGUID_DC_Spiderling_094ee9ef-33e2-4fd6-99b0-abe871bb82e2", 19);
+KBSECTION
+//REGION ROYALE
+
+IF
+DB_DC_Training_RandomFight((INTEGER)_Random)
+AND
+_Random == 2
+AND
+DB_DC_ComposerDialogs(_Dialogue)
+THEN
+GlobalSetFlag("DC_Training_DivinityRoyale");
+NOT DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, _Dialogue);
+PROC_RemoveDialogFromCharacter(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e);
+DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e,"DC_CombatTraining_Guardian_CombatIntro");
+CharacterTeleportPartiesToTrigger(TRIGGERGUID_DC_Training_TP_PlayersTheRift_cb8f2956-f5c7-45f3-8330-f83ffb4c0da8, "DC_Training_Init_Rift");
+TeleportTo(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, TRIGGERGUID_DC_Training_TP_ComposerTheRift_bae69847-42af-4492-b13d-a1be63d5e6a0, "", 1);
+ShroudRender(0);
+
+
+IF
+StoryEvent(_, "DC_Training_Init_Rift")
+AND
+DB_IsPlayer(_Player)
+THEN
+Proc_StartDialog(0, "DC_CombatTraining_Guardian_CombatIntro", CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, _Player);
+
+IF
+DialogEnded("DC_CombatTraining_Guardian_CombatIntro", _ID)
+AND
+DB_DC_Training_RandomFight((INTEGER)_Random)
+AND
+_Random == 2
+AND
+DB_IsPlayer(_Player)
+AND
+ObjectGetFlag(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, "Encounter_DivinityRoyale", 1)
+THEN
+TimerLaunch("DC_Training_RiftRoyalePreparation", 20000);
+Proc_DC_Training_TeleportComposerToManor_Idle();
+
+IF
+TimerFinished("DC_Training_RiftRoyalePreparation")
+THEN
+ObjectClearFlag(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, "Encounter_DivinityRoyale");
+Proc_DC_Training_Spawn_RiftRoyale();
+
+PROC
+Proc_DC_Training_Spawn_RiftRoyale()
+AND
+DB_DC_Training_RandomFight((INTEGER)_Random)
+AND
+_Random == 2
+THEN
+DB_DC_Training_RiftStarted("Started");
+DB_DC_Training_CombatStarted_DivinityRoyale(1);
+Proc_DC_Training_Spawn_DivinityRoyaleRiftOne();
+Proc_DC_Training_Spawn_DivinityRoyaleRiftTwo();
+Proc_DC_Training_Spawn_DivinityRoyaleRiftThree();
+Proc_DC_Training_Spawn_DivinityRoyaleRiftFour();
+Proc_DC_Training_Spawn_DivinityRoyaleRiftFive();
+TimerLaunch("DC_Training_Levels_RiftRoyale", 1000);
+
+IF
+TimerFinished("DC_Training_Levels_RiftRoyale")
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+DB_DC_TrainingCombat_SpawnedEnemies(_Combatant)
+THEN
+CharacterLevelUpTo(_Combatant, _Level);
+SetFaction(_Combatant, "Evil NPC");
+EnterCombat(_Combatant, _Player);
+
+PROC
+Proc_DC_Training_Spawn_DivinityRoyaleRiftOne()
+AND
+DB_DC_Training_CombatantLibrary(_Template, _Enemy)
+AND
+DB_DC_Training_RiftStarted("Started")
+AND
+Random(20, _Random)
+AND
+_Random == (INTEGER)_Enemy
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_RandomSpawnTrigger_TheRift_f2fa0045-5639-47a1-bb1b-e7822e179bcc, _X, _Y, _Z)
+AND
+CharacterCreateAtPosition(_X, _Y, _Z, (STRING)_Template, 1, _Combatant)
+THEN
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Combatant);
+
+PROC
+Proc_DC_Training_Spawn_DivinityRoyaleRiftTwo()
+AND
+DB_DC_Training_CombatantLibrary(_Template, _Enemy)
+AND
+DB_DC_Training_RiftStarted("Started")
+AND
+Random(20, _Random)
+AND
+_Random == (INTEGER)_Enemy
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_RandomSpawnTrigger_TheRift_f2fa0045-5639-47a1-bb1b-e7822e179bcc, _X, _Y, _Z)
+AND
+CharacterCreateAtPosition(_X, _Y, _Z, (STRING)_Template, 1, _Combatant)
+THEN
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Combatant);
+
+PROC
+Proc_DC_Training_Spawn_DivinityRoyaleRiftThree()
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_Training_RiftStarted("Started")
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+_Level >= 7
+AND
+DB_DC_Training_CombatantLibrary(_Template, _Enemy)
+AND
+DB_DC_Training_RoyaleEncounter("2")
+AND
+Random(20, _Random)
+AND
+_Random == (INTEGER)_Enemy
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_RandomSpawnTrigger_TheRift_f2fa0045-5639-47a1-bb1b-e7822e179bcc, _X, _Y, _Z)
+AND
+CharacterCreateAtPosition(_X, _Y, _Z, (STRING)_Template, 1, _Combatant)
+THEN
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Combatant);
+
+PROC
+Proc_DC_Training_Spawn_DivinityRoyaleRiftFour()
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_Training_RiftStarted("Started")
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+_Level >= 11
+AND
+DB_DC_Training_CombatantLibrary(_Template, _Enemy)
+AND
+DB_DC_Training_RoyaleEncounter("2")
+AND
+Random(20, _Random)
+AND
+_Random == (INTEGER)_Enemy
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_RandomSpawnTrigger_TheRift_f2fa0045-5639-47a1-bb1b-e7822e179bcc, _X, _Y, _Z)
+AND
+CharacterCreateAtPosition(_X, _Y, _Z, (STRING)_Template, 1, _Combatant)
+THEN
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Combatant);
+
+
+PROC
+Proc_DC_Training_Spawn_DivinityRoyaleRiftFive()
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_Training_RiftStarted("Started")
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+_Level >= 20
+AND
+DB_DC_Training_CombatantLibrary(_Template, _Enemy)
+AND
+Random(20, _Random)
+AND
+_Random == (INTEGER)_Enemy
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_RandomSpawnTrigger_TheRift_f2fa0045-5639-47a1-bb1b-e7822e179bcc, _X, _Y, _Z)
+AND
+CharacterCreateAtPosition(_X, _Y, _Z, (STRING)_Template, 1, _Combatant)
+THEN
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Combatant);
+
+
+
+IF
+CombatEnded(_ID)
+AND
+DB_DC_Training_RiftStarted("Started")
+AND
+DB_DC_TrainingCombat_SpawnedEnemies(_Combatant)
+AND
+DB_DC_Training_CombatStarted_DivinityRoyale(1)
+AND
+CharacterIsDead(_Combatant, 1)
+THEN
+Proc_DC_Training_DivinityRiftFinish();
+NOT DB_DC_Training_RiftStarted("Started");
+
+PROC
+Proc_DC_Training_DivinityRiftFinish()
+AND
+DB_DC_Training_RandomFight(2)
+AND
+DB_DC_Training_CombatStarted_DivinityRoyale(1)
+AND
+DB_DC_ComposerDialogs(_Dialogues)
+THEN
+NOT DB_DC_Training_RandomFight(2);
+SysClear("DB_DC_Training_RoyaleEncounter",1);
+NOT DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, _Dialogues);
+PROC_RemoveDialogFromCharacter(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e);
+DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e,"DC_CombatTraining_Guardian_TrialFinish");
+TeleportTo(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, TRIGGERGUID_DC_Training_TP_ComposerTrialRiftFinish_8c3d33cc-1fe9-4771-9c21-e80cf74b53d8, "DC_CombatTraining_Guardian_TrialFinish", 1);
+NOT DB_DC_Training_CombatStarted_DivinityRoyale(1);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+IF
+DB_DC_Training_RandomFight((INTEGER)_Random)
+AND
+_Random == 3
+AND
+DB_DC_ComposerDialogs(_Dialogue)
+THEN
+GlobalSetFlag("DC_Training_DivinityRoyale");
+NOT DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, _Dialogue);
+PROC_RemoveDialogFromCharacter(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e);
+DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e,"DC_CombatTraining_Guardian_CombatIntro");
+CharacterTeleportPartiesToTrigger(TRIGGERGUID_DC_TP_Players_TowerRoyale_be004715-0d8f-46ec-bba9-294c9a11358e, "DC_Training_Init");
+TeleportTo(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, TRIGGERGUID_DC_TP_Composer_RoyaleTowerInit_7b8c513e-046f-4608-ace8-26a596806da4, "", 1);
+DB_DC_Training_FortressStarted("Started");
+
+IF
+StoryEvent(_, "DC_Training_Init")
+AND
+DB_IsPlayer(_Player)
+THEN
+Proc_StartDialog(0, "DC_CombatTraining_Guardian_CombatIntro", CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, _Player);
+
+IF
+DialogEnded("DC_CombatTraining_Guardian_CombatIntro", _ID)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_Training_FortressStarted("Started")
+AND
+DialogGetInvolvedPlayer(_ID, 1, _Speaker)
+AND
+ObjectGetFlag(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, "Encounter_DivinityRoyale", 1)
+AND
+CharacterGetReservedUserID((CHARACTERGUID)_Speaker, _User)
+THEN
+TimerLaunch("DC_Training_DivinityTowerPreparation", 20000);
+Proc_DC_Training_TeleportComposerToManor_Idle();
+
+IF
+TimerFinished("DC_Training_DivinityTowerPreparation")
+THEN
+ObjectClearFlag(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, "Encounter_DivinityRoyale");
+Proc_DC_Training_Spawn_TowerRoyale();
+
+PROC
+Proc_DC_Training_Spawn_TowerRoyale()
+AND
+DB_DC_Training_FortressStarted("Started")
+THEN
+DB_DC_Training_CombatStarted_DivinityRoyale(1);
+Proc_DC_Training_Spawn_DivinityRoyaleTowerOne();
+Proc_DC_Training_Spawn_DivinityRoyaleTowerTwo();
+Proc_DC_Training_Spawn_DivinityRoyaleTowerThree();
+Proc_DC_Training_Spawn_DivinityRoyaleTowerFour();
+Proc_DC_Training_Spawn_DivinityRoyaleTowerFive();
+TimerLaunch("DC_Training_Levels_TowerRoyale", 1000);
+
+IF
+TimerFinished("DC_Training_Levels_TowerRoyale")
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+DB_DC_TrainingCombat_SpawnedEnemies(_Combatant)
+THEN
+CharacterLevelUpTo(_Combatant, _Level);
+SetFaction(_Combatant, "Evil NPC");
+EnterCombat(_Combatant, _Player);
+
+PROC
+Proc_DC_Training_Spawn_DivinityRoyaleTowerOne()
+AND
+DB_DC_Training_CombatantLibrary(_Template, _Enemy)
+AND
+DB_DC_Training_FortressStarted("Started")
+AND
+Random(20, _Random)
+AND
+_Random == (INTEGER)_Enemy
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_RandomSpawnTrigger_Fortress_2aaed7c4-9963-4219-b208-6c0141c7803e, _X, _Y, _Z)
+AND
+CharacterCreateAtPosition(_X, _Y, _Z, (STRING)_Template, 1, _Combatant)
+THEN
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Combatant);
+
+PROC
+Proc_DC_Training_Spawn_DivinityRoyaleTowerTwo()
+AND
+DB_DC_Training_CombatantLibrary(_Template, _Enemy)
+AND
+DB_DC_Training_FortressStarted("Started")
+AND
+Random(20, _Random)
+AND
+_Random == (INTEGER)_Enemy
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_RandomSpawnTrigger_Fortress_2aaed7c4-9963-4219-b208-6c0141c7803e, _X, _Y, _Z)
+AND
+CharacterCreateAtPosition(_X, _Y, _Z, (STRING)_Template, 1, _Combatant)
+THEN
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Combatant);
+
+PROC
+Proc_DC_Training_Spawn_DivinityRoyaleTowerThree()
+AND
+DB_DC_Training_CombatantLibrary(_Template, _Enemy)
+AND
+DB_DC_Training_FortressStarted("Started")
+AND
+Random(20, _Random)
+AND
+_Random == (INTEGER)_Enemy
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_RandomSpawnTrigger_Fortress_2aaed7c4-9963-4219-b208-6c0141c7803e, _X, _Y, _Z)
+AND
+CharacterCreateAtPosition(_X, _Y, _Z, (STRING)_Template, 1, _Combatant)
+THEN
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Combatant);
+
+PROC
+Proc_DC_Training_Spawn_DivinityRoyaleTowerFour()
+AND
+DB_DC_Training_CombatantLibrary(_Template, _Enemy)
+AND
+DB_DC_Training_FortressStarted("Started")
+AND
+Random(20, _Random)
+AND
+_Random == (INTEGER)_Enemy
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_RandomSpawnTrigger_Fortress_2aaed7c4-9963-4219-b208-6c0141c7803e, _X, _Y, _Z)
+AND
+CharacterCreateAtPosition(_X, _Y, _Z, (STRING)_Template, 1, _Combatant)
+THEN
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Combatant);
+
+
+PROC
+Proc_DC_Training_Spawn_DivinityRoyaleTowerFive()
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_Training_FortressStarted("Started")
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+_Level >= 8
+AND
+DB_DC_Training_CombatantLibrary(_Template, _Enemy)
+AND
+Random(20, _Random)
+AND
+_Random == (INTEGER)_Enemy
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_RandomSpawnTrigger_Fortress_2aaed7c4-9963-4219-b208-6c0141c7803e, _X, _Y, _Z)
+AND
+CharacterCreateAtPosition(_X, _Y, _Z, (STRING)_Template, 1, _Combatant)
+THEN
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Combatant);
+
+
+
+IF
+CombatEnded(_ID)
+AND
+DB_DC_Training_FortressStarted("Started")
+AND
+DB_DC_TrainingCombat_SpawnedEnemies(_Combatant)
+AND
+DB_DC_Training_CombatStarted_DivinityRoyale(1)
+AND
+CharacterIsDead(_Combatant, 1)
+THEN
+Proc_DC_Training_DivinityFortressFinish();
+
+
+PROC
+Proc_DC_Training_DivinityFortressFinish()
+AND
+DB_DC_Training_FortressStarted("Started")
+AND
+DB_DC_Training_CombatStarted_DivinityRoyale(1)
+AND
+DB_DC_ComposerDialogs(_Dialogues)
+THEN
+NOT DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, _Dialogues);
+PROC_RemoveDialogFromCharacter(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e);
+DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e,"DC_CombatTraining_Guardian_TrialFinish");
+TeleportTo(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, TRIGGERGUID_DC_TP_Composer_RoyaleTowerInit_7b8c513e-046f-4608-ace8-26a596806da4, "DC_CombatTraining_Guardian_TrialFinish", 1);
+NOT DB_DC_Training_CombatStarted_DivinityRoyale(1);
+NOT DB_DC_Training_RandomFight(2);
+NOT DB_DC_Training_FortressStarted("Started");
+
+
+
+
+
+
+
+
+
+
+
+
+//SETUP - CENTRAL ARENA ROYALE
+
+IF
+DB_DC_Training_RandomFight((INTEGER)_Random)
+AND
+_Random == 4
+AND
+DB_DC_ComposerDialogs(_Dialogue)
+THEN
+GlobalSetFlag("DC_Training_DivinityRoyale");
+NOT DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, _Dialogue);
+PROC_RemoveDialogFromCharacter(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e);
+DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e,"DC_CombatTraining_Guardian_CombatIntro");
+CharacterTeleportPartiesToTrigger(TRIGGERGUID_DC_TP_Training_CentralArena_d5cffbf1-4c40-428c-ab88-f2ca1d1e2787, "DC_Training_Init");
+TeleportTo(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, TRIGGERGUID_DC_TP_Training_ComposerAtCentralArena_a177d2a2-1f7c-4492-9c4e-54424ab53fa5, "", 1);
+
+
+
+IF
+StoryEvent(_, "DC_Training_Init")
+AND
+DB_IsPlayer(_Player)
+THEN
+Proc_StartDialog(0, "DC_CombatTraining_Guardian_CombatIntro", CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, _Player);
+
+IF
+DialogEnded("DC_CombatTraining_Guardian_CombatIntro", _ID)
+AND
+DB_DC_Training_RandomFight((INTEGER)_Random)
+AND
+_Random == 4
+AND
+DB_IsPlayer(_Player)
+AND
+DialogGetInvolvedPlayer(_ID, 1, _Speaker)
+AND
+ObjectGetFlag(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, "Encounter_DivinityRoyale", 1)
+AND
+CharacterGetReservedUserID((CHARACTERGUID)_Speaker, _User)
+THEN
+TimerLaunch("DC_Training_DivinityCentralPreparation", 20000);
+Proc_DC_Training_TeleportComposerToManor_Idle();
+
+IF
+TimerFinished("DC_Training_DivinityCentralPreparation")
+AND
+DB_DC_Training_RandomFight((INTEGER)_Random)
+AND
+_Random == 4
+THEN
+ObjectClearFlag(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, "Encounter_DivinityRoyale");
+Proc_DC_Training_Spawn_CentralRoyale();
+
+PROC
+Proc_DC_Training_Spawn_CentralRoyale()
+THEN
+DB_DC_Training_CentralRoyale("Started");
+DB_DC_Training_CombatStarted_DivinityRoyale(1);
+Proc_DC_Training_Spawn_DivinityRoyaleCentralOne();
+Proc_DC_Training_Spawn_DivinityRoyaleCentralTwo();
+Proc_DC_Training_Spawn_DivinityRoyaleCentralThree();
+Proc_DC_Training_Spawn_DivinityRoyaleCentralFour();
+Proc_DC_Training_Spawn_DivinityRoyaleCentralFive();
+TimerLaunch("DC_Training_Levels_CentralRoyale", 1000);
+
+IF
+TimerFinished("DC_Training_Levels_CentralRoyale")
+AND
+DB_DC_Training_RandomFight((INTEGER)_Random)
+AND
+_Random == 4
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+DB_DC_TrainingCombat_SpawnedEnemies(_Combatant)
+THEN
+CharacterLevelUpTo(_Combatant, _Level);
+SetFaction(_Combatant, "Evil NPC");
+EnterCombat(_Combatant, _Player);
+
+PROC
+Proc_DC_Training_Spawn_DivinityRoyaleCentralOne()
+AND
+DB_DC_Training_CombatantLibrary(_Template, _Enemy)
+AND
+Random(20, _Random)
+AND
+DB_DC_Training_CentralRoyale("Started")
+AND
+_Random == (INTEGER)_Enemy
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_Encounter1_RNDBox_d1167df2-826f-49e9-9565-cb1406e28d74, _X, _Y, _Z)
+AND
+CharacterCreateAtPosition(_X, _Y, _Z, (STRING)_Template, 1, _Combatant)
+THEN
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Combatant);
+
+PROC
+Proc_DC_Training_Spawn_DivinityRoyaleCentralTwo()
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_Training_CombatantLibrary(_Template, _Enemy)
+AND
+DB_DC_Training_CentralRoyale("Started")
+AND
+Random(20, _Random)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+_Level >= 3
+AND
+_Random == (INTEGER)_Enemy
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_Encounter1_RNDBox_d1167df2-826f-49e9-9565-cb1406e28d74, _X, _Y, _Z)
+AND
+CharacterCreateAtPosition(_X, _Y, _Z, (STRING)_Template, 1, _Combatant)
+THEN
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Combatant);
+
+PROC
+Proc_DC_Training_Spawn_DivinityRoyaleCentralThree()
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_Training_CentralRoyale("Started")
+AND
+DB_DC_Training_CombatantLibrary(_Template, _Enemy)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+_Level >= 5
+AND
+Random(20, _Random)
+AND
+_Random == (INTEGER)_Enemy
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_Encounter1_RNDBox_d1167df2-826f-49e9-9565-cb1406e28d74, _X, _Y, _Z)
+AND
+CharacterCreateAtPosition(_X, _Y, _Z, (STRING)_Template, 1, _Combatant)
+THEN
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Combatant);
+
+PROC
+Proc_DC_Training_Spawn_DivinityRoyaleCentralFour()
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_Training_CentralRoyale("Started")
+AND
+DB_DC_Training_CombatantLibrary(_Template, _Enemy)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+_Level >= 12
+AND
+Random(20, _Random)
+AND
+_Random == (INTEGER)_Enemy
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_Encounter1_RNDBox_d1167df2-826f-49e9-9565-cb1406e28d74, _X, _Y, _Z)
+AND
+CharacterCreateAtPosition(_X, _Y, _Z, (STRING)_Template, 1, _Combatant)
+THEN
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Combatant);
+
+
+PROC
+Proc_DC_Training_Spawn_DivinityRoyaleCentralFive()
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_Training_CentralRoyale("Started")
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+_Level >= 18
+AND
+DB_DC_Training_CombatantLibrary(_Template, _Enemy)
+AND
+Random(20, _Random)
+AND
+_Random == (INTEGER)_Enemy
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_Encounter1_RNDBox_d1167df2-826f-49e9-9565-cb1406e28d74, _X, _Y, _Z)
+AND
+CharacterCreateAtPosition(_X, _Y, _Z, (STRING)_Template, 1, _Combatant)
+THEN
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Combatant);
+
+
+
+IF
+CombatEnded(_ID)
+AND
+DB_DC_Training_CentralRoyale("Started")
+AND
+DB_DC_TrainingCombat_SpawnedEnemies(_Combatant)
+AND
+DB_DC_Training_CombatStarted_DivinityRoyale(1)
+AND
+CharacterIsDead(_Combatant, 1)
+THEN
+NOT DB_DC_Training_CentralRoyale("Started");
+Proc_DC_Training_DivinityRoyaleFinish();
+
+PROC
+Proc_DC_Training_DivinityRoyaleFinish()
+AND
+DB_DC_Training_CombatStarted_DivinityRoyale(1)
+AND
+DB_DC_ComposerDialogs(_Dialogues)
+THEN
+NOT DB_DC_Training_RandomFight(4);
+NOT DB_DC_Training_CombatStarted_DivinityRoyale(1);
+SysClear("DB_DC_Training_RandomFight",1);
+NOT DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, _Dialogues);
+PROC_RemoveDialogFromCharacter(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e);
+DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e,"DC_CombatTraining_Guardian_TrialFinish");
+TeleportTo(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, TRIGGERGUID_DC_TP_Training_ComposerAtCentralArena_a177d2a2-1f7c-4492-9c4e-54424ab53fa5, "DC_CombatTraining_Guardian_TrialFinish", 1);
+ShroudRender(1);
+
+
+
+
+
+//END_REGION
+
+//REGION THE BASEMENT
+
+
+IF
+DB_DC_Training_RandomFight((INTEGER)_Random)
+AND
+_Random == 5
+AND
+DB_DC_ComposerDialogs(_Dialogue)
+THEN
+GlobalSetFlag("DC_Training_BasementFight");
+NOT DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, _Dialogue);
+PROC_RemoveDialogFromCharacter(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e);
+DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e,"DC_CombatTraining_Guardian_CombatIntro");
+CharacterTeleportPartiesToTrigger(TRIGGERGUID_DC_Training_TP_BasementPlayers_e6622adb-c057-4ec4-b1ad-efb9437b2082, "DC_Training_Init");
+TeleportTo(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, TRIGGERGUID_DC_Training_TP_BasementComposer_52f9ff98-9580-41be-a1f9-0cb15a99fe10, "", 1);
+
+
+
+IF
+StoryEvent(_, "DC_Training_Init")
+AND
+DB_IsPlayer(_Player)
+THEN
+Proc_StartDialog(0, "DC_CombatTraining_Guardian_CombatIntro", CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, _Player);
+
+IF
+DialogEnded("DC_CombatTraining_Guardian_CombatIntro", _ID)
+AND
+DB_DC_Training_RandomFight((INTEGER)_Random)
+AND
+_Random == 5
+AND
+DB_IsPlayer(_Player)
+AND
+ObjectGetFlag(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, "Encounter_BasementSpiders", 1)
+THEN
+TimerLaunch("DC_Training_BasementSpiderPreparation", 5000);
+Proc_DC_Training_TeleportComposerToManor_Idle();
+
+IF
+TimerFinished("DC_Training_BasementSpiderPreparation")
+AND
+DB_DC_Training_RandomFight((INTEGER)_Random)
+AND
+_Random == 5
+THEN
+ObjectClearFlag(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, "Encounter_BasementSpiders");
+Proc_DC_Training_Spawn_SpiderBasement();
+
+PROC
+Proc_DC_Training_Spawn_SpiderBasement()
+THEN
+DB_DC_Training_SpiderBasement("Started");
+DB_DC_Training_CombatStarted_DivinityRoyale(1);
+Proc_DC_Training_Spawn_SpiderBasementOne();
+Proc_DC_Training_Spawn_SpiderBasementTwo();
+Proc_DC_Training_Spawn_SpiderBasementThree();
+Proc_DC_Training_Spawn_SpiderBasementFour();
+Proc_DC_Training_Spawn_SpiderBasementFive();
+Proc_DC_Training_Spawn_SpiderBasementSix();
+TimerLaunch("DC_Training_Levels_SpiderBasement", 1000);
+
+IF
+TimerFinished("DC_Training_Levels_SpiderBasement")
+AND
+DB_DC_Training_RandomFight((INTEGER)_Random)
+AND
+_Random == 5
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+DB_DC_TrainingCombat_SpawnedEnemies(_Combatant)
+THEN
+CharacterLevelUpTo(_Combatant, _Level);
+SetFaction(_Combatant, "Evil NPC");
+EnterCombat(_Combatant, _Player);
+
+PROC
+Proc_DC_Training_Spawn_SpiderBasementOne()
+AND
+DB_DC_Training_CombatantLibrary(_Template, _Enemy)
+AND
+Random(20, _Random)
+AND
+_Random == (INTEGER)_Enemy
+AND
+GetRandomPositionInTrigger(CHARACTERGUID_DC_Animals_Spider_Large_5294e2ac-b00e-4e38-b733-a747223a090a, _X, _Y, _Z)
+AND
+CharacterCreateAtPosition(_X, _Y, _Z, "CHARACTERGUID_DC_Animals_Spider_Large_5294e2ac-b00e-4e38-b733-a747223a090a", 1, _Combatant)
+THEN
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Combatant);
+
+PROC
+Proc_DC_Training_Spawn_SpiderBasementTwo()
+AND
+DB_DC_Training_CombatantLibrary(_Template, _Enemy)
+AND
+Random(20, _Random)
+AND
+_Random == (INTEGER)_Enemy
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_RandomSpawnTrigger_Basement_4f6e2fb8-7e14-44a1-956a-cc72f69de10b, _X, _Y, _Z)
+AND
+CharacterCreateAtPosition(_X, _Y, _Z, "CHARACTERGUID_DC_Spiderling_094ee9ef-33e2-4fd6-99b0-abe871bb82e2", 1, _Combatant)
+THEN
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Combatant);
+
+PROC
+Proc_DC_Training_Spawn_SpiderBasementThree()
+AND
+DB_DC_Training_CombatantLibrary(_Template, _Enemy)
+AND
+Random(20, _Random)
+AND
+_Random == (INTEGER)_Enemy
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_RandomSpawnTrigger_Basement_4f6e2fb8-7e14-44a1-956a-cc72f69de10b, _X, _Y, _Z)
+AND
+CharacterCreateAtPosition(_X, _Y, _Z, "CHARACTERGUID_DC_Spiderling_094ee9ef-33e2-4fd6-99b0-abe871bb82e2", 1, _Combatant)
+THEN
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Combatant);
+
+PROC
+Proc_DC_Training_Spawn_SpiderBasementFour()
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_Training_CombatantLibrary(_Template, _Enemy)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+_Level >= 6
+AND
+Random(20, _Random)
+AND
+_Random == (INTEGER)_Enemy
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_RandomSpawnTrigger_Basement_4f6e2fb8-7e14-44a1-956a-cc72f69de10b, _X, _Y, _Z)
+AND
+CharacterCreateAtPosition(_X, _Y, _Z, "CHARACTERGUID_DC_Spiderling_094ee9ef-33e2-4fd6-99b0-abe871bb82e2", 1, _Combatant)
+THEN
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Combatant);
+
+
+PROC
+Proc_DC_Training_Spawn_SpiderBasementFive()
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+_Level >= 10
+AND
+DB_DC_Training_CombatantLibrary(_Template, _Enemy)
+AND
+Random(20, _Random)
+AND
+_Random == (INTEGER)_Enemy
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_RandomSpawnTrigger_Basement_4f6e2fb8-7e14-44a1-956a-cc72f69de10b, _X, _Y, _Z)
+AND
+CharacterCreateAtPosition(_X, _Y, _Z, "CHARACTERGUID_DC_Animals_Spider_Large_5294e2ac-b00e-4e38-b733-a747223a090a", 1, _Combatant)
+THEN
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Combatant);
+
+PROC
+Proc_DC_Training_Spawn_SpiderBasementSix()
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_Training_CombatantLibrary(_Template, _Enemy)
+AND
+CharacterGetLevel(_Player, _Level)
+AND
+_Level >= 6
+AND
+Random(20, _Random)
+AND
+_Random == (INTEGER)_Enemy
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_RandomSpawnTrigger_Basement_4f6e2fb8-7e14-44a1-956a-cc72f69de10b, _X, _Y, _Z)
+AND
+CharacterCreateAtPosition(_X, _Y, _Z, "CHARACTERGUID_DC_Spiderling_094ee9ef-33e2-4fd6-99b0-abe871bb82e2", 1, _Combatant)
+THEN
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Combatant);
+
+
+
+
+IF
+CombatEnded(_ID)
+AND
+DB_DC_Training_SpiderBasement("Started")
+AND
+DB_DC_TrainingCombat_SpawnedEnemies(_Combatant)
+AND
+DB_DC_Training_CombatStarted_DivinityRoyale(1)
+AND
+CharacterIsDead(_Combatant, 1)
+THEN
+NOT DB_DC_Training_SpiderBasement("Started");
+Proc_DC_Training_BasementSpidersFinish();
+
+PROC
+Proc_DC_Training_BasementSpidersFinish()
+AND
+DB_DC_Training_CombatStarted_DivinityRoyale(1)
+AND
+DB_DC_ComposerDialogs(_Dialogues)
+THEN
+NOT DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, _Dialogues);
+PROC_RemoveDialogFromCharacter(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e);
+DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e,"DC_CombatTraining_Guardian_TrialFinish");
+TeleportTo(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, TRIGGERGUID_DC_Training_TP_BasementComposerFinish_aa9ba005-05b2-4c33-abcb-feec36c2575e, "DC_CombatTraining_Guardian_TrialFinish", 1);
+NOT DB_DC_Training_CombatStarted_DivinityRoyale(1);
+NOT DB_DC_Training_RandomFight(5);
+
+//END_REGION
+
+//REGION BACKUP ENCOUNTER
+
+PROC
+Proc_DB_DC_Training_InitiateEncounter()
+THEN
+TimerLaunch("DC_Training_CheckIfRandomizationFailed", 750);
+
+IF
+TimerFinished("DC_Training_CheckIfRandomizationFailed")
+AND
+DB_IsPlayer(_Player)
+AND
+ObjectIsInTrigger(_Player, TRIGGERGUID_DC_Training_CheckTrigger_RandomFail_26198a2c-b67d-4d5f-9184-727da67efcee, 1)
+THEN
+GlobalSetFlag("DC_Training_CombatEncounterInitFailed");
+Proc_StartDialog(0, "DC_CombatTraining_Guardian_CombatIntro", CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, _Player);
+DB_DC_Training_CombatantTrialsLocationsOverride(3);
+
+IF
+DialogEnded("DC_CombatTraining_Guardian_CombatIntro", _ID)
+AND
+DB_IsPlayer(_Player)
+AND
+DialogGetInvolvedPlayer(_ID, 1, _Speaker)
+AND
+ObjectGetFlag(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, "Encounter_FailedToStart", 1)
+AND
+CharacterGetReservedUserID((CHARACTERGUID)_Speaker, _User)
+THEN
+SysClear("DB_DC_Training_RandomEncounterHandler",1);
+DB_DC_Training_CombatEncounterBackUpCombat(1);
+ObjectClearFlag(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, "Encounter_FailedToStart");
+GlobalClearFlag("DC_Training_CombatEncounterInitFailed");
+Proc_Training_SpawnBackUpEnemiesOne();
+Proc_Training_SpawnBackUpEnemiesTwo();
+Proc_Training_SpawnBackUpEnemiesThree();
+Proc_Training_SpawnBackUpEnemiesFour();
+Proc_DC_Training_TeleportComposerToManor_Idle();
+SetOnStage(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, 0);
+TimerLaunch("DC_Training_BackupCombatInit", 1000);
+
+IF
+TimerFinished("DC_Training_BackupCombatInit")
+AND
+DB_DC_TrainingCombat_SpawnedEnemies(_Combatant)
+THEN
+SetFaction(_Combatant, "Evil NPC");
+
+PROC
+Proc_Training_SpawnBackUpEnemiesOne()
+AND
+DB_DC_Training_CombatEncounterBackUpCombat(1)
+AND
+DB_DC_Training_CombatantLibrary(_Template, _Enemy)
+AND
+Random(20, _Random)
+AND
+_Random == (INTEGER)_Enemy
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_CheckTrigger_RandomFail_26198a2c-b67d-4d5f-9184-727da67efcee, _X, _Y, _Z)
+AND
+CharacterCreateAtPosition(_X, _Y, _Z, (STRING)_Template, 1, _Combatant)
+THEN
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Combatant);
+
+PROC
+Proc_Training_SpawnBackUpEnemiesTwo()
+AND
+DB_DC_Training_CombatEncounterBackUpCombat(1)
+AND
+DB_DC_Training_CombatantLibrary(_Template, _Enemy)
+AND
+Random(20, _Random)
+AND
+_Random == (INTEGER)_Enemy
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_CheckTrigger_RandomFail_26198a2c-b67d-4d5f-9184-727da67efcee, _X, _Y, _Z)
+AND
+CharacterCreateAtPosition(_X, _Y, _Z, (STRING)_Template, 1, _Combatant)
+THEN
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Combatant);
+
+
+PROC
+Proc_Training_SpawnBackUpEnemiesThree()
+AND
+DB_DC_Training_CombatEncounterBackUpCombat(1)
+AND
+DB_DC_Training_CombatantLibrary(_Template, _Enemy)
+AND
+Random(20, _Random)
+AND
+_Random == (INTEGER)_Enemy
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_CheckTrigger_RandomFail_26198a2c-b67d-4d5f-9184-727da67efcee, _X, _Y, _Z)
+AND
+CharacterCreateAtPosition(_X, _Y, _Z, (STRING)_Template, 1, _Combatant)
+THEN
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Combatant);
+
+
+PROC
+Proc_Training_SpawnBackUpEnemiesFour()
+AND
+DB_DC_Training_CombatEncounterBackUpCombat(1)
+AND
+DB_DC_Training_CombatantLibrary(_Template, _Enemy)
+AND
+Random(20, _Random)
+AND
+_Random == (INTEGER)_Enemy
+AND
+GetRandomPositionInTrigger(TRIGGERGUID_DC_Training_CheckTrigger_RandomFail_26198a2c-b67d-4d5f-9184-727da67efcee, _X, _Y, _Z)
+AND
+CharacterCreateAtPosition(_X, _Y, _Z, (STRING)_Template, 1, _Combatant)
+THEN
+DB_DC_TrainingCombat_SpawnedEnemies((CHARACTERGUID)_Combatant);
+
+IF
+CombatEnded(_ID)
+AND
+DB_DC_Training_CombatEncounterBackUpCombat(1)
+AND
+DB_DC_ComposerDialogs(_Dialogue)
+AND
+DB_DC_TrainingCombat_SpawnedEnemies(_Combatant)
+AND
+CharacterIsDead(_Combatant, 1)
+THEN
+SetOnStage(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, 1);
+NOT DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, _Dialogue);
+PROC_RemoveDialogFromCharacter(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e);
+DB_Dialogs(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e,"DC_CombatTraining_Guardian_TrialFinish");
+TeleportTo(CHARACTERGUID_S_DC_TheComposer_f67cd3a4-55c9-4487-a76d-8871a176907e, TRIGGERGUID_DC_TP_Training_ComposerAtCentralArena_a177d2a2-1f7c-4492-9c4e-54424ab53fa5, "DC_CombatTraining_Guardian_TrialFinish", 1);
+NOT DB_DC_Training_CombatStarted_DivinityRoyale(1);
+Proc_DC_Training_CleanUp();
+Proc_DC_Training_TeleportComposerToManor_Idle();
+Proc_DC_Training_TrialReward();
+
+//END_REGION
+
+
+PROC
+ProcRegionEnded("DC_Snowfall")
+THEN
+GoalCompleted;
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "DC_Snowfall"

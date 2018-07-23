@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<stats stat_object_definition_id="95b2e0ef-e921-4ed2-8a7f-428d30c673bf">
+  <stat_objects>
+    <stat_object index="0" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="InfernalMeteors" />
+        <field name="SkillType" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="ProjectileStrike" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="Ability" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="5" enumeration_type_name="SkillAbility" />
+        <field name="Tier" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="SkillTier" />
+        <field name="ActionPoints" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="0" />
+        <field name="Cooldown" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Damage Multiplier" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="35" />
+        <field name="Damage Range" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="5" />
+        <field name="DamageType" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="6" enumeration_type_name="Damage Type" />
+        <field name="SkillProperties" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Ignite;CreateSurface,3,,Fire,100" />
+        <field name="TargetRadius" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="13" />
+        <field name="AreaRadius" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="10" />
+        <field name="DeathType" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="5" enumeration_type_name="Death Type" />
+        <field name="ExplodeRadius" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="4" />
+        <field name="StrikeCount" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="35" />
+        <field name="StrikeDelay" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="80" />
+        <field name="CanTargetCharacters" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="CanTargetItems" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="CanTargetTerrain" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="ForceTarget" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="OverrideSkillLevel" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="UseCharacterStats" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="UseWeaponDamage" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="UseWeaponProperties" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="TargetProjectiles" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="ProjectileCount" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="ProjectileDelay" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="0" />
+        <field name="Angle" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="0" />
+        <field name="Height" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="15" />
+        <field name="SingleSource" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="Template" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="fc8c57f9-e17f-465a-849f-ec8c52039cd2" />
+        <field name="Icon" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Skill_Fire_MeteorShower" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" clear_inherited_value="false" value="Infernal Meteors" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" clear_inherited_value="false" value="[3] fireballs come crashing from the sky. Each does [1] damage to enemies within a [2] range from impact." />
+        <field name="StatsDescription" type="TranslatedStringStatObjectFieldDefinition" clear_inherited_value="false" value="Range: [4]&lt;br&gt;Burning does fire damage over time.&lt;br&gt;Can target terrain to create fire surface, burn ooze or oil, evaporate water, or melt ice. Can explode some clouds." />
+        <field name="StatsDescriptionParams" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Damage;ExplodeRadius;StrikeCount;TargetRadius" />
+        <field name="PrepareAnimationInit" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="skill_prepare_air_01_start" />
+        <field name="PrepareAnimationLoop" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="skill_prepare_air_01_loop" />
+        <field name="PrepareEffect" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="RS3_FX_Skills_Fire_Prepare_Fire_Aoe_Root_01;RS3_FX_Skills_Fire_Prepare_Fire_Hand_04:Dummy_CastFX" />
+        <field name="CastAnimation" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="skill_cast_aoe_air_01_cast" />
+        <field name="CastTextEvent" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="cast" />
+        <field name="CastEffect" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="RS3_FX_Skills_Fire_Cast_Aoe_Root_01" />
+        <field name="Memory Cost" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="0" />
+        <field name="Magic Cost" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="0" />
+        <field name="Distribution" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="ProjectileDistribution" />
+        <field name="Shuffle" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+      </fields>
+    </stat_object>
+    <stat_object index="1" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="DazingBolt" />
+        <field name="SkillType" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="ProjectileStrike" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="Ability" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="7" enumeration_type_name="SkillAbility" />
+        <field name="Tier" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="2" enumeration_type_name="SkillTier" />
+        <field name="ActionPoints" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="3" />
+        <field name="Cooldown" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="4" />
+        <field name="Damage Multiplier" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="120" />
+        <field name="Damage Range" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="10" />
+        <field name="DamageType" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="7" enumeration_type_name="Damage Type" />
+        <field name="SkillProperties" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="SHOCKED,100,1;Electrify" />
+        <field name="TargetRadius" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="13" />
+        <field name="AreaRadius" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="3" />
+        <field name="DeathType" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="7" enumeration_type_name="Death Type" />
+        <field name="ExplodeRadius" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="3" />
+        <field name="StrikeCount" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="StrikeDelay" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="0" />
+        <field name="CanTargetCharacters" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="CanTargetItems" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="CanTargetTerrain" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="ForceTarget" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="TargetConditions" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Character" />
+        <field name="OverrideSkillLevel" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="UseCharacterStats" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="UseWeaponDamage" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="UseWeaponProperties" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="TargetProjectiles" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="ProjectileCount" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="ProjectileDelay" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="0" />
+        <field name="Angle" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="0" />
+        <field name="Height" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="15" />
+        <field name="SingleSource" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="Template" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="e8c38580-5fe3-49eb-b826-fbdc4aa39b98" />
+        <field name="Icon" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Skill_Air_DazingBolt" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" clear_inherited_value="false" value="Dazing Bolt" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" clear_inherited_value="false" value="Electric bolt falls from the sky, dealing [1] damage to characters and items in the area. Sets status Shocked, which reduces Turn AP by 1." />
+        <field name="StatsDescriptionParams" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Damage" />
+        <field name="PrepareAnimationInit" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="skill_prepare_voodoo_01_start" />
+        <field name="PrepareAnimationLoop" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="skill_prepare_voodoo_01_loop" />
+        <field name="PrepareEffect" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="RS3_FX_Skills_Air_Lightning_Prepare_Ground_02,KeepRot;RS3_FX_Skills_Air_Lightning_Prepare_Hand_03:Dummy_L_HandFX,Dummy_R_HandFX" />
+        <field name="CastAnimation" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="skill_cast_target_voodoo_01_cast" />
+        <field name="CastTextEvent" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="cast" />
+        <field name="CastEffect" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="RS3_FX_Skills_Air_Lightning_Cast_Ground_01,KeepRot;RS3_FX_Skills_Air_Lightning_Cast_Hand_02:Dummy_L_HandFX" />
+        <field name="MemorizationRequirements" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="AirSpecialist 2" />
+        <field name="Memory Cost" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Magic Cost" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="0" />
+        <field name="Distribution" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="3" enumeration_type_name="ProjectileDistribution" />
+        <field name="Shuffle" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="PreviewStrikeHits" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+      </fields>
+    </stat_object>
+    <stat_object index="2" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="HailStrike" />
+        <field name="SkillType" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="ProjectileStrike" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="Ability" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="6" enumeration_type_name="SkillAbility" />
+        <field name="Tier" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="SkillTier" />
+        <field name="ActionPoints" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="3" />
+        <field name="Cooldown" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="3" />
+        <field name="Damage Multiplier" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="35" />
+        <field name="Damage Range" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="10" />
+        <field name="DamageType" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="8" enumeration_type_name="Damage Type" />
+        <field name="SkillProperties" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="CreateSurface,1,,WaterFrozen,25;CHILLED,100,2;Douse" />
+        <field name="TargetRadius" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="13" />
+        <field name="AreaRadius" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="DeathType" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="8" enumeration_type_name="Death Type" />
+        <field name="ExplodeRadius" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="StrikeCount" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="3" />
+        <field name="StrikeDelay" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="150" />
+        <field name="CanTargetCharacters" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="CanTargetItems" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="CanTargetTerrain" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="ForceTarget" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="OverrideSkillLevel" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="UseCharacterStats" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="UseWeaponDamage" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="UseWeaponProperties" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="TargetProjectiles" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+        <field name="ProjectileCount" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="ProjectileDelay" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="0" />
+        <field name="Angle" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="0" />
+        <field name="Height" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="15" />
+        <field name="SingleSource" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="Template" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="c25210e0-36a3-4f0d-ac28-8c885d66db39" />
+        <field name="Icon" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Skill_Water_HailStrike" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" clear_inherited_value="false" value="Hail Strike" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" clear_inherited_value="false" value="Ice pellets fall from the sky, chilling enemies and dealing [1] damage. Creates Ice surface when targeted at the ground." />
+        <field name="StatsDescriptionParams" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Damage" />
+        <field name="PrepareAnimationInit" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="skill_prepare_air_01_start" />
+        <field name="PrepareAnimationLoop" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="skill_prepare_air_01_loop" />
+        <field name="PrepareEffect" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="RS3_FX_Skills_Water_Prepare_Water_Root_01_Snow,KeepRot,Detach;RS3_FX_Skills_Water_Prepare_Water_Hand_01_Snow:Dummy_L_HandFX,Dummy_R_HandFX" />
+        <field name="CastAnimation" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="skill_cast_aoe_air_01_cast" />
+        <field name="CastTextEvent" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="cast" />
+        <field name="CastEffect" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="RS3_FX_Skills_Water_Cast_AoE_Air_Root_01_Snow,KeepRot" />
+        <field name="MemorizationRequirements" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="WaterSpecialist 1" />
+        <field name="Memory Cost" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Magic Cost" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="0" />
+        <field name="Distribution" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="2" enumeration_type_name="ProjectileDistribution" />
+        <field name="Shuffle" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="YesNo" />
+        <field name="PreviewStrikeHits" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="YesNo" />
+      </fields>
+    </stat_object>
+  </stat_objects>
+</stats>

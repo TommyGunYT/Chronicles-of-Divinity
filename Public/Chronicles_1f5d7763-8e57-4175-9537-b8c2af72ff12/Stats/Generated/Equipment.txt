@@ -1,0 +1,10 @@
+new equipment "DC_Masters_Sword"
+
+new equipment "Origin_Kara"
+add equipmentgroup
+add equipment entry "ARM_Lohse_UpperBody"
+add equipmentgroup
+add equipment entry "ARM_Lohse_LowerBody"
+add equipmentgroup
+add equipment entry "ARM_Lohse_Boots"
+

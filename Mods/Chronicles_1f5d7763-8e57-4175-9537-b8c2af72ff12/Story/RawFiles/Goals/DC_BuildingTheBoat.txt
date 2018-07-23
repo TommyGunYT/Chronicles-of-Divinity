@@ -1,0 +1,286 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+DB_DC_SailClothScraps(ITEMGUID_DC_ClothScraps_000_5318a964-a40a-4b67-9322-77c2c58d88ac);
+DB_DC_SailClothScraps(ITEMGUID_DC_ClothScraps_001_21e7c33f-815d-4dee-a49c-abf177223936);
+DB_DC_SailClothScraps(ITEMGUID_DC_ClothScraps_002_b04bd7b1-7601-4faa-9e14-6749bcf62bda);
+DB_DC_SailClothScraps(ITEMGUID_DC_ClothScraps_003_2170a169-6037-4553-9e8e-ec305f6079d8);
+DB_DC_SailClothScraps(ITEMGUID_DC_ClothScraps_004_c3db3b9b-e017-4974-822c-745b3247790b);
+DB_DC_SailClothScraps(ITEMGUID_DC_ClothScraps_005_9326b6d3-b4cd-49eb-ab58-7f78d57614c4);
+DB_DC_SailClothScraps(ITEMGUID_DC_ClothScraps_006_e53b1cdf-1acc-4b53-a2b7-4819b9c9ec78);
+DB_DC_SailClothScraps(ITEMGUID_DC_ClothScraps_007_5b18475c-1221-4b52-9b34-b566cc9267bb);
+DB_DC_SailClothScraps(ITEMGUID_DC_ClothScraps_008_3e3c458f-df66-4abd-87c5-2ae328824d88);
+DB_DC_SailClothScraps(ITEMGUID_DC_ClothScraps_009_2c57ccaf-086b-4668-bd01-1f8eac111be6);
+DB_DC_SailClothScraps(ITEMGUID_DC_ClothScraps_010_6269e598-e212-4c9b-a5f4-45b36160f13d);
+DB_DC_SailClothScraps(ITEMGUID_DC_ClothScraps_011_8a156e26-0723-4c0b-8858-5d06985be585);
+DB_DC_SailClothScraps(ITEMGUID_DC_ClothScraps_012_a10e3ec3-31b7-4776-a721-8e9654b5f662);
+DB_DC_SailClothScraps(ITEMGUID_DC_ClothScraps_013_4036f283-ad60-44ed-84ca-a1699c7e7dd1);
+DB_DC_SailClothScraps(ITEMGUID_DC_ClothScraps_014_febdac2e-b2dc-4079-bc52-adf422225308);
+DB_DC_SailClothScraps(ITEMGUID_DC_ClothScraps_015_265f4002-4a0f-4260-84d4-c1df8ba3478b);
+DB_DC_SailClothScraps(ITEMGUID_DC_ClothScraps_016_cf67779f-b7ac-4dd3-819e-996cbf739239);
+DB_DC_SailClothScraps(ITEMGUID_DC_ClothScraps_017_0aeb1f03-99f1-48bc-ba5f-139c18dfd4a9);
+DB_DC_SailClothScraps(ITEMGUID_DC_ClothScraps_018_b541f27d-1227-48ba-8d42-cba0ba2baad6);
+
+
+ProcDeclareCounter("DC_FTJ_ClothScraps");
+DB_GlobalCounter("DC_FTJ_ClothScraps", 0);
+
+ProcDeclareCounter("DC_FTJ_Nails");
+DB_GlobalCounter("DC_FTJ_Nails", 0);
+
+DB_QuestDef_State("FTJSailing","Start",1);
+DB_QuestDef_State("FTJSailing","Scraps");
+DB_QuestDef_State("FTJSailing","DeliverCloth");
+DB_QuestDef_State("FTJSailing","DeliverHammer");
+DB_QuestDef_State("FTJSailing","DeliverNails");
+
+DB_DC_Brandon_BoatJournal("DC_FTJ_BrandonBoatBuilding", "DC_FTJ_DeliveredHammer", "DeliverHammer", 1, "ITEMGUID_TOOL_Hammer_A_4f67d82f-9397-4c48-9134-4679fc9ea770");
+DB_DC_Brandon_BoatJournal("DC_FTJ_BrandonBoatBuilding", "DC_FTJ_DeliveredCloth", "DeliverCloth", 5, "ITEMGUID_DC_ClothScraps_019dce96-32ce-4924-a904-672e05836966");
+DB_DC_Brandon_BoatJournal("DC_FTJ_BrandonBoatBuilding", "DC_FTJ_DeliveredCloth", "DeliverCloth", 5, "ITEMGUID_LOOT_Scraps_Cloth_A_2102b5b2-5613-4a66-8d47-bb15b47a5c18");
+DB_DC_Brandon_BoatJournal("DC_FTJ_BrandonBoatBuilding", "DC_FTJ_DeliveredNails", "DeliverNails", 2, "ITEMGUID_TOOL_Nails_A_fa60597a-4853-4556-92a5-e4168d3e36bb");
+
+DB_DC_FTJ_BoatBuildingFlags("DC_FTJ_DeliveredHammer", "ITEMGUID_TOOL_Hammer_A_4f67d82f-9397-4c48-9134-4679fc9ea770");
+DB_DC_FTJ_BoatBuildingFlags("DC_FTJ_DeliveredCloth", "ITEMGUID_LOOT_Scraps_Cloth_A_2102b5b2-5613-4a66-8d47-bb15b47a5c18");
+
+ItemTemplateAddTo("ITEMGUID_TOOL_Hammer_A_4f67d82f-9397-4c48-9134-4679fc9ea770", CHARACTERGUID_S_FTJ_SW_Warrior_Squire_650e8e08-55a2-4ea6-a9f3-c027e4f8c494, 1);
+ItemTemplateAddTo("ITEMGUID_TOOL_Nails_A_fa60597a-4853-4556-92a5-e4168d3e36bb", CHARACTERGUID_S_FTJ_SW_Warrior_Squire_650e8e08-55a2-4ea6-a9f3-c027e4f8c494, 1);
+ItemTemplateAddTo("ITEMGUID_TOOL_Hammer_A_4f67d82f-9397-4c48-9134-4679fc9ea770", CHARACTERGUID_S_GLO_Kerban_46a7c73f-c0f0-4f02-be00-edbb3cdfc425, 1);
+ItemTemplateAddTo("ITEMGUID_TOOL_Nails_A_fa60597a-4853-4556-92a5-e4168d3e36bb", CHARACTERGUID_S_GLO_Kerban_46a7c73f-c0f0-4f02-be00-edbb3cdfc425, 1);
+ItemTemplateAddTo("ITEMGUID_TOOL_Hammer_A_4f67d82f-9397-4c48-9134-4679fc9ea770", CHARACTERGUID_S_FTJ_SW_Warrior_DefeatedSeeker_001_0726af1f-1a3c-4984-a9e1-05a9ae6d28dc, 1);
+ItemTemplateAddTo("ITEMGUID_TOOL_Nails_A_fa60597a-4853-4556-92a5-e4168d3e36bb", CHARACTERGUID_S_FTJ_SW_Warrior_DefeatedSeeker_001_0726af1f-1a3c-4984-a9e1-05a9ae6d28dc, 1);
+KBSECTION
+//REGION JOURNAL UPDATES
+IF
+DialogEnded(_Dialog, _ID)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_Brandon_BoatJournal((STRING)_Dialog, _TriggerFlag, _JournalState, _Amount, _Template)
+AND
+DialogGetInvolvedPlayer(_ID, 1, _Speaker)
+AND
+ObjectGetFlag(_Speaker, (STRING)_TriggerFlag, 1)
+AND
+StringConcatenate("QuestUpdate_FTJSailing_", (STRING)_JournalState, _QuestUpdate)
+THEN
+ObjectSetFlag(_Player, (STRING)_QuestUpdate);
+ItemTemplateRemoveFrom((STRING)_Template, _Speaker, (INTEGER)_Amount);
+//END_REGION
+
+IF
+ItemAddedToCharacter(_Scrap, _Player)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_SailClothScraps(_Scrap)
+AND
+ObjectGetFlag(_Player, "QuestUpdate_FTJSailing_Start", 0)
+AND
+ObjectGetFlag(_Player, "QuestUpdate_FatherAndDaughter_SavedBrandon", 1)
+THEN
+ObjectSetFlag(_Player,"QuestUpdate_FTJSailing_Start");
+
+IF
+ItemTemplateAddedToCharacter(ITEMGUID_LOOT_Scraps_Cloth_A_2102b5b2-5613-4a66-8d47-bb15b47a5c18, _Cloth, _Player)
+AND
+DB_IsPlayer(_Player)
+THEN
+ProcIncreaseCounter("DC_FTJ_ClothScraps");
+Proc_DC_FTJ_ClothScrapsCheck();
+
+IF
+ItemTemplateRemovedFromCharacter("ITEMGUID_LOOT_Scraps_Cloth_A_2102b5b2-5613-4a66-8d47-bb15b47a5c18", _Cloth, _Player)
+AND
+DB_IsPlayer(_Player)
+THEN
+ProcDecreaseCounter("DC_FTJ_ClothScraps", 1);
+
+IF
+ItemAddedToCharacter(_Scrap, _Player)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_SailClothScraps(_Scrap)
+THEN
+ProcIncreaseCounter("DC_FTJ_ClothScraps");
+Proc_DC_FTJ_ClothScrapsCheck();
+
+PROC
+Proc_DC_FTJ_ClothScrapsCheck()
+AND
+DB_IsPlayer(_Player)
+AND
+DB_GlobalCounter("DC_FTJ_ClothScraps", (INTEGER)_Scrap)
+AND
+ObjectGetFlag(_Player, "QuestUpdate_FTJSailing_Start", 1)
+AND
+IntegertoString(_Scrap, _ScrapString)
+AND
+StringConcatenate("Sturdy rags collected: ", _ScrapString, (STRING)_ScrapState)
+AND
+StringConcatenate(_ScrapState, " / 5", _ScrapStateFinal)
+THEN
+ShowNotification((STRING)_ScrapStateFinal);
+
+
+PROC
+Proc_DC_FTJ_ClothScrapsCheck()
+AND
+DB_IsPlayer(_Player)
+AND
+DB_GlobalCounter("DC_FTJ_ClothScraps", _Amount)
+AND
+_Amount >= 5
+THEN
+ObjectSetFlag(_Player,"QuestUpdate_FTJSailing_Scraps");
+
+IF
+ItemRemovedFromCharacter(_Scrap, _Player)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_SailClothScraps(_Scrap)
+THEN
+ProcDecreaseCounter("DC_FTJ_ClothScraps", 1);
+
+IF
+ItemRemovedFromCharacter(_Scrap, _Player)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_DC_SailClothScraps(_Scrap)
+AND
+DB_GlobalCounter("DC_FTJ_ClothScraps", _Amount)
+AND
+_Amount < 5
+THEN
+ObjectClearFlag(_Player, "QuestUpdate_FTJSailing_Scraps");
+
+IF
+DialogStarted("DC_FTJ_BrandonBoatBuilding", _ID)
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterGetItemTemplateCount(_Player, "ITEMGUID_TOOL_Nails_A_fa60597a-4853-4556-92a5-e4168d3e36bb", 2)
+THEN
+ObjectSetFlag(_Player, "DC_FTJ_HasEnoughNails");
+
+IF
+ItemTemplateAddedToCharacter(ITEMGUID_TOOL_Hammer_A_4f67d82f-9397-4c48-9134-4679fc9ea770, _Hammer, _Player)
+AND
+DB_IsPlayer(_Player)
+THEN
+ObjectSetFlag(_Player, "DC_HasBuildingHammer");
+
+IF
+ItemTemplateRemovedFromCharacter("ITEMGUID_TOOL_Hammer_A_4f67d82f-9397-4c48-9134-4679fc9ea770", _Hammer, _Player)
+AND
+DB_IsPlayer(_Player)
+AND
+ItemTemplateIsInCharacterInventory(_Player, "ITEMGUID_TOOL_Hammer_A_4f67d82f-9397-4c48-9134-4679fc9ea770", 0)
+THEN
+ObjectClearFlag(_Player, "DC_HasBuildingHammer");
+
+IF
+ItemTemplateAddedToCharacter(ITEMGUID_TOOL_Nails_A_fa60597a-4853-4556-92a5-e4168d3e36bb, _Hammer, _Player)
+AND
+DB_IsPlayer(_Player)
+THEN
+ProcIncreaseCounter("DC_FTJ_Nails");
+Proc_DC_FTJ_NailsCheck();
+
+PROC
+Proc_DC_FTJ_NailsCheck()
+AND
+DB_IsPlayer(_Player)
+AND
+DB_GlobalCounter("DC_FTJ_Nails", (INTEGER)_Nail)
+AND
+ObjectGetFlag(_Player, "QuestUpdate_FTJSailing_Start", 1)
+AND
+ObjectGetFlag(_Player, "DC_HasBuildingNail", 0)
+AND
+IntegertoString(_Nail, _NailString)
+AND
+StringConcatenate("Sturdy rags collected: ", _NailString, (STRING)_NailState)
+AND
+StringConcatenate(_NailState, " / 2", _NailStateFinal)
+THEN
+ShowNotification((STRING)_NailStateFinal);
+
+PROC
+Proc_DC_FTJ_NailsCheck()
+AND
+DB_IsPlayer(_Player)
+AND
+DB_GlobalCounter("DC_FTJ_Nails", _Amount)
+AND
+_Amount <= 2
+THEN
+ObjectSetFlag(_Player, "DC_HasBuildingNail");
+
+IF
+ItemTemplateRemovedFromCharacter("ITEMGUID_TOOL_Nails_A_fa60597a-4853-4556-92a5-e4168d3e36bb", _Nail, _Player)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_GlobalCounter("DC_FTJ_Nails", _Amount)
+AND
+_Amount >= 1
+THEN
+ProcDecreaseCounter("DC_FTJ_Nails", 1);
+ObjectClearFlag(_Player, "DC_HasBuildingNail");
+
+IF
+ObjectFlagSet(_Flag, _Speaker, _ID)
+AND
+DB_DC_SailClothScraps(_Scrap)
+AND
+DB_DC_FTJ_BoatBuildingFlags(_Flag, _QuestItem)
+THEN
+DB_NOOP(1);
+
+//REGION DELIVERED ALL MATS
+IF
+DialogEnded("DC_FTJ_BrandonBoatBuilding", _ID)
+THEN
+Proc_BrandonBoatBuildingCheck();
+
+PROC
+Proc_BrandonBoatBuildingCheck()
+AND
+DB_IsPlayer(_Player)
+AND
+ObjectGetFlag(_Player, "DC_FTJ_DeliveredHammer", 1)
+AND
+ObjectGetFlag(_Player, "DC_FTJ_DeliveredCloth", 1)
+AND
+ObjectGetFlag(_Player, "DC_FTJ_DeliveredNails", 1)
+THEN
+ProcCharacterMoveTo(CHARACTERGUID_S_DC_GLO_Brandon_52af7d79-a56e-4a18-a7af-72d6aab2d888, TRIGGERGUID_S_DC_BrandonBoatBuildingPoint_cc57e152-780b-4984-b81f-2b12b3511bcd, 1, "DC_FTJ_BrandonGoesToBuildBoat");
+NOT DB_Dialogs(CHARACTERGUID_S_DC_GLO_Brandon_52af7d79-a56e-4a18-a7af-72d6aab2d888,"DC_FTJ_BrandonBoatBuilding");
+PROC_RemoveDialogFromCharacter(CHARACTERGUID_S_DC_GLO_Brandon_52af7d79-a56e-4a18-a7af-72d6aab2d888);
+
+
+IF
+StoryEvent(_, "DC_FTJ_BrandonGoesToBuildBoat")
+THEN
+SetVarFixedString(CHARACTERGUID_S_DC_GLO_Brandon_52af7d79-a56e-4a18-a7af-72d6aab2d888,"currentState","State_FTJ_BuildBoat");
+ProcObjectTimer(CHARACTERGUID_S_DC_GLO_Brandon_52af7d79-a56e-4a18-a7af-72d6aab2d888, "BuildBoat", 15000);
+
+PROC
+ProcObjectTimerFinished(CHARACTERGUID_S_DC_GLO_Brandon_52af7d79-a56e-4a18-a7af-72d6aab2d888, "BuildBoat")
+THEN
+SetVarFixedString(CHARACTERGUID_S_DC_GLO_Brandon_52af7d79-a56e-4a18-a7af-72d6aab2d888,"currentState","");
+ItemDestroy(ITEMGUID_S_DC_BrandonsBoat_Broken_21592f16-aa3c-4ce2-8973-01438d6840ec);
+SetOnStage(ITEMGUID_S_DC_DockedBoat_FortJoyCamp_67a4fc55-fef1-4b57-97a5-60b58d1d1a55, 1);
+DB_Dialogs(CHARACTERGUID_S_DC_GLO_Brandon_52af7d79-a56e-4a18-a7af-72d6aab2d888,"DC_FTJ_BrandonCompanion");
+DB_DC_Story("FTJ_Boat_Finished");
+Proc_DC_Story_FTJ_BoatBuilt();
+
+
+
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "FortJoy"

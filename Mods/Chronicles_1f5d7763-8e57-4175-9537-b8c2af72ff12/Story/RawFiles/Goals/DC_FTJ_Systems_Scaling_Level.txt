@@ -1,0 +1,366 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+DB_ScalingAreaTriggers(TRIGGERGUID_DC_ScalingRegion_FortJoyStartBeach_c14b8cdb-88ad-4519-beb5-61f1b6dd0678);
+DB_ScalingAreaTriggers(TRIGGERGUID_DC_ScalingRegion_FortJoySubAreas_dcd0900f-5896-44ca-af8d-e606db7e3894);
+DB_ScalingAreaTriggers(TRIGGERGUID_DC_ScalingRegion_Swamps_1923cefd-ef2d-4980-8178-404f1f970898);
+DB_ScalingAreaTriggers(TRIGGERGUID_DC_ScalingRegion_Isles_f4b68849-feed-4a8f-a384-feb7d201d173);
+
+DB_DC_ScalingEnabled(2);
+DB_DC_HighestLevel("HighestLevel", 1, 0, 1);
+DB_DC_ScalingFlag("MS_DecreaseMonsterDifficulty", -1);
+DB_DC_ScalingFlag("MS_IncreaseMonsterDifficulty", 1);
+DB_DC_ResetFlag("MS_ResetMonsterDifficulty");
+DB_DC_ToggleFlag("DC_ScalingOn");
+DB_DC_GaveItem(0);
+// DC_ScalingTag
+
+GlobalSetFlag("DC_ScalingOn");
+KBSECTION
+//REGION SETUP
+
+//REGION SCALING SETUP
+PROC
+PROC_DC_GiveBook()
+AND
+DB_IsPlayer(_Character)
+AND
+ItemTemplateIsInCharacterInventory(_Character, "DC_Debug_Book_b7e7be57-2940-4260-885f-af92912b1657", 0)
+THEN
+//ItemTemplateAddTo("DC_Debug_Book_b7e7be57-2940-4260-885f-af92912b1657", _Character, 1);
+DB_NOOP(1);
+
+IF
+CharacterLeveledUp(_Player)
+THEN
+PROC_DC_UpdateLevel();
+
+PROC
+PROC_DC_UpdateLevel()
+AND
+DB_IsPlayer(_Character)
+AND
+CharacterGetLevel(_Character, _Level)
+AND
+DB_DC_HighestLevel("HighestLevel", _HighestLevel, _Mod, _LevelScale)
+AND
+_Level > _HighestLevel
+AND
+IntegerSum(_Level, _Mod, _NewScale)
+THEN
+NOT DB_DC_HighestLevel("HighestLevel", _HighestLevel, _Mod, _LevelScale);
+DB_DC_HighestLevel("HighestLevel", _Level, _Mod, _NewScale);
+
+PROC
+PROC_DC_EnableScaling()
+AND
+DB_DC_ScalingEnabled(_IsEnabled)
+AND
+_IsEnabled == 2
+THEN
+GlobalSetFlag("DC_ScalingOn");
+
+//IF
+//SavegameLoaded(_,_,_,_)
+//THEN
+//PROC_DC_GiveBook();
+//PROC_DC_UpdateLevel();
+
+
+IF
+RegionStarted(_)
+THEN
+PROC_DC_GiveBook();
+PROC_DC_UpdateLevel();
+
+
+IF
+CharacterLeveledUp(_Character)
+THEN
+PROC_DC_UpdateLevel();
+
+IF
+RegionStarted(_)
+AND
+GlobalGetFlag("DC_ScalingOn", 0)
+THEN
+GlobalSetFlag("DC_ScalingOn");
+
+
+IF
+CharacterUsedItemTemplate(_Character, "DC_Debug_Book_b7e7be57-2940-4260-885f-af92912b1657", _Item)
+THEN
+Proc_StartDialog(0, "DC_DebugSetup", _Item, _Character);
+ObjectSetFlag(_Character,"DEBUG_GiveBook");
+//END_REGION
+
+IF
+ObjectEnteredCombat((CHARACTERGUID)_Character, _)
+AND
+DB_DC_ScalingEnabled(1)
+AND
+NOT DB_IsPlayer(_Character)
+AND
+CharacterGetLevel(_Character, _Level)
+AND
+DB_DC_HighestLevel("HighestLevel", _, _, _HighestLevel)
+AND
+GlobalGetFlag("DC_ThisFlagDoesntExistSoFeelsBadMan", 1)
+AND
+_Level < _HighestLevel
+AND
+IsTagged(_Character, "DC_ScalingOverride", 0)
+AND
+IsTagged(_Character, "SQUIRREL", 0)
+THEN
+CharacterLevelUpTo(_Character, _HighestLevel);
+
+IF
+CharacterEnteredTrigger(_Player, _ScalingNPCCounterRegion)
+AND
+DB_IsPlayer(_Player)
+AND
+GlobalGetFlag("DC_ScalingOn", 0)
+THEN
+GlobalSetFlag("DC_ScalingOn");
+
+IF
+CharacterEnteredTrigger(_DCNPC, _ScalingNPCCounterRegion)
+AND
+NOT DB_IsPlayer(_DCNPC)
+AND
+DB_ScalingAreaTriggers(_ScalingNPCCounterRegion)
+THEN
+DB_InRegion(_DCNPC, _ScalingNPCCounterRegion);
+
+IF
+CharacterLeftTrigger(_DCNPC, _ScalingNPCCounterRegion)
+AND
+NOT DB_IsPlayer(_DCNPC)
+AND
+DB_ScalingAreaTriggers(_ScalingNPCCounterRegion)
+THEN
+NOT DB_InRegion(_DCNPC, _ScalingNPCCounterRegion);
+
+IF
+CharacterLeftTrigger(_Player, _ScalingNPCCounterRegion)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_InRegion(_DCNPC, _ScalingNPCCounterRegion)
+AND
+DB_ScalingAreaTriggers(_ScalingNPCCounterRegion)
+AND
+NOT DB_IsPlayer(_DCNPC)
+AND
+IsTagged(_DCNPC, "DC_ScalingOverride", 0)
+AND
+CharacterGetLevel(_DCNPC, _Level)
+AND
+CharacterIsInCombat(_DCNPC, 0)
+AND
+CharacterCanSee(_Player, _DCNPC, 0)
+AND
+DB_DC_HighestLevel("HighestLevel", _, _, _HighestLevel)
+AND
+_Level < _HighestLevel
+THEN
+CharacterLevelUpTo(_DCNPC, _HighestLevel);
+Proc_DC_LevelScaling_GenericBoss();
+Proc_DC_LevelScaling_Lvl2Boss();
+Proc_DC_LevelScaling_LoneWolf();
+
+IF
+CharacterEnteredTrigger(_Player, _ScalingNPCCounterRegion)
+AND
+DB_ScalingAreaTriggers(_ScalingNPCCounterRegion)
+THEN
+DB_InRegion(_Player, _ScalingNPCCounterRegion);
+
+IF
+CharacterEnteredTrigger(_Player, _ScalingNPCCounterRegion)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_InRegion(_DCNPC, _ScalingNPCCounterRegion)
+AND
+NOT DB_IsPlayer(_DCNPC)
+AND
+IsTagged(_DCNPC, "DC_ScalingOverride", 0)
+AND
+DB_ScalingAreaTriggers(_ScalingNPCCounterRegion)
+AND
+CharacterGetLevel(_DCNPC, _Level)
+AND
+CharacterIsInCombat(_DCNPC, 0)
+AND
+CharacterCanSee(_Player, _DCNPC, 0)
+AND
+DB_DC_HighestLevel("HighestLevel", _, _, _HighestLevel)
+AND
+_Level < _HighestLevel
+THEN
+CharacterLevelUpTo(_DCNPC, _HighestLevel);
+Proc_DC_LevelScaling_GenericBoss();
+Proc_DC_LevelScaling_Lvl2Boss();
+Proc_DC_LevelScaling_LoneWolf();
+//END_REGION
+
+//REGION Level Up Reactions
+
+IF
+CharacterLeveledUp(_Player)
+AND
+DB_IsPlayer(_Player)
+AND
+DB_InRegion(_DCNPC, _ScalingNPCCounterRegion)
+//AND
+//NOT DB_IsPlayer(_DCNPC)
+AND
+IsTagged(_DCNPC, "DC_ScalingOverride", 0)
+//AND
+//DB_ScalingAreaTriggers(_ScalingNPCCounterRegion)
+AND
+CharacterIsInCombat(_DCNPC, 0)
+AND
+CharacterCanSee(_Player, _DCNPC, 0)
+AND
+CharacterGetLevel(_DCNPC, _Level)
+AND
+DB_DC_HighestLevel("HighestLevel", _, _, _HighestLevel)
+AND
+_Level < _HighestLevel
+THEN
+CharacterLevelUpTo(_DCNPC, _HighestLevel);
+Proc_DC_LevelScaling_GenericBoss();
+Proc_DC_LevelScaling_Lvl2Boss();
+Proc_DC_LevelScaling_LoneWolf();
+
+
+
+// GENERIC BOSS
+
+PROC
+Proc_DC_LevelScaling_GenericBoss()
+AND
+DB_IsPlayer(_Player)
+AND
+DB_InRegion(_DCNPC, _ScalingNPCCounterRegion)
+AND
+NOT DB_IsPlayer(_DCNPC)
+AND
+DB_ScalingAreaTriggers(_ScalingNPCCounterRegion)
+AND
+CharacterIsInCombat(_DCNPC, 0)
+AND
+CharacterCanSee(_Player, _DCNPC, 0)
+AND
+IsTagged(_DCNPC, "DC_ScalingOverride", 1)
+AND
+IsTagged(_DCNPC, "DC_BOSS", 1)
+AND
+CharacterGetLevel(_DCNPC, _Level)
+AND
+DB_DC_HighestLevel("HighestLevel", _, _, _HighestLevel)
+AND
+_Level < _HighestLevel
+AND
+IntegerSum(_HighestLevel, 1, _NewHighestLevel)
+THEN
+CharacterLevelUpTo(_DCNPC, _NewHighestLevel);
+//END_REGION
+
+//REGION LEVEL 2 BOSS
+PROC
+Proc_DC_LevelScaling_Lvl2Boss()
+AND
+DB_IsPlayer(_Player)
+AND
+DB_InRegion(_DCNPC, _ScalingNPCCounterRegion)
+AND
+NOT DB_IsPlayer(_DCNPC)
+AND
+DB_ScalingAreaTriggers(_ScalingNPCCounterRegion)
+AND
+CharacterIsInCombat(_DCNPC, 0)
+AND
+CharacterCanSee(_Player, _DCNPC, 0)
+AND
+IsTagged(_DCNPC, "DC_ScalingOverride", 1)
+AND
+IsTagged(_DCNPC, "DC_BOSS_LVL2", 1)
+AND
+CharacterGetLevel(_DCNPC, _Level)
+AND
+DB_DC_HighestLevel("HighestLevel", _, _, _HighestLevel)
+AND
+_Level < _HighestLevel
+AND
+IntegerSum(_HighestLevel, 2, _NewHighestLevel)
+THEN
+CharacterLevelUpTo(_DCNPC, _NewHighestLevel);
+//END_REGION
+
+//REGION LONEWOLF
+PROC
+Proc_DC_LevelScaling_LoneWolf()
+AND
+DB_IsPlayer(_Player)
+AND
+CharacterHasTalent(_Player, "LoneWolf", 1)
+AND
+DB_InRegion(_DCNPC, _ScalingNPCCounterRegion)
+AND
+NOT DB_IsPlayer(_DCNPC)
+AND
+DB_ScalingAreaTriggers(_ScalingNPCCounterRegion)
+AND
+CharacterIsInCombat(_DCNPC, 0)
+AND
+CharacterGetLevel(_DCNPC, _Level)
+AND
+DB_DC_HighestLevel("HighestLevel", _, _, _HighestLevel)
+AND
+_Level < _HighestLevel
+AND
+CharacterGetAttribute(_Player, "Intelligence", _IntVal)
+AND
+CharacterGetAttribute(_Player, "Strength", _StrVal)
+AND
+CharacterGetAttribute(_Player, "Finesse", _FinVal)
+AND
+CharacterGetAttribute(_DCNPC, "Intelligence", _DCNPCIntVal)
+AND
+CharacterGetAttribute(_DCNPC, "Strength", _DCNPCStrVal)
+AND
+CharacterGetAttribute(_DCNPC, "Finesse", _DCNPCFinVal)
+AND
+IntegerSubtract(_IntVal, _DCNPCIntVal, _IntSum)
+AND
+IntegerSubtract(_StrVal, _DCNPCStrVal, _StrSum)
+AND
+IntegerSubtract(_FinVal, _DCNPCFinVal, _FinSum)
+AND
+Random(_IntSum, _Int)
+AND
+Random(_StrSum, _Str)
+AND
+Random(_FinSum, _Fin)
+THEN
+CharacterAddAttribute(_DCNPC, "Intelligence", _Int);
+CharacterAddAttribute(_DCNPC, "Strength", _Str);
+CharacterAddAttribute(_DCNPC, "Finesse", _Fin);
+
+//END_REGION
+
+IF
+RegionStarted("RC_Main")
+THEN
+GoalCompleted;
+EXITSECTION
+NOT DB_ScalingAreaTriggers(TRIGGERGUID_DC_ScalingRegion_FortJoyStartBeach_c14b8cdb-88ad-4519-beb5-61f1b6dd0678);
+NOT DB_ScalingAreaTriggers(TRIGGERGUID_DC_ScalingRegion_FortJoySubAreas_dcd0900f-5896-44ca-af8d-e606db7e3894);
+NOT DB_ScalingAreaTriggers(TRIGGERGUID_DC_ScalingRegion_Swamps_1923cefd-ef2d-4980-8178-404f1f970898);
+NOT DB_ScalingAreaTriggers(TRIGGERGUID_DC_ScalingRegion_Isles_f4b68849-feed-4a8f-a384-feb7d201d173);
+ENDEXITSECTION
+ParentTargetEdge "FortJoy"

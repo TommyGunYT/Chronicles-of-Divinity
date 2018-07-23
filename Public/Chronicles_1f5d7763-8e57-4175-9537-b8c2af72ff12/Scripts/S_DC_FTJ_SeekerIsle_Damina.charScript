@@ -1,0 +1,63 @@
+#INCLUDE State_Manager
+INIT
+	USING SHARED State_Manager
+	CHARACTER:__Me
+	EXTERN ITEM:%DummyA = S_SeekerCamp_Dummy_B_ad73a3ef-b264-40cd-bfdc-c7727e9c135c
+	EXTERN TRIGGER:%LookAtShark = S_DC_SeekerIsle_DaminaTableShark_9e5caa38-27ef-42d1-bc11-da1b53a4e383
+	EXTERN TRIGGER:%WalkToShark = S_DC_SeekerIsle_DaminaSharkWalk_c154d6ce-e298-4d1f-a190-2fbf47b2eedf
+	EXTERN TRIGGER:%LookAtFishRack = S_DC_SeekerIsle_DaminaFishRackLookAt_b8585f24-40d3-4478-9dd9-ab792c46d786
+	EXTERN TRIGGER:%WalkToFishRack = S_DC_SeekerIsle_DaminaFishRack_19d97f6b-5de7-4054-aa90-c1812109c857
+	FLOAT:%RandSleep = 1
+
+BEHAVIOUR
+REACTION State_Default, 1
+USAGE PEACE
+ACTIONS
+	GetRandom(%currentAction,"BloodiedShark","FishRack")
+	SetPriority(%currentAction, 1200)
+	
+REACTION BloodiedShark, 0
+USAGE PEACE
+VARS
+	FIXEDSTRING:_animation
+ACTIONS
+	CharacterMoveTo(%WalkToShark,0,0,0,1,2)
+	CharacterLookAt(%LookAtShark,0,0)
+	GetRandomBetween(%RandSleep,1,3)
+	Sleep(%RandSleep)
+	GetRandom(_animation,"idle3","use_craft","use_drink","Cooking_01","Fidget_High_01","Fidget_High_02","Fidget_Low_01","Fidget_Low_02","Fidget_Low_03","Think_01")
+	CharacterPlayAnimation(_animation)
+	GetRandomBetween(%RandSleep,3,8)
+	GetRandom(_animation,"idle3","use_craft","use_drink","Cooking_01","Fidget_High_01","Fidget_High_02","Fidget_Low_01","Fidget_Low_02","Fidget_Low_03","Think_01")
+	CharacterPlayAnimation(_animation)
+	GetRandomBetween(%RandSleep,3,8)
+	Sleep(%RandSleep)
+	SetPriority(%currentAction, 0)
+INTERRUPT
+ACTIONS
+	SetPriority(%currentAction, 0)
+	
+REACTION FishRack, 0
+USAGE PEACE
+VARS
+	FIXEDSTRING:_animation
+ACTIONS
+	CharacterMoveTo(%WalkToFishRack,0,0,0,1,2)
+	CharacterLookAt(%LookAtFishRack,0,0)
+	GetRandomBetween(%RandSleep,1,3)
+	Sleep(%RandSleep)
+	GetRandom(_animation,"idle3","use_craft","use_drink","Cooking_01","Fidget_High_01","Fidget_High_02","Fidget_Low_01","Fidget_Low_02","Fidget_Low_03","Think_01")
+	CharacterPlayAnimation(_animation)
+	GetRandomBetween(%RandSleep,3,8)
+	GetRandom(_animation,"idle3","use_craft","use_drink","Cooking_01","Fidget_High_01","Fidget_High_02","Fidget_Low_01","Fidget_Low_02","Fidget_Low_03","Think_01")
+	CharacterPlayAnimation(_animation)
+	GetRandomBetween(%RandSleep,3,8)
+	Sleep(%RandSleep)
+	SetPriority(%currentAction, 0)
+INTERRUPT
+ACTIONS
+	SetPriority(%currentAction, 0)
+
+
+
+

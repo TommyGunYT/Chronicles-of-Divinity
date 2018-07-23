@@ -1,0 +1,18 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+// SILENT MONK BY ARMORY ENTRANCE WILL ATTACK IF PLAYER TRIES TO ENTER PREMATURELY
+
+IF
+CharacterUsedItem(_Player, ITEMGUID_DC_FTJ_Armory_ec1d658f-ce2e-4167-b109-beb71975d8ae)
+AND
+CharacterIsDead(CHARACTERGUID_S_FTJ_SilentMonk_001_54dd8073-bd3c-40a0-bdfa-8bfc77e0adb8, 0)
+THEN
+SetFaction(CHARACTERGUID_S_FTJ_SilentMonk_001_54dd8073-bd3c-40a0-bdfa-8bfc77e0adb8, "Evil NPC");
+EnterCombat(CHARACTERGUID_S_FTJ_SilentMonk_001_54dd8073-bd3c-40a0-bdfa-8bfc77e0adb8, _Player);
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "FortJoy"

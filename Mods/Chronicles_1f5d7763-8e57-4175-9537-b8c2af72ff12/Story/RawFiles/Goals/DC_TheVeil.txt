@@ -1,0 +1,25 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+DB_CheckLevelStart("DC_TheVeilOfDeath");
+KBSECTION
+IF
+RegionStarted("DC_TheVeilOfDeath")
+THEN
+GoalCompleted;
+
+IF
+DB_CheckLevelStart("DC_TheVeilOfDeath")
+AND
+DB_CurrentLevel("DC_TheVeilOfDeath")
+THEN
+GoalCompleted;
+
+IF
+DB_DC_LVStart("DC_TheVeilOfDeath")
+THEN
+GoalCompleted;
+EXITSECTION
+NOT DB_CheckLevelStart("DC_TheVeilOfDeath");
+ENDEXITSECTION
+ParentTargetEdge "Start"

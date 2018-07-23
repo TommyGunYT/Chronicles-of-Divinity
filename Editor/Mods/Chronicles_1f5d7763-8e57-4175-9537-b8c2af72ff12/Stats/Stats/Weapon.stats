@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stats stat_object_definition_id="a1fa1d2f-c335-4902-898c-4228c3c07d52">
+  <stat_objects>
+    <stat_object index="0" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_AdvocateSword" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" clear_inherited_value="false" value="_TwoHandedSwords" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="15" enumeration_type_name="ActPart" />
+        <field name="DamageBoost" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="10" />
+        <field name="CleavePercentage" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="25" />
+        <field name="CleaveAngle" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="90" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="500" />
+        <field name="Movement" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="50" />
+        <field name="PainReflection" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="2" />
+        <field name="LifeSteal" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="25" />
+        <field name="ExtraProperties" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="CHARMED,15,1" />
+        <field name="ItemColor" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Witch" />
+        <field name="RuneSlots" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="RuneSlots_V1" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="ItemGroup" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_AdvocateSword" />
+        <field name="Unique" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Comment" type="CommentStatObjectFieldDefinition" clear_inherited_value="false" value="The Advocate" />
+      </fields>
+    </stat_object>
+    <stat_object index="1" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_PhysicalWand" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" clear_inherited_value="false" value="_Wands_Poison" />
+        <field name="ItemGroup" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_PhysicalWand" />
+        <field name="Act" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="Act" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="11" enumeration_type_name="ActPart" />
+        <field name="Damage Type" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="Damage Type" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="650" />
+        <field name="RuneSlots" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="RuneSlots_V1" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Unique" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="DamageBoost" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="10" />
+        <field name="Movement" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="35" />
+        <field name="Necromancy" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="ExtraProperties" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="SHACKLES_OF_PAIN,20,2;DISEASED,20,2" />
+        <field name="ItemColor" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="MagisterWhite" />
+        <field name="ConstitutionBoost" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="13" enumeration_type_name="Penalty Qualifier" />
+        <field name="Comment" type="CommentStatObjectFieldDefinition" clear_inherited_value="false" value="Andras Act 2" />
+      </fields>
+    </stat_object>
+    <stat_object index="2" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_QuickBow" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" clear_inherited_value="false" value="_Bows" />
+        <field name="ItemGroup" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_QuickBow" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="12" enumeration_type_name="ActPart" />
+        <field name="DamageBoost" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="-10" />
+        <field name="CriticalChance" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="10" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="500" />
+        <field name="Ranged" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="ComboCategory" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Bow" />
+        <field name="ExtraProperties" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Self:OnHit:ETHEREAL_SOLES,30,2" />
+        <field name="RuneSlots" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="RuneSlots_V1" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Unique" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="WeaponRange" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="850" />
+        <field name="Movement" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="150" />
+        <field name="Initiative" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="10" />
+        <field name="ItemColor" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Malachite" />
+        <field name="Comment" type="CommentStatObjectFieldDefinition" clear_inherited_value="false" value="Ghalam (tree area under graveyard)" />
+      </fields>
+    </stat_object>
+    <stat_object index="3" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_EpicWoodSword" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" clear_inherited_value="false" value="_Swords" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="4" enumeration_type_name="ActPart" />
+        <field name="WitsBoost" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="12" enumeration_type_name="Penalty Qualifier" />
+        <field name="EarthSpecialist" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="ExtraProperties" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="DAZED,20,1" />
+        <field name="ItemGroup" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_EpicWoodSword" />
+        <field name="Unique" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="ItemColor" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Burnished Bronze" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="75" />
+        <field name="RuneSlots" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Comment" type="CommentStatObjectFieldDefinition" clear_inherited_value="false" value="Frogs Act 1" />
+      </fields>
+    </stat_object>
+    <stat_object index="4" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_WandOfEnslavement" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" clear_inherited_value="false" value="_Wands_Air" />
+        <field name="ItemGroup" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_WandOfEnslavement" />
+        <field name="Act" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="0" enumeration_type_name="Act" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="13" enumeration_type_name="ActPart" />
+        <field name="Damage Type" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="1" enumeration_type_name="Damage Type" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="650" />
+        <field name="IntelligenceBoost" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="13" enumeration_type_name="Penalty Qualifier" />
+        <field name="RuneSlots" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="RuneSlots_V1" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Unique" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="DamageBoost" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="10" />
+        <field name="ExtraProperties" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="CHARMED,15,1;" />
+        <field name="Summoning" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="2" />
+        <field name="LifeSteal" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="25" />
+        <field name="Skills" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Target_BanishSummon" />
+        <field name="ItemColor" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Mercury" />
+        <field name="Comment" type="CommentStatObjectFieldDefinition" clear_inherited_value="false" value="Slavemaster Magister before Aetern" />
+      </fields>
+    </stat_object>
+    <stat_object index="5" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_MagicStaff" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" clear_inherited_value="false" value="_Staffs_Water" />
+        <field name="ItemGroup" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_MagicStaff" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="15" enumeration_type_name="ActPart" />
+        <field name="DamageBoost" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="20" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="500" />
+        <field name="IntelligenceBoost" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="13" enumeration_type_name="Penalty Qualifier" />
+        <field name="ComboCategory" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Staff" />
+        <field name="Skills" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Projectile_StaffOfMagus;Target_Farsight" />
+        <field name="ItemColor" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Cobalt" />
+        <field name="Unique" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Damage Type" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="4" enumeration_type_name="Damage Type" />
+        <field name="Movement" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="50" />
+        <field name="MemoryBoost" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="13" enumeration_type_name="Penalty Qualifier" />
+        <field name="ExtraProperties" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Self:OnHit:FARSIGHT,20,1;DAZED,25,2" />
+        <field name="RuneSlots" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="2" />
+        <field name="Comment" type="CommentStatObjectFieldDefinition" clear_inherited_value="false" value="Aetern" />
+      </fields>
+    </stat_object>
+    <stat_object index="6" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_RodOfCollection" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" clear_inherited_value="false" value="_TwoHandedMaces" />
+        <field name="ItemGroup" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_RodOfCollection" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="7" enumeration_type_name="ActPart" />
+        <field name="WeaponRange" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="300" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="300" />
+        <field name="Skills" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Cone_Hook;Target_Apportation" />
+        <field name="ExtraProperties" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="DISARMED,15,1;WET,25,2" />
+        <field name="Unique" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="LifeSteal" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="20" />
+        <field name="ItemColor" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Cobalt" />
+        <field name="DamageBoost" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="5" />
+        <field name="Comment" type="CommentStatObjectFieldDefinition" clear_inherited_value="false" value="Fort Joy cliff near Gareth" />
+        <field name="WaterSpecialist" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Water" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="10" />
+      </fields>
+    </stat_object>
+    <stat_object index="7" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_ForkTonguesFork" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" clear_inherited_value="false" value="_Daggers" />
+        <field name="ItemGroup" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_ForkTonguesFork" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="16" enumeration_type_name="ActPart" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="350" />
+        <field name="Movement" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="25" />
+        <field name="LifeSteal" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="30" />
+        <field name="Skills" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Target_Cannibalize" />
+        <field name="ExtraProperties" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Self:OnHit:DEFLECTING,30,1;BLEEDING,30,3" />
+        <field name="ItemColor" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Gold" />
+        <field name="Unique" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="RuneSlots" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Comment" type="CommentStatObjectFieldDefinition" clear_inherited_value="false" value="Forktongue" />
+      </fields>
+    </stat_object>
+    <stat_object index="8" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_DaggerSpear" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" clear_inherited_value="false" value="_Spears" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="13" enumeration_type_name="ActPart" />
+        <field name="ComboCategory" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Spear" />
+        <field name="ObjectCategory" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Spear" />
+        <field name="MinAmount" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="MaxAmount" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Priority" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="500" />
+        <field name="Movement" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="50" />
+        <field name="Initiative" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="5" />
+        <field name="WeaponType" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="8" enumeration_type_name="WeaponType" />
+        <field name="AnimType" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="7" enumeration_type_name="AnimType" />
+        <field name="ExtraProperties" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="BLEEDING,50,2;NECROFIRE,20,2" />
+        <field name="Boosts" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="_Boost_Weapon_Damage_ArmourPiercing" />
+        <field name="ItemGroup" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_DaggerSpear" />
+        <field name="Unique" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="ItemColor" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Tenebrium" />
+        <field name="Skills" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="MultiStrike_BlinkStrike" />
+        <field name="RuneSlots" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Comment" type="CommentStatObjectFieldDefinition" clear_inherited_value="false" value="Alice Asceon" />
+      </fields>
+    </stat_object>
+    <stat_object index="9" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_PortalWand" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" clear_inherited_value="false" value="_Wands_Water" />
+        <field name="ItemGroup" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_PortalWand" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="16" enumeration_type_name="ActPart" />
+        <field name="DamageBoost" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="15" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="600" />
+        <field name="WaterSpecialist" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="2" />
+        <field name="Skills" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Summon_EnemyWaterSlug;Target_WaterInfusion" />
+        <field name="ExtraProperties" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="WET,50,2; SELF:OnHit:HARMONY,25,0" />
+        <field name="ItemColor" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Cobalt" />
+        <field name="RuneSlots" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Unique" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Comment" type="CommentStatObjectFieldDefinition" clear_inherited_value="false" value="Act 3 Portalmaster" />
+      </fields>
+    </stat_object>
+    <stat_object index="10" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_OldSpoony" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" clear_inherited_value="false" value="_TwoHandedMaces" />
+        <field name="ItemGroup" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_OldSpoony" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="15" enumeration_type_name="ActPart" />
+        <field name="DamageBoost" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="-10" />
+        <field name="WeaponRange" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="275" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="200" />
+        <field name="Leadership" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="-1" />
+        <field name="Skills" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Projectile_ThrowDust" />
+        <field name="ExtraProperties" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="DAZED,35,1;ACID,35,2;TAUNTED,35,2" />
+        <field name="ItemColor" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Burnished Bronze" />
+        <field name="Unique" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Comment" type="CommentStatObjectFieldDefinition" clear_inherited_value="false" value="Mining Cliff  Nameless Island" />
+      </fields>
+    </stat_object>
+    <stat_object index="11" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_ScytheOfStrife" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" clear_inherited_value="false" value="_TwoHandedAxes" />
+        <field name="ItemGroup" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_ScytheOfStrife" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="14" enumeration_type_name="ActPart" />
+        <field name="WeaponRange" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="275" />
+        <field name="CleavePercentage" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="25" />
+        <field name="CleaveAngle" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="120" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="400" />
+        <field name="Necromancy" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="2" />
+        <field name="LifeSteal" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="15" />
+        <field name="ExtraProperties" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="SELF:OnHit:DEATH_WISH,30,2" />
+        <field name="Boosts" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="_Boost_Weapon_Damage_Poison_Medium" />
+        <field name="RuneSlots" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Unique" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="ItemColor" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Venom Stone" />
+        <field name="Comment" type="CommentStatObjectFieldDefinition" clear_inherited_value="false" value="Jahan House Chest" />
+        <field name="Skills" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Target_DeathWish" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Demon" />
+      </fields>
+    </stat_object>
+    <stat_object index="12" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_QannaStaff" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" clear_inherited_value="false" value="_Staffs_Fire" />
+        <field name="ItemGroup" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_QannaStaff" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="11" enumeration_type_name="ActPart" />
+        <field name="CleavePercentage" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="20" />
+        <field name="CleaveAngle" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="90" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="400" />
+        <field name="FireSpecialist" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Necromancy" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="LifeSteal" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="20" />
+        <field name="Skills" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Summon_EnemySkeleton_Weak" />
+        <field name="ExtraProperties" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="BURNING,30,3;PETRIFIED,15,1" />
+        <field name="ItemColor" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Gold" />
+        <field name="RuneSlots" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Unique" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Comment" type="CommentStatObjectFieldDefinition" clear_inherited_value="false" value="Qanna" />
+      </fields>
+    </stat_object>
+    <stat_object index="13" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_PrayerSword" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" clear_inherited_value="false" value="_Swords" />
+        <field name="ItemGroup" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_PrayerSword" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="6" enumeration_type_name="ActPart" />
+        <field name="IntelligenceBoost" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="12" enumeration_type_name="Penalty Qualifier" />
+        <field name="WaterSpecialist" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="ExtraProperties" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="SELF:OnHit:HEALING_TEARS,25,2;SELF:OnHit:REGENERATION,20,2" />
+        <field name="ItemColor" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Cobalt" />
+        <field name="Unique" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="200" />
+        <field name="Comment" type="CommentStatObjectFieldDefinition" clear_inherited_value="false" value="Old Temple Mass Voidling Attack" />
+      </fields>
+    </stat_object>
+    <stat_object index="14" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_RustBlade" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" clear_inherited_value="false" value="_Daggers" />
+        <field name="ItemGroup" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_RustBlade" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="12" enumeration_type_name="ActPart" />
+        <field name="DamageBoost" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="-30" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="500" />
+        <field name="EarthSpecialist" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Necromancy" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Earth" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="20" />
+        <field name="Skills" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Cone_CorrosiveSpray" />
+        <field name="ExtraProperties" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="ACID,50,3" />
+        <field name="Boosts" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="_Boost_Weapon_Damage_Corrosive" />
+        <field name="ItemColor" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Venom Stone" />
+        <field name="RuneSlots" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Unique" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="IntelligenceBoost" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="12" enumeration_type_name="Penalty Qualifier" />
+        <field name="Poison" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="20" />
+        <field name="Comment" type="CommentStatObjectFieldDefinition" clear_inherited_value="false" value="Mord'Akhan (only drops if Mordus transforms)" />
+      </fields>
+    </stat_object>
+    <stat_object index="15" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="_Boost_Weapon_Damage_Corrosive" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" clear_inherited_value="false" value="_BOOSTS_Weapon" />
+        <field name="Damage Type" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="3" enumeration_type_name="Damage Type" />
+        <field name="DamageFromBase" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="100" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="20" />
+      </fields>
+    </stat_object>
+    <stat_object index="16" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_GreaterRodOfCollection" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" clear_inherited_value="false" value="_TwoHandedMaces" />
+        <field name="ItemGroup" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_GreaterRodOfCollection" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="16" enumeration_type_name="ActPart" />
+        <field name="WeaponRange" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="300" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="300" />
+        <field name="Skills" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Cone_Hook;Target_Apportation" />
+        <field name="ExtraProperties" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="DISARMED,25,1" />
+        <field name="Unique" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="LifeSteal" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="30" />
+        <field name="ItemColor" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Cobalt" />
+        <field name="DamageBoost" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="15" />
+        <field name="WaterSpecialist" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="2" />
+        <field name="Water" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="25" />
+        <field name="Boosts" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="_Boost_Weapon_Damage_Water" />
+        <field name="RuneSlots" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Comment" type="CommentStatObjectFieldDefinition" clear_inherited_value="false" value="Act 3, fishing pole in area behind portal master/orc temple" />
+      </fields>
+    </stat_object>
+    <stat_object index="17" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_SmokeXbow" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" clear_inherited_value="false" value="_Crossbows" />
+        <field name="ItemGroup" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_SmokeXbow" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="11" enumeration_type_name="ActPart" />
+        <field name="ExtraProperties" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="TargetCreateSurface,1,,SmokeCloud,100;BLIND,25,1" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="450" />
+        <field name="FireSpecialist" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="2" />
+        <field name="Fire" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="15" />
+        <field name="Skills" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Target_Sabotage;Projectile_SmokescreenArrow" />
+        <field name="Boosts" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="_Boost_Weapon_Damage_Fire" />
+        <field name="ItemColor" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Mercury" />
+        <field name="RuneSlots" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Unique" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Comment" type="CommentStatObjectFieldDefinition" clear_inherited_value="false" value="Driftwood Dwarven Drugee Den on Crate" />
+      </fields>
+    </stat_object>
+    <stat_object index="18" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_BullyClub" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" clear_inherited_value="false" value="_Clubs" />
+        <field name="ItemGroup" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_BullyClub" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="5" enumeration_type_name="ActPart" />
+        <field name="DamageBoost" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="-20" />
+        <field name="RogueLore" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="Talents" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Bully" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="300" />
+        <field name="Unique" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+        <field name="ExtraProperties" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="CRIPPLED,20,1" />
+      </fields>
+    </stat_object>
+    <stat_object index="19" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_RuneBlade" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" clear_inherited_value="false" value="_TwoHandedSwords" />
+        <field name="ItemGroup" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_RuneBlade" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="15" enumeration_type_name="ActPart" />
+        <field name="DamageBoost" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="15" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="500" />
+        <field name="ItemColor" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="Mercury" />
+        <field name="RuneSlots" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="3" />
+        <field name="RuneSlots_V1" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="3" />
+        <field name="Unique" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="1" />
+      </fields>
+    </stat_object>
+    <stat_object index="20" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_PlateShovel" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" clear_inherited_value="false" value="_TwoHandedMaces" />
+        <field name="ItemGroup" type="StringStatObjectFieldDefinition" clear_inherited_value="false" value="WPN_UNIQUE_PlateShovel" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" clear_inherited_value="false" value="2" enumeration_type_name="ActPart" />
+        <field name="DamageBoost" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="-10" />
+        <field name="Earth" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="5" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" clear_inherited_value="false" value="15" />
+      </fields>
+    </stat_object>
+	<stat_object index="21" is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="WPN_Masters_Sword" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_RC_Swords" />
+        <field name="ItemGroup" type="StringStatObjectFieldDefinition" value="EMPTY" />
+        <field name="Requirements" type="StringStatObjectFieldDefinition" value="Strength 20" />
+        <field name="AttackAPCost" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="Damage Type" type="EnumerationStatObjectFieldDefinition" value="5" enumeration_type_name="Damage Type" />
+        <field name="Damage Range" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" value="13000" />
+        <field name="WeaponType" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="WeaponType" />
+        <field name="AnimType" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="AnimType" />
+        <field name="SingleHanded" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="Loremaster" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="Skills" type="StringStatObjectFieldDefinition" value="BlinkStrike" />
+        <field name="ItemColor" type="StringStatObjectFieldDefinition" value="HumansEpic" />
+        <field name="RuneSlots" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="MinAmount" type="IntegerStatObjectFieldDefinition" value="0" />
+        <field name="Unique" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="Act" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="Act" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="2" enumeration_type_name="ActPart" />
+      </fields>
+    </stat_object>
+  </stat_objects>
+</stats>

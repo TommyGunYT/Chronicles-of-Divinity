@@ -1,0 +1,30 @@
+#INCLUDE State_Manager
+INIT
+	USING SHARED State_Manager
+	CHARACTER:__Me
+	EXTERN TRIGGER:%Wander = S_DC_SebilleEnemy_Patrol_55494a76-c1e8-4e8d-b5ea-70336a3b0fa9
+	INT: %resetTimeout = 0
+	FLOAT:%RandSleep = 1
+	FLOAT:%RandWander = 1
+	
+BEHAVIOUR
+REACTION State_Default_FTJ_Stage1, 1
+USAGE PEACE
+ACTIONS
+	GetRandom(%currentAction,"Wander","FoodBucket","FlyLedge_Up")
+	SetPriority(%currentAction, 1200)
+	
+REACTION Wander, 0
+USAGE PEACE
+VARS
+	FIXEDSTRING:_animation
+ACTIONS
+	CharacterWander(%Wander,2.0)
+	GetRandomBetween(%RandSleep,3,7)
+	Sleep(%RandSleep)
+	CharacterWander(%Wander,1.0)
+	Sleep(2.0)
+	SetPriority(%currentAction, 0)
+INTERRUPT
+ACTIONS
+	SetPriority(%currentAction, 0)

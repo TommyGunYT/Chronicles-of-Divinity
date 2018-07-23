@@ -1,0 +1,41 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+SetOnStage(CHARACTERGUID_S_DC_Training_Malady_b10961db-76e6-4a4b-8e26-1f3d1eacfb66, 0);
+
+ItemSetCanInteract(ITEMGUID_S_LV_Mirror_000_9f94cd80-3180-4468-bb52-5117af059cc0, 0);
+KBSECTION
+IF
+CharacterCreationFinished(_Player)
+AND
+DB_IsPlayer(_Player)
+AND
+IsGameLevel("DC_Snowfall", 1)
+THEN
+TeleportTo(_Player, TRIGGERGUID_S_DC_Respec_Training_10a87cf0-816f-45d9-9c25-afcb13c43bd3, "", 1);
+
+IF
+DialogEnded("Kara_Recruitment_Training", _ID)
+AND
+DB_IsPlayer(_Player)
+AND
+DialogGetInvolvedPlayer(_ID, 1, _Speaker)
+AND
+ObjectGetFlag(_Speaker, "Training_KaraToManor", 1)
+THEN
+TeleportTo(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, TRIGGERGUID_DC_TP_CombatTraining_KaraRecruitPoint_ed667602-1914-4d63-a209-bfc8778bed3b, "DC_CombatTraining_KaraArrivedAtRecruitment", 1);
+
+IF
+StoryEvent(_, "DC_CombatTraining_KaraArrivedAtRecruitment")
+THEN
+CharacterUseItem(CHARACTERGUID_S_Player_Kara_bcf8286e-213c-438d-b622-b6e40add12dd, ITEMGUID_FUR_Humans_Rich_Sofa_A_100__000_DC_000__000_007cf29c-5e43-cf2d-ddc3-5822b0db6843, "");
+
+
+PROC
+ProcRegionEnded("DC_Snowfall")
+THEN
+GoalCompleted;
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "DC_Snowfall"

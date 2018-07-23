@@ -1,0 +1,30 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+IF
+GameStarted(_, _)
+THEN
+TimerLaunch("DC_IldHeim_Weather_Day", 1800000);
+
+IF
+TimerFinished("DC_IldHeim_Weather_Day")
+THEN
+TriggerSetAtmosphere(TRIGGERGUID_AtmosphereTrigger_000_64f0e59d-ba88-4c87-90dd-5371349cc89d, "9e8ed17c-7b49-4a75-b314-26a98cf20608");
+TimerLaunch("DC_IldHeim_Weather_Night", 1800000);
+
+IF
+TimerFinished("DC_IldHeim_Weather_Night")
+THEN
+TriggerSetAtmosphere(TRIGGERGUID_AtmosphereTrigger_000_64f0e59d-ba88-4c87-90dd-5371349cc89d, "47b50dad-8bc2-4f82-8581-d1d1a2f497ad");
+TimerLaunch("DC_IldHeim_Weather_Day", 1100000);
+
+PROC
+ProcRegionEnded("DC_Snowfall")
+THEN
+GoalCompleted;
+EXITSECTION
+
+ENDEXITSECTION
+ParentTargetEdge "DC_Snowfall"
